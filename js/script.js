@@ -2055,46 +2055,6 @@ ${data.description}
             }, 3500); // 1s delay + 2s animation + 0.5s buffer
         }
 
-        // ========== 2. 24H DELIVERY COUNTER ==========
-        function init24HCounter() {
-            const counterValue = document.getElementById('counterValue');
-            const deliveryCounter = document.getElementById('deliveryCounter');
-
-            if (!counterValue || !deliveryCounter) return;
-
-            let hasAnimated = false;
-
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        hasAnimated = true;
-                        animateCounter(counterValue, 0, 24, 2000);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.5
-            });
-
-            counterObserver.observe(deliveryCounter);
-        }
-
-        function animateCounter(element, start, end, duration) {
-            const range = end - start;
-            const increment = range / (duration / 16); // 60 FPS
-            let current = start;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= end) {
-                    element.textContent = Math.round(end);
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.round(current);
-                }
-            }, 16);
-        }
-
         // ========== 3. PORTFOLIO LIGHTBOX ==========
         function initPortfolioLightbox() {
             const lightbox = document.getElementById('portfolioLightbox');
@@ -2325,7 +2285,7 @@ ${data.description}
         // ========== 7. PERFORMANCE OPTIMIZATIONS ==========
         function applyPerformanceOptimizations() {
             // Add will-change to animated elements on intersection
-            const animatedElements = document.querySelectorAll('.delivery-counter, .case-study-section, .contact-section');
+            const animatedElements = document.querySelectorAll('.contact-section');
 
             const performanceObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -2356,7 +2316,6 @@ ${data.description}
         // ========== INITIALIZE ALL NEW FEATURES ==========
         function initNewFeatures() {
             initTypewriter();
-            init24HCounter();
             initPortfolioLightbox();
             initContactForm();
             initStickyHeader();
@@ -2364,7 +2323,7 @@ ${data.description}
             applyPerformanceOptimizations();
 
             console.log('🎉 All new features initialized successfully!');
-            console.log('✨ Features: Typewriter, 24H Counter, Lightbox, Contact Form, Sticky Header, Multi-language');
+            console.log('✨ Features: Typewriter, Lightbox, Contact Form, Sticky Header, Multi-language');
         }
 
         // Run on DOM ready
