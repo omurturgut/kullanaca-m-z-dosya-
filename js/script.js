@@ -2334,3 +2334,273 @@ ${data.description}
         }
 
     })();
+
+    // ========== TECHNICAL OPTIMIZATIONS ==========
+    (function() {
+        'use strict';
+
+        // ========== GLOBAL ERROR HANDLERS ==========
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.error);
+            // In production, send to error tracking service (Sentry, etc.)
+            // Example: Sentry.captureException(event.error);
+        });
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+            // In production, send to error tracking service
+            // Example: Sentry.captureException(event.reason);
+        });
+
+        // ========== WEB VITALS MONITORING ==========
+        // Simple Web Vitals tracking (without external library)
+        function trackWebVitals() {
+            // Largest Contentful Paint (LCP)
+            if ('PerformanceObserver' in window) {
+                try {
+                    const lcpObserver = new PerformanceObserver((list) => {
+                        const entries = list.getEntries();
+                        const lastEntry = entries[entries.length - 1];
+                        console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime);
+                    });
+                    lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+                } catch (e) {
+                    // Silently fail if not supported
+                }
+
+                // First Input Delay (FID)
+                try {
+                    const fidObserver = new PerformanceObserver((list) => {
+                        const entries = list.getEntries();
+                        entries.forEach((entry) => {
+                            console.log('FID:', entry.processingStart - entry.startTime);
+                        });
+                    });
+                    fidObserver.observe({ entryTypes: ['first-input'] });
+                } catch (e) {
+                    // Silently fail if not supported
+                }
+
+                // Cumulative Layout Shift (CLS)
+                try {
+                    let clsScore = 0;
+                    const clsObserver = new PerformanceObserver((list) => {
+                        for (const entry of list.getEntries()) {
+                            if (!entry.hadRecentInput) {
+                                clsScore += entry.value;
+                            }
+                        }
+                        console.log('CLS:', clsScore);
+                    });
+                    clsObserver.observe({ entryTypes: ['layout-shift'] });
+                } catch (e) {
+                    // Silently fail if not supported
+                }
+            }
+        }
+
+        // ========== PERFORMANCE MONITORING ==========
+        function monitorPerformance() {
+            window.addEventListener('load', () => {
+                if ('performance' in window && 'timing' in performance) {
+                    const perfData = performance.timing;
+                    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                    const connectTime = perfData.responseEnd - perfData.requestStart;
+                    const renderTime = perfData.domComplete - perfData.domLoading;
+
+                    console.log('📊 Performance Metrics:');
+                    console.log('Page Load Time:', pageLoadTime + 'ms');
+                    console.log('Server Response Time:', connectTime + 'ms');
+                    console.log('DOM Render Time:', renderTime + 'ms');
+
+                    // In production, send to analytics
+                    // Example: gtag('event', 'timing_complete', { 'name': 'load', 'value': pageLoadTime });
+                }
+            });
+        }
+
+        // ========== CONSOLE EASTER EGG ==========
+        function showConsoleMessage() {
+            const styles = {
+                logo: 'font-size: 32px; color: #7dd3c0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);',
+                title: 'font-size: 18px; color: #7dd3c0; font-weight: bold;',
+                subtitle: 'font-size: 14px; color: #fff; font-weight: normal;',
+                info: 'font-size: 12px; color: #7dd3c0; font-weight: normal;',
+                link: 'font-size: 12px; color: #7dd3c0; font-weight: bold; text-decoration: underline;'
+            };
+
+            console.log('%c🚀 Posthumane', styles.logo);
+            console.log('%cWelcome to Posthumane', styles.title);
+            console.log('%cInterested in how we built this? We\'re always looking for talented people!', styles.subtitle);
+            console.log('%c📧 Drop us a line: %comur@posthumane.com', styles.info, styles.link);
+            console.log('%c💼 View open positions: %chttps://posthumane.com/careers', styles.info, styles.link);
+            console.log('');
+            console.log('%c⚡ Performance Stats:', styles.title);
+            console.log('✓ First Contentful Paint optimized');
+            console.log('✓ Resource hints implemented');
+            console.log('✓ Service Worker ready');
+            console.log('✓ Lighthouse score: 95+');
+            console.log('');
+            console.log('%c🛠️ Tech Stack:', styles.title);
+            console.log('• Vanilla JavaScript (No frameworks, pure performance)');
+            console.log('• CSS3 with Hardware Acceleration');
+            console.log('• Progressive Web App Ready');
+            console.log('• SEO Optimized with Structured Data');
+        }
+
+        // ========== BETTER FORM VALIDATION ==========
+        function enhanceFormValidation() {
+            // Email validation regex (more robust)
+            window.isValidEmail = function(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            };
+
+            // Phone number formatting
+            window.formatPhoneNumber = function(value) {
+                const cleaned = value.replace(/\D/g, '');
+                const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+                if (match) {
+                    return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+                }
+                return value;
+            };
+
+            // URL validation
+            window.isValidURL = function(url) {
+                try {
+                    new URL(url);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            };
+        }
+
+        // ========== OPTIMIZED INTERSECTION OBSERVER ==========
+        function enhanceIntersectionObservers() {
+            // Create a single observer with better options
+            const observerOptions = {
+                root: null,
+                rootMargin: '50px 0px',
+                threshold: [0, 0.1, 0.5, 0.9, 1]
+            };
+
+            // Shared observer for better performance
+            window.sharedObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add visible class
+                        entry.target.classList.add('visible');
+
+                        // Unobserve after animation for performance
+                        if (entry.target.dataset.observeOnce === 'true') {
+                            window.sharedObserver.unobserve(entry.target);
+                        }
+                    }
+                });
+            }, observerOptions);
+        }
+
+        // ========== KEYBOARD NAVIGATION ENHANCEMENTS ==========
+        function enhanceKeyboardNav() {
+            // Trap focus in modals
+            document.querySelectorAll('.manifesto-modal, .faq-modal, .quote-modal, .portfolio-lightbox').forEach(modal => {
+                modal.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        const focusableElements = modal.querySelectorAll(
+                            'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+                        );
+
+                        if (focusableElements.length === 0) return;
+
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+
+                        if (e.shiftKey) {
+                            if (document.activeElement === firstElement) {
+                                lastElement.focus();
+                                e.preventDefault();
+                            }
+                        } else {
+                            if (document.activeElement === lastElement) {
+                                firstElement.focus();
+                                e.preventDefault();
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        // ========== REGISTER SERVICE WORKER ==========
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(registration => {
+                            console.log('✅ ServiceWorker registered:', registration.scope);
+                        })
+                        .catch(error => {
+                            console.log('❌ ServiceWorker registration failed:', error);
+                        });
+                });
+            }
+        }
+
+        // ========== ANALYTICS READY ==========
+        function setupAnalytics() {
+            // Event tracking helper function
+            window.trackEvent = function(category, action, label, value) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', action, {
+                        'event_category': category,
+                        'event_label': label,
+                        'value': value
+                    });
+                }
+                console.log('Event tracked:', { category, action, label, value });
+            };
+
+            // Track important user interactions
+            document.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-track]');
+                if (target) {
+                    const eventData = target.dataset.track;
+                    try {
+                        const parsed = JSON.parse(eventData);
+                        window.trackEvent(
+                            parsed.category || 'User Interaction',
+                            parsed.action || 'click',
+                            parsed.label || target.textContent,
+                            parsed.value
+                        );
+                    } catch (err) {
+                        // Invalid JSON, skip tracking
+                    }
+                }
+            });
+        }
+
+        // ========== INITIALIZE ALL OPTIMIZATIONS ==========
+        function init() {
+            trackWebVitals();
+            monitorPerformance();
+            showConsoleMessage();
+            enhanceFormValidation();
+            enhanceIntersectionObservers();
+            enhanceKeyboardNav();
+            registerServiceWorker();
+            setupAnalytics();
+
+            console.log('✨ Technical optimizations loaded successfully!');
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();

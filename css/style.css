@@ -5808,3 +5808,99 @@ a:focus, button:focus, input:focus, textarea:focus {
         position: relative;
     }
 }
+
+/* ========== ACCESSIBILITY ENHANCEMENTS ========== */
+
+/* Skip to Main Content Link */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #7dd3c0;
+    color: #0a0a0a;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 100000;
+    transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 0 8px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Enhanced Focus Indicators */
+*:focus-visible {
+    outline: 2px solid #7dd3c0;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Button Focus States */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #7dd3c0;
+    outline-offset: 4px;
+}
+
+/* Remove default outline for mouse users */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Ensure interactive elements are keyboard accessible */
+.nav-link:focus-visible,
+.cta-primary:focus-visible,
+.cta-secondary:focus-visible {
+    outline: 2px solid #7dd3c0;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(125, 211, 192, 0.2);
+}
+
+/* Modal Focus Trap */
+.manifesto-modal.active,
+.faq-modal.active,
+.quote-modal.active,
+.portfolio-lightbox.active {
+    /* Ensure focus stays within modal */
+    isolation: isolate;
+}
+
+/* Improve clickable area for touch */
+@media (hover: none) {
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .nav-link,
+    .cta-primary,
+    .cta-secondary {
+        border: 2px solid currentColor;
+    }
+}

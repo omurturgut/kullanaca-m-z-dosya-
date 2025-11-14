@@ -45,12 +45,52 @@
     <!-- Performance: Preconnect to CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.ibb.co">
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://drive.google.com">
+    <link rel="dns-prefetch" href="https://calendar.app.google">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="js/script.js" as="script">
+    <link rel="preload" href="js/translations.js" as="script">
+    <link rel="preload" href="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" as="image">
+
+    <!-- Prefetch Next-Page Resources -->
+    <link rel="prefetch" href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA">
+
+    <!-- Fonts with optimized display -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- External CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Additional Meta Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Posthumane">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self'; frame-src https://www.youtube.com https://drive.google.com; media-src 'self' https:;">
+
+    <!-- Enhanced Open Graph Tags -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Posthumane - AI Video Production, Web Development & Automation">
+
+    <!-- Twitter Card Enhancement -->
+    <meta name="twitter:creator" content="@posthumane">
+    <meta name="twitter:site" content="@posthumane">
 </head>
 <body>
+
+    <!-- Skip to Main Content (Accessibility) -->
+    <a href="#aboutSection" class="skip-link">Skip to main content</a>
 
     <!-- ========== APPLE-STYLE ELEGANT LOADER ========== -->
     <div class="page-loader" id="pageLoader">
@@ -83,13 +123,13 @@
             </a>
 
             <!-- Navigation - Center -->
-            <nav class="header-nav" id="headerNav">
-                <a href="#aboutSection" class="nav-link">About</a>
-                <a href="#portfolioSection" class="nav-link">Work</a>
-                <a href="#servicesSection" class="nav-link">Services</a>
-                <a href="#pricingSection" class="nav-link">Pricing</a>
-                <a href="#" class="nav-link" id="openFaqModal">FAQ</a>
-                <a href="#" class="nav-link nav-link-manifesto" id="headerManifestoBtn">Manifesto</a>
+            <nav class="header-nav" id="headerNav" role="navigation" aria-label="Main navigation">
+                <a href="#aboutSection" class="nav-link" aria-label="Learn about Posthumane">About</a>
+                <a href="#portfolioSection" class="nav-link" aria-label="View our portfolio">Work</a>
+                <a href="#servicesSection" class="nav-link" aria-label="Explore our services">Services</a>
+                <a href="#pricingSection" class="nav-link" aria-label="See pricing plans">Pricing</a>
+                <a href="#" class="nav-link" id="openFaqModal" aria-label="Frequently asked questions">FAQ</a>
+                <a href="#" class="nav-link nav-link-manifesto" id="headerManifestoBtn" aria-label="Read our manifesto">Manifesto</a>
             </nav>
 
             <!-- CTA - Right -->
@@ -3973,9 +4013,59 @@ ${data.description}
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/translations.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Posthumane",
+      "url": "https://posthumane.com",
+      "logo": "https://posthumane.com/images/posthumane-logo.png",
+      "description": "AI-powered video production, web development, and automation services. Fast, affordable, startup-friendly solutions.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "omur@posthumane.com",
+        "availableLanguage": ["English", "Turkish"]
+      },
+      "sameAs": [
+        "https://twitter.com/posthumane",
+        "https://linkedin.com/company/posthumane"
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "offerCount": "3",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "AI Video Production",
+            "description": "Professional AI-powered video production delivered in 24 hours",
+            "category": "Video Production"
+          },
+          {
+            "@type": "Offer",
+            "name": "Web Development",
+            "description": "Modern web applications and websites built in 7 days",
+            "category": "Web Development"
+          },
+          {
+            "@type": "Offer",
+            "name": "Smart Automation",
+            "description": "Intelligent automation solutions and workflow optimization",
+            "category": "Business Automation"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Scripts with defer for better performance -->
+    <script src="js/translations.js" defer></script>
+    <script src="js/script.js" defer></script>
 
 </body>
 </html>
