@@ -59,11 +59,56 @@
     <!-- Prefetch Next-Page Resources -->
     <link rel="prefetch" href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA">
 
+    <!-- Critical CSS - Above the fold (inline for instant render) -->
+    <style>
+        /* CRITICAL CSS - Above the fold */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;margin:0;overflow-x:hidden;color:#fff}
+        .page-loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s cubic-bezier(.4,0,.2,1)}
+        .page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-logo-container{position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center}
+        .loader-logo{width:80px;height:80px;object-fit:contain;position:relative;z-index:2;animation:logoFloat 3s ease-in-out infinite}
+        .loader-glow{position:absolute;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(125,211,192,.3) 0%,transparent 70%);animation:pulse 2s ease-in-out infinite}
+        @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.1);opacity:.8}}
+        .minimal-header{position:fixed;top:0;left:0;right:0;padding:1.8rem 3rem;background:rgba(10,10,10,.6);backdrop-filter:blur(20px);z-index:9999;transition:all .3s ease;border-bottom:1px solid rgba(125,211,192,.1)}
+        .header-wrapper{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .header-logo-image{height:45px;width:auto;transition:opacity .3s}
+        .header-nav{display:flex;gap:2rem;align-items:center}
+        .nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:.95rem;font-weight:500;transition:color .3s;position:relative}
+        .nav-link:hover{color:#7dd3c0}
+        .header-cta{padding:.75rem 1.5rem;background:#7dd3c0;color:#0a0a0a;text-decoration:none;border-radius:8px;font-weight:600;transition:all .3s}
+        .header-cta:hover{background:#6cc2af;transform:translateY(-2px)}
+        .mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+        .mobile-menu-toggle span{display:block;width:25px;height:2px;background:#fff;transition:all .3s}
+        .hero-section{position:relative;min-height:100vh;height:100vh;display:flex;flex-direction:column;overflow:hidden;z-index:10}
+        .hero-bg{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:1;background:#0a0a0a}
+        .hero-content{position:fixed;top:0;left:0;width:100%;height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;z-index:10;padding-top:28vh}
+        .hero-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em}
+        .hero-subtitle{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.7);margin-bottom:2rem;max-width:600px}
+        .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#7dd3c0,#5fb8a5);z-index:10001;transition:width .1s ease;width:0}
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;width:50px;height:50px;background:rgba(125,211,192,.1);backdrop-filter:blur(10px);border:1px solid rgba(125,211,192,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:9998}
+        .back-to-top.visible{opacity:1;visibility:visible}
+        .back-to-top:hover{background:rgba(125,211,192,.2);transform:translateY(-5px)}
+        .skip-link{position:absolute;top:-40px;left:0;background:#7dd3c0;color:#0a0a0a;padding:8px;text-decoration:none;z-index:100000}
+        .skip-link:focus{top:0}
+        @media (max-width:768px){
+            .minimal-header{padding:1rem 1.5rem}
+            .header-nav{display:none}
+            .mobile-menu-toggle{display:flex}
+            .hero-content{padding-top:20vh}
+            .hero-title{font-size:1.8rem}
+        }
+    </style>
+
     <!-- Fonts with optimized display -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/caveat/v17/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9eIipYTk.woff2" as="font" type="font/woff2" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- External CSS - Async loading for better performance -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -4063,7 +4108,262 @@ ${data.description}
     }
     </script>
 
+    <!-- ========== GDPR COOKIE CONSENT ========== -->
+    <div id="cookieConsent" class="cookie-consent" style="display:none;">
+        <div class="cookie-consent-content">
+            <div class="cookie-text">
+                <p>
+                    <strong>🍪 We use cookies</strong><br>
+                    We use cookies to enhance your experience, analyze traffic, and personalize content. By continuing to browse, you agree to our use of cookies.
+                </p>
+            </div>
+            <div class="cookie-consent-buttons">
+                <button id="acceptCookies" class="btn-cookie-accept">Accept All</button>
+                <button id="rejectCookies" class="btn-cookie-reject">Reject All</button>
+                <button id="customizeCookies" class="btn-cookie-customize">Customize</button>
+            </div>
+            <a href="#" class="privacy-link" onclick="alert('Privacy Policy page coming soon!'); return false;">Privacy Policy</a>
+        </div>
+    </div>
+
+    <style>
+    .cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(125, 211, 192, 0.2);
+        padding: 1.5rem;
+        z-index: 99999;
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .cookie-consent-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .cookie-text {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .cookie-text p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .cookie-text strong {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .cookie-consent-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .cookie-consent button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+    }
+
+    .btn-cookie-accept {
+        background: #7dd3c0;
+        color: #0a0a0a;
+    }
+
+    .btn-cookie-accept:hover {
+        background: #6cc2af;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(125, 211, 192, 0.3);
+    }
+
+    .btn-cookie-reject {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-cookie-reject:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .btn-cookie-customize {
+        background: transparent;
+        color: #7dd3c0;
+        border: 1px solid #7dd3c0;
+    }
+
+    .btn-cookie-customize:hover {
+        background: rgba(125, 211, 192, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .privacy-link {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: underline;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+    }
+
+    .privacy-link:hover {
+        color: #7dd3c0;
+    }
+
+    @media (max-width: 768px) {
+        .cookie-consent {
+            padding: 1rem;
+        }
+
+        .cookie-consent-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .cookie-text {
+            min-width: auto;
+        }
+
+        .cookie-consent-buttons {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .cookie-consent button {
+            width: 100%;
+        }
+    }
+    </style>
+
+    <script>
+    (function() {
+        const COOKIE_CONSENT_KEY = 'posthumane_cookie_consent';
+
+        function showCookieConsent() {
+            const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+            if (!consent) {
+                setTimeout(() => {
+                    document.getElementById('cookieConsent').style.display = 'block';
+                }, 1000); // Show after 1 second
+            }
+        }
+
+        function hideCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            banner.style.animation = 'slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 400);
+        }
+
+        // Accept all cookies
+        document.getElementById('acceptCookies')?.addEventListener('click', () => {
+            const consentData = {
+                necessary: true,
+                analytics: true,
+                marketing: true,
+                preferences: true,
+                timestamp: new Date().toISOString(),
+                version: '1.0'
+            };
+
+            localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            hideCookieConsent();
+
+            // Enable analytics if available
+            if (typeof gtag !== 'undefined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted'
+                });
+            }
+
+            console.log('✓ All cookies accepted');
+        });
+
+        // Reject all (except necessary)
+        document.getElementById('rejectCookies')?.addEventListener('click', () => {
+            const consentData = {
+                necessary: true,
+                analytics: false,
+                marketing: false,
+                preferences: false,
+                timestamp: new Date().toISOString(),
+                version: '1.0'
+            };
+
+            localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            hideCookieConsent();
+
+            // Disable analytics if available
+            if (typeof gtag !== 'undefined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied',
+                    'ad_storage': 'denied'
+                });
+            }
+
+            console.log('✓ Optional cookies rejected');
+        });
+
+        // Customize cookies (show modal)
+        document.getElementById('customizeCookies')?.addEventListener('click', () => {
+            alert('Cookie customization coming soon! For now, please choose Accept All or Reject All.');
+        });
+
+        // Add slide down animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateY(0); opacity: 1; }
+                to { transform: translateY(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Show consent banner on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showCookieConsent);
+        } else {
+            showCookieConsent();
+        }
+    })();
+    </script>
+
     <!-- Scripts with defer for better performance -->
+    <!-- Feature Detection (load first for progressive enhancement) -->
+    <script src="js/feature-detection.js"></script>
+
+    <!-- Performance Monitoring (load early to track metrics) -->
+    <script src="js/monitoring.js" defer></script>
+
+    <!-- Core functionality -->
     <script src="js/translations.js" defer></script>
     <script src="js/script.js" defer></script>
 
