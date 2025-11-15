@@ -1,0 +1,67 @@
+{
+  "name": "posthumane-website",
+  "version": "2.0.0",
+  "description": "Posthumane - AI Video Production, Web Development & Automation",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "cleancss -o css/style.min.css css/style.css",
+    "build:js": "npm run build:js:script && npm run build:js:translations && npm run build:js:monitoring && npm run build:js:features",
+    "build:js:script": "terser js/script.js -o js/script.min.js --compress --mangle --source-map",
+    "build:js:translations": "terser js/translations.js -o js/translations.min.js --compress --mangle --source-map",
+    "build:js:monitoring": "terser js/monitoring.js -o js/monitoring.min.js --compress --mangle --source-map",
+    "build:js:features": "terser js/feature-detection.js -o js/feature-detection.min.js --compress --mangle --source-map",
+    "build:images": "node scripts/optimize-images.js",
+    "analyze": "node scripts/bundle-analyzer.js",
+    "serve": "http-server -p 8000 -c-1",
+    "dev": "npm run serve",
+    "test": "npm run test:lighthouse && npm run test:a11y",
+    "test:lighthouse": "lighthouse http://localhost:8000 --output=html --output-path=./reports/lighthouse.html --view",
+    "test:a11y": "pa11y http://localhost:8000",
+    "test:links": "blc http://localhost:8000 -ro",
+    "validate": "npm run validate:html && npm run validate:css",
+    "validate:html": "html-validate index.html",
+    "validate:css": "stylelint css/style.css",
+    "deploy": "npm run build && npm test",
+    "watch:css": "chokidar 'css/**/*.css' -c 'npm run build:css'",
+    "watch:js": "chokidar 'js/**/*.js' -c 'npm run build:js'",
+    "precommit": "npm run build && npm run analyze"
+  },
+  "keywords": [
+    "ai",
+    "video-production",
+    "web-development",
+    "automation",
+    "posthumane",
+    "performance",
+    "pwa"
+  ],
+  "author": "Posthumane",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/posthumane/website"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "terser": "^5.19.2",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.0.0",
+    "pa11y": "^7.0.0",
+    "broken-link-checker": "^0.7.8",
+    "html-validate": "^8.0.0",
+    "stylelint": "^15.10.0",
+    "chokidar-cli": "^3.0.0",
+    "sharp": "^0.32.5"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
