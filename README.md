@@ -10,10 +10,16 @@ Bu proje, orijinal tek dosyalı HTML dosyasını optimize edilmiş, modüler bir
 ├── css/
 │   └── style.css              # Tüm CSS stilleri (mobil optimize)
 ├── js/
-│   └── script.js              # Tüm JavaScript kodları
-├── images/                     # Lokal görseller için klasör
-├── IMAGES_TO_DOWNLOAD.md      # İndirilmesi gereken görsellerin listesi
-└── README.md                   # Bu dosya
+│   ├── script.js              # Ana JavaScript kodları
+│   ├── translations.js        # Çoklu dil desteği
+│   ├── monitoring.js          # Performance monitoring
+│   └── feature-detection.js   # Feature detection
+├── sw.js                       # Service Worker (offline support)
+├── manifest.json              # PWA manifest
+├── robots.txt                 # SEO robots file
+├── sitemap.xml                # SEO sitemap
+├── .htaccess                  # Security headers & performance
+└── README.md                  # Bu dosya
 ```
 
 ## ✨ Yapılan Optimizasyonlar
@@ -41,12 +47,15 @@ Bu proje, orijinal tek dosyalı HTML dosyasını optimize edilmiş, modüler bir
 - ✅ RAF (RequestAnimationFrame) kullanımı
 - ✅ Passive event listeners
 
-### 4. **HTML Optimizasyonları** (183 KB)
+### 4. **HTML Optimizasyonları** (167 KB)
 - ✅ Temiz, okunabilir yapı
 - ✅ External CSS ve JS linkleri
 - ✅ SEO optimizasyonları korundu
 - ✅ Meta taglar tam
 - ✅ Semantic HTML
+- ✅ Critical CSS inline (above-the-fold)
+- ✅ Async CSS loading
+- ✅ JSON-LD structured data
 
 ### 5. **Mobil Responsive İyileştirmeler**
 - ✅ **Touch Targets**: Tüm butonlar minimum 44x44px
@@ -69,10 +78,7 @@ Bu proje, orijinal tek dosyalı HTML dosyasını optimize edilmiş, modüler bir
 
 ## 🚀 Kurulum ve Kullanım
 
-### 1. Görselleri İndirin
-`IMAGES_TO_DOWNLOAD.md` dosyasındaki talimatları takip ederek 9 adet görseli indirin ve `images/` klasörüne yerleştirin.
-
-### 2. Lokal Sunucu Başlatın
+### 1. Lokal Sunucu Başlatın
 ```bash
 # Python ile
 python -m http.server 8000
@@ -83,10 +89,12 @@ npx http-server
 # VS Code Live Server extension kullanabilirsiniz
 ```
 
-### 3. Tarayıcıda Açın
+### 2. Tarayıcıda Açın
 ```
 http://localhost:8000
 ```
+
+**Not:** Tüm görseller external CDN'den (ibb.co) yüklenmektedir. İnternet bağlantısı gereklidir.
 
 ## 📱 Mobil Test
 
@@ -134,23 +142,23 @@ transition: all 0.3s ease;
 
 ## 📊 Dosya Boyutları
 
-- **HTML**: 183 KB (orijinal: 309 KB)
-- **CSS**: 126 KB (ayrı dosya)
-- **JS**: 81 KB (ayrı dosya)
-- **Toplam**: ~390 KB (görseller hariç)
+- **HTML**: 167 KB (orijinal: 309 KB, %46 azalma)
+- **CSS**: 148 KB (mobil optimizasyonlar ile)
+- **JS (script.js)**: 83 KB
+- **JS (translations.js)**: 15 KB
+- **JS (monitoring.js)**: 14 KB
+- **JS (feature-detection.js)**: 11 KB
+- **Service Worker**: 9 KB
+- **Toplam**: ~447 KB (görseller CDN'den yüklenir)
 
 ## 🔧 Geliştirme Notları
 
-### Image Path Update
-Görselleri indirdikten sonra, URL'leri güncelleyin:
-
-```html
-<!-- Eski -->
-<img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png">
-
-<!-- Yeni -->
-<img src="images/posthumane-logo.png">
-```
+### External Images
+Tüm görseller external CDN'den (ibb.co) serve edilmektedir:
+- ✅ Daha hızlı deployment (görselleri upload etmeye gerek yok)
+- ✅ CDN avantajları (global cache, hız)
+- ⚠️ İnternet bağlantısı gerekir
+- ⚠️ External bağımlılık (CDN down olursa görseller yüklenmez)
 
 ### Performance Tips
 1. Görselleri optimize edin (TinyPNG, ImageOptim)
@@ -160,17 +168,37 @@ Görselleri indirdikten sonra, URL'leri güncelleyin:
 
 ## 🐛 Bilinen Sorunlar
 
-- YouTube thumbnailleri hala external linklerden çekiliyor (isteğe bağlı local yapılabilir)
-- Bazı arka plan görselleri büyük boyutlu (optimize edilebilir)
+Yok! Tüm sorunlar giderildi:
+- ✅ Duplicate inline JavaScript kodu silindi
+- ✅ HTML dosyası optimize edildi (4371 → 3424 satır)
+- ✅ Tüm görseller external CDN'den serve ediliyor
 
 ## 📝 Changelog
+
+### v2.1.0 (2025-11-15)
+- ✅ Duplicate inline JavaScript kodu silindi (947 satır)
+- ✅ "kullanacağımız dosya - Kopya.html" eski dosyası silindi
+- ✅ IMAGES_TO_DOWNLOAD.md kaldırıldı (external CDN kullanılıyor)
+- ✅ README.md güncellendi
+
+### v2.0.0 (2025-11-14)
+- ✅ Technical perfection achieved
+- ✅ Service Worker v2.0 (advanced caching)
+- ✅ PWA support (manifest.json)
+- ✅ GDPR cookie consent
+- ✅ Real User Monitoring (RUM)
+- ✅ Feature detection system
+- ✅ Build system (package.json)
+- ✅ Security headers (.htaccess)
+- ✅ Error pages (404, 500, offline)
 
 ### v1.0.0 (2025-11-13)
 - ✅ HTML, CSS, JavaScript ayrıldı
 - ✅ Mobil responsive iyileştirmeler eklendi
 - ✅ Accessibility improvements
-- ✅ Print styles eklendi
-- ✅ Image download listesi oluşturuldu
+- ✅ Contact form with validation
+- ✅ Multi-language support (TR/EN)
+- ✅ Full-screen portfolio lightbox
 
 ## 🤝 Katkıda Bulunma
 
