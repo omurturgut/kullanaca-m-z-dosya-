@@ -1,0 +1,3426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Posthumane - AI Video Production, Web Development & Automation in 24 Hours</title>
+    <meta name="title" content="Posthumane - AI Video Production, Web Development & Automation">
+    <meta name="description" content="Transform your business with AI-powered video production (24h delivery), modern web development (7 days), and intelligent automation. Fast, affordable, startup-friendly solutions from Posthumane.">
+    <meta name="keywords" content="AI video production, web development, automation services, AI content creation, startup solutions, vibe coding, smart automation, 24 hour video delivery, fast web apps, business automation">
+    <meta name="author" content="Posthumane">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://posthumane.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://posthumane.com">
+    <meta property="og:title" content="Posthumane - AI Video Production, Web Development & Automation">
+    <meta property="og:description" content="AI-powered video production in 24 hours, modern web apps in 7 days, and intelligent automation. Fast, affordable, startup-friendly solutions.">
+    <meta property="og:image" content="https://posthumane.com/og-image.jpg">
+    <meta property="og:site_name" content="Posthumane">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://posthumane.com">
+    <meta name="twitter:title" content="Posthumane - AI Video Production, Web Development & Automation">
+    <meta name="twitter:description" content="AI-powered video production in 24 hours, modern web apps in 7 days, and intelligent automation. Fast, affordable, startup-friendly solutions.">
+    <meta name="twitter:image" content="https://posthumane.com/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#7dd3c0">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+
+    <!-- Performance: Preconnect to CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.ibb.co">
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="https://drive.google.com">
+    <link rel="dns-prefetch" href="https://calendar.app.google">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="js/script.min.js" as="script">
+    <link rel="preload" href="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" as="image">
+
+    <!-- Prefetch Next-Page Resources -->
+    <link rel="prefetch" href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA">
+
+    <!-- Critical CSS - Above the fold (inline for instant render) -->
+    <style>
+        /* CRITICAL CSS - Above the fold */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;margin:0;overflow-x:hidden;color:#fff}
+        .page-loader{position:fixed;top:0;left:0;width:100%;height:100vh;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;z-index:10000;transition:opacity .8s cubic-bezier(.4,0,.2,1),visibility .8s cubic-bezier(.4,0,.2,1)}
+        .page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-logo-container{position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center}
+        .loader-logo{width:80px;height:80px;object-fit:contain;position:relative;z-index:2;animation:logoFloat 3s ease-in-out infinite}
+        .loader-glow{position:absolute;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(125,211,192,.3) 0%,transparent 70%);animation:pulse 2s ease-in-out infinite}
+        @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.1);opacity:.8}}
+        .minimal-header{position:fixed;top:0;left:0;right:0;padding:1.8rem 3rem;background:rgba(10,10,10,.6);backdrop-filter:blur(20px);z-index:9999;transition:all .3s ease;border-bottom:1px solid rgba(125,211,192,.1)}
+        .header-wrapper{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .header-logo-image{height:45px;width:auto;transition:opacity .3s}
+        .header-nav{display:flex;gap:2rem;align-items:center}
+        .nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:.95rem;font-weight:500;transition:color .3s;position:relative}
+        .nav-link:hover{color:#7dd3c0}
+        .header-cta{padding:.75rem 1.5rem;background:#7dd3c0;color:#0a0a0a;text-decoration:none;border-radius:8px;font-weight:600;transition:all .3s}
+        .header-cta:hover{background:#6cc2af;transform:translateY(-2px)}
+        .mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;flex-direction:column;gap:5px}
+        .mobile-menu-toggle span{display:block;width:25px;height:2px;background:#fff;transition:all .3s}
+        .hero-section{position:relative;min-height:100vh;height:100vh;display:flex;flex-direction:column;overflow:hidden;z-index:10}
+        .hero-bg{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:1;background:#0a0a0a}
+        .hero-content{position:fixed;top:0;left:0;width:100%;height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;z-index:10;padding-top:28vh}
+        .hero-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:#fff;line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em}
+        .hero-subtitle{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.7);margin-bottom:2rem;max-width:600px}
+        .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#7dd3c0,#5fb8a5);z-index:10001;transition:width .1s ease;width:0}
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;width:50px;height:50px;background:rgba(125,211,192,.1);backdrop-filter:blur(10px);border:1px solid rgba(125,211,192,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:9998}
+        .back-to-top.visible{opacity:1;visibility:visible}
+        .back-to-top:hover{background:rgba(125,211,192,.2);transform:translateY(-5px)}
+        .skip-link{position:absolute;top:-40px;left:0;background:#7dd3c0;color:#0a0a0a;padding:8px;text-decoration:none;z-index:100000}
+        .skip-link:focus{top:0}
+        @media (max-width:768px){
+            .minimal-header{padding:1rem 1.5rem}
+            .header-nav{display:none}
+            .mobile-menu-toggle{display:flex}
+            .hero-content{padding-top:20vh}
+            .hero-title{font-size:1.8rem}
+        }
+    </style>
+
+    <!-- Fonts with optimized display -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/caveat/v17/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9eIipYTk.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS - Async loading for better performance -->
+    <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Additional Meta Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Posthumane">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self'; frame-src https://www.youtube.com https://drive.google.com; media-src 'self' https:;">
+
+    <!-- Enhanced Open Graph Tags -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Posthumane - AI Video Production, Web Development & Automation">
+
+    <!-- Twitter Card Enhancement -->
+    <meta name="twitter:creator" content="@posthumane">
+    <meta name="twitter:site" content="@posthumane">
+</head>
+<body>
+
+    <!-- Skip to Main Content (Accessibility) -->
+    <a href="#aboutSection" class="skip-link">Skip to main content</a>
+
+    <!-- ========== APPLE-STYLE ELEGANT LOADER ========== -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo-container">
+            <div class="loader-glow"></div>
+            <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane" class="loader-logo" width="80" height="80" fetchpriority="high" decoding="async">
+        </div>
+    </div>
+
+    <!-- ========== SCROLL PROGRESS BAR ========== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ========== BACK TO TOP BUTTON ========== -->
+    <div class="back-to-top" id="backToTop">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 4l-8 8 1.4 1.4L12 6.8l6.6 6.6L20 12z" fill="currentColor"/>
+        </svg>
+    </div>
+
+    <!-- ========== MINIMAL HEADER ========== -->
+    <header class="minimal-header" id="minimalHeader">
+        <div class="header-wrapper">
+            <!-- Logo - Left -->
+            <a href="#heroSection" class="header-logo">
+                <img
+                    src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png"
+                    alt="Posthumane"
+                    class="header-logo-image"
+                    width="45"
+                    height="45"
+                    decoding="async"
+                >
+            </a>
+
+            <!-- Navigation - Center -->
+            <nav class="header-nav" id="headerNav" role="navigation" aria-label="Main navigation">
+                <a href="#aboutSection" class="nav-link" aria-label="Learn about Posthumane">About</a>
+                <a href="#portfolioSection" class="nav-link" aria-label="View our portfolio">Work</a>
+                <a href="#servicesSection" class="nav-link" aria-label="Explore our services">Services</a>
+                <a href="#pricingSection" class="nav-link" aria-label="See pricing plans">Pricing</a>
+                <a href="#" class="nav-link" id="openFaqModal" aria-label="Frequently asked questions">FAQ</a>
+                <a href="#" class="nav-link nav-link-manifesto" id="headerManifestoBtn" aria-label="Read our manifesto">Manifesto</a>
+            </nav>
+
+            <!-- CTA - Right -->
+            <a href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA" target="_blank" class="header-cta">Book a Call</a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Morphing Particles Layer -->
+    <div class="morph-particles" id="morphParticles"></div>
+
+    <!-- Transition Wave -->
+    <div class="transition-wave" id="transitionWave"></div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-section" id="heroSection">
+        <!-- Hero Background -->
+        <div class="hero-bg" id="heroBg">
+            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="Green landscape with beautiful sky" class="active" width="1920" height="1080" fetchpriority="high" decoding="async">
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="normal" data-translate="hero.title.normal">Video Production,<br>Without the </span><span class="italic typewriter-text" data-translate="hero.title.italic">Production</span>
+                </h1>
+                <p class="hero-subtitle" data-translate="hero.subtitle">
+                    AI video production • Vibe coding • Smart automation we make complexity disappear
+                </p>
+
+                <div class="hero-buttons cta-group">
+                    <a href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA" target="_blank" class="cta-primary" data-translate="hero.cta.primary">Schedule a Consultation</a>
+                    <a href="#portfolioSection" class="cta-secondary" data-translate="hero.cta.secondary">Explore Our Work</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Section -->
+        <div class="trust-section">
+            <span class="trust-text">Trusted By Teams At</span>
+            <div class="trust-logos">
+                <img src="https://i.ibb.co/tMxZnmNT/pngwing-com.png" alt="Turkish Airlines - Trusted Client of Posthumane" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/4wF2Y2xs/logo-9.webp" alt="Anadolu Agency - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/d0BcjnjW/bilgi-logotype-tr.png" alt="Istanbul Bilgi University - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/jZVV9PNF/logo-13.webp" alt="ODTÜ METU - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="about-section" id="aboutSection">
+        <!-- About Background -->
+        <div class="about-bg">
+            <img src="" alt="About - Dynamic landscape background">
+        </div>
+
+        <!-- About Content -->
+        <div class="about-content">
+            <div class="label">ABOUT US</div>
+
+            <div class="content-grid">
+                <!-- Left: Text + Services -->
+                <div class="text-content">
+                    <h1>
+                        We make videos, build digital products, and automate your <span class="handwritten">chaos</span>.
+                    </h1>
+                    
+                    <p>
+                        We are the studio where ambitious brands plug into one connected brain. We turn complex ideas into <span class="highlight-text">AI powered videos in 24 hours</span>, apps for everything you launch, sell and manage and <span class="highlight-text">self running workflows</span> that make it all move together. One team instead of many, one system instead of fragments, <span class="highlight-text">less chaos more clarity</span>, less friction more flow, so your brand runs faster, looks sharper and feels smarter at every touchpoint.
+                    </p>
+
+                    <div class="services-list">
+                        <div class="service-item">
+                            <span class="service-number">01</span>
+                            <div class="service-text">
+                                <h3>AI Video Production</h3>
+                                <p>Ads, explainers, social content, brand stories created with AI, delivered in 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="service-item">
+                            <span class="service-number">02</span>
+                            <div class="service-text">
+                                <h3>Vibe Coding</h3>
+                                <p>Websites, web apps, landing pages modern, fast, and built to convert</p>
+                            </div>
+                        </div>
+
+                        <div class="service-item">
+                            <span class="service-number">03</span>
+                            <div class="service-text">
+                                <h3>Smart Automation</h3>
+                                <p>Connect your tools, build AI agents, eliminate repetitive tasks we make systems work for you</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Founders -->
+                <div class="founders-section">
+                    <div class="founders-label">CORE TEAM</div>
+                    <div class="founders-grid">
+                        <div class="founder-card">
+                            <div class="founder-quote">
+                                <p class="founder-quote-text">"AI doesn't replace creativity. It accelerates it."</p>
+                            </div>
+                            <div class="founder-photo">
+                                <img src="https://i.ibb.co/204ZfRfZ/7cf81a69-da32-47cd-83ba-a0331b49c454.png" alt="Ömür - Co-Founder of Posthumane, AI Video Production Expert" width="400" height="400" loading="lazy" decoding="async">
+                            </div>
+                            <h3 class="founder-name">Ömür</h3>
+                            <p class="founder-role">Co-Founder</p>
+                        </div>
+
+                        <div class="founder-card">
+                            <div class="founder-quote">
+                                <p class="founder-quote-text">"Why hire 6 people when one workflow scales infinitely?"</p>
+                            </div>
+                            <div class="founder-photo">
+                                <img src="https://i.ibb.co/KMjQ4zZ/55d4f0e4-a44a-4d90-837b-771a9090918a.png" alt="Emre - Co-Founder of Posthumane, Automation & Development Expert" width="400" height="400" loading="lazy" decoding="async">
+                            </div>
+                            <h3 class="founder-name">Emre</h3>
+                            <p class="founder-role">Co-Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MISSION SECTION ========== -->
+    <section class="mission-section" id="missionSection">
+        <!-- Animated Background Gradient -->
+        <div class="mission-bg-gradient"></div>
+
+        <!-- Floating Particles -->
+        <div class="mission-particles" id="missionParticles"></div>
+
+        <!-- Mission Content -->
+        <div class="mission-content">
+            <div class="mission-label">OUR MISSION</div>
+
+            <div class="mission-text-container">
+                <p class="mission-paragraph">
+                    We are the studio where ambitious brands plug into <span class="highlight-text">one connected brain</span>. We turn complex ideas into <span class="highlight-text">AI powered videos in 24 hours</span>, apps for everything you launch, sell and manage and <span class="highlight-text">self running workflows</span> that make it all move together. One team instead of many, one system instead of fragments, <span class="highlight-text">less chaos more clarity</span>, less friction more flow, so your brand runs faster, looks sharper and feels smarter at every touchpoint.
+                </p>
+            </div>
+
+            <a href="#pricing" class="mission-cta" id="missionCta">
+                <span>See Pricing</span>
+                <span class="mission-cta-icon">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== MANIFESTO MODAL ========== -->
+    <div class="manifesto-modal" id="manifestoModal">
+        <div class="manifesto-overlay" id="manifestoOverlay"></div>
+        <div class="manifesto-card">
+            <button class="manifesto-close" id="manifestoClose">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <div class="manifesto-label">Posthumane Manifesto</div>
+
+            <div class="manifesto-content">
+                <h1 class="manifesto-title">Posthuman, Posthumane, and Why We Build This Way</h1>
+
+                <p>Posthumanism sounds like sci fi, but it starts from a simple question: what if humans are not the center of everything anymore?</p>
+
+                <p>Philosophers and cultural theorists have been working on this for decades. N. Katherine Hayles describes the "posthuman" as a way of seeing humans and intelligent machines as tightly linked information systems rather than separate worlds. <a href="https://monoskop.org" target="_blank" rel="noopener">Monoskop</a></p>
+
+                <p>Rosi Braidotti writes about a subject that is multiple, networked, and deeply entangled with technology, other species, and the planet. <a href="https://www.rosibraidotti.com" target="_blank" rel="noopener">Rosi Braidotti</a></p>
+
+                <p>Neil Badmington and others show how classic humanism, with its belief in the isolated, rational, superior individual, no longer fits the realities we live in. <a href="https://link.springer.com" target="_blank" rel="noopener">SpringerLink</a></p>
+
+                <p>The Critical Posthumanism Network calls this an ongoing project of "deconstructing humanism" and understanding how media, code, infrastructures, and ecosystems shape who we are. <a href="https://criticalposthumanism.net" target="_blank" rel="noopener">criticalposthumanism.net</a></p>
+
+                <p><strong>Put simply, posthuman thinking says:</strong></p>
+
+                <ul>
+                    <li>We are not alone. We are always co creating with tools, systems, networks.</li>
+                    <li>Intelligence is distributed, not locked inside one skull.</li>
+                    <li>Our technologies are not just gadgets. They are part of how we think, feel, work, imagine.</li>
+                </ul>
+
+                <p>Most brands repeat this language as decoration. Posthumane exists to treat it as an operating system.</p>
+
+                <p>We work from a very direct belief: if humans and machines are now partners, then our job is to choreograph that partnership so it feels natural, beautiful, and useful in everyday life.</p>
+
+                <p>That is why our work looks the way it does.</p>
+
+                <h2>AI video that kills the old production logic</h2>
+
+                <p>Traditional production assumes that creative quality needs more people, more time, more money. Posthuman reality says something else. With the right systems, a small team with powerful tools can create cinematic results in hours, not months.</p>
+
+                <p>At Posthumane we design AI native pipelines. You come with a story, a product, a launch. We return fully finished video, ready to publish, at a fraction of old world cost. No caravans of equipment. No ritual suffering of six week shoots. The human stays where they create the most value, at vision and decision. The machine takes the repetitive weight.</p>
+
+                <p>This is not "robots replacing creatives". It is a posthuman division of labor that respects human attention and uses technical systems to protect it.</p>
+
+                <h2>Launch ready experiences instead of disconnected assets</h2>
+
+                <p>A lot of digital work is still pre posthuman. One agency makes the video. Another builds the site. Another wires the CRM. Someone else is asked to "make them talk to each other".</p>
+
+                <p>In a posthuman frame that separation makes no sense. The viewer touches your brand through one continuous environment of visuals, interfaces, automations, data flows. So we build as if it is one thing.</p>
+
+                <p>Vibe coding for us means interfaces and products that feel obvious, fast, and kind to the brain. Buttons where your fingers expect them. Stories that move the user without explaining themselves. Systems that feel light, even when the architecture is heavy.</p>
+
+                <p>Smart automation is the invisible layer under that. Workflows that route leads, sync data, trigger content, answer support, report outcomes. Not as a jungle of integrations, but as a clear nervous system.</p>
+
+                <p>Again, the rule is simple. Humans decide direction. Machines execute repetition. Everything is designed together from the start, not bolted together at the end.</p>
+
+                <h2>A posthuman studio, not just a "tech" agency</h2>
+
+                <p>Posthumanism warns against two lazy stories. One is worship: technology as savior. The other is panic: technology as pure threat. The serious work sits between these extremes.</p>
+
+                <p>That is where we place Posthumane.</p>
+
+                <p>We are not interested in "AI for AI's sake". We are interested in removing pointless friction from creative work and business operations, and in using automation to open more space for human judgment, emotion, and imagination.</p>
+
+                <p>So when we say:</p>
+
+                <p><em>Traditional production is dead,</em></p>
+
+                <p>we are not being nihilist. We are saying the old rituals are out of sync with how intelligence, tools, and networks already function today.</p>
+
+                <p>When we promise:</p>
+
+                <ul>
+                    <li>AI made videos in 24 hours,</li>
+                    <li>launch ready digital products,</li>
+                    <li>workflows that quietly run the machine of your business,</li>
+                </ul>
+
+                <p>what we are really saying is this:</p>
+
+                <p>We design with the assumption that humans, algorithms, interfaces, and infrastructures already co exist as one extended system. We make that system elegant instead of exhausting. We make it feel like a single clear gesture instead of a pile of disconnected tools.</p>
+
+                <p><strong>That is the core of Posthumane.</strong></p>
+
+                <p>Posthuman theory gave the language. We turned it into a studio that ships.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== WHAT WE DO SECTION ========== -->
+    <section class="services-section" id="servicesSection">
+        <div class="services-bg">
+            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="What We Do - AI video production, vibe coding, smart automation services" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+
+        <div class="services-container">
+            <!-- Section Header -->
+            <div class="services-header">
+                <div class="services-label">WHAT WE DO</div>
+                <h2 class="services-headline">We engineer creative systems that <span class="handwritten">scale</span>.</h2>
+            </div>
+
+            <!-- Service 1: AI Video -->
+            <div class="service-item" data-service="video">
+                <div class="service-visual">
+                    <svg viewBox="0 0 400 300" class="service-svg">
+                        <defs>
+                            <linearGradient id="videoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgba(125,211,192,0.3)" />
+                                <stop offset="100%" style="stop-color:rgba(125,211,192,0.1)" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Input: Text/Prompt -->
+                        <rect x="30" y="50" width="80" height="50" rx="4" stroke="rgba(125,211,192,0.6)" fill="none" stroke-width="1" class="draw-path"/>
+                        <line x1="70" y1="70" x2="90" y2="70" stroke="rgba(125,211,192,0.4)" stroke-width="1"/>
+                        <line x1="70" y1="80" x2="90" y2="80" stroke="rgba(125,211,192,0.4)" stroke-width="1"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 115 75 L 155 75" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 150 70 L 155 75 L 150 80" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Neural Network Node -->
+                        <circle cx="200" cy="75" r="30" stroke="rgba(125,211,192,0.6)" fill="url(#videoGrad)" stroke-width="1" class="draw-path"/>
+                        <circle cx="190" cy="65" r="3" fill="rgba(125,211,192,0.8)"/>
+                        <circle cx="210" cy="65" r="3" fill="rgba(125,211,192,0.8)"/>
+                        <circle cx="190" cy="85" r="3" fill="rgba(125,211,192,0.8)"/>
+                        <circle cx="210" cy="85" r="3" fill="rgba(125,211,192,0.8)"/>
+                        <circle cx="200" cy="75" r="3" fill="rgba(125,211,192,1)"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 235 75 L 275 75" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 270 70 L 275 75 L 270 80" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Output: Video Frame -->
+                        <rect x="290" y="50" width="80" height="50" rx="4" stroke="rgba(125,211,192,0.6)" fill="none" stroke-width="1" class="draw-path"/>
+                        <path d="M 320 70 L 330 75 L 320 80 Z" fill="rgba(125,211,192,0.8)"/>
+                        <text x="200" y="140" text-anchor="middle" fill="rgba(125,211,192,0.5)" font-size="10" font-family="monospace">24 HOURS</text>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">AI Video Production</h3>
+                    <p class="service-desc">Hollywood quality. Startup speed. Zero traditional production.</p>
+                    <div class="service-expand" data-expanded="false">
+                        <button class="service-toggle">What We Deliver</button>
+                        <div class="service-details">
+                            <ul>
+                                <li>Brand stories that resonate</li>
+                                <li>Product launches & demos</li>
+                                <li>Social content optimized for algorithms</li>
+                                <li>Commercial-grade ads, fraction of the budget</li>
+                            </ul>
+                            <p class="service-why"><strong>Why Different:</strong> 24-hour delivery. Unlimited revisions. 10% of traditional costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Design Systems -->
+            <div class="service-item" data-service="design">
+                <div class="service-visual">
+                    <svg viewBox="0 0 400 300" class="service-svg">
+                        <!-- Grid System -->
+                        <rect x="50" y="60" width="90" height="90" stroke="rgba(125,211,192,0.4)" fill="none" stroke-width="1" class="draw-path"/>
+                        <line x1="95" y1="60" x2="95" y2="150" stroke="rgba(125,211,192,0.3)" stroke-width="1" class="draw-path"/>
+                        <line x1="50" y1="105" x2="140" y2="105" stroke="rgba(125,211,192,0.3)" stroke-width="1" class="draw-path"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 150 105 L 180 105" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 175 100 L 180 105 L 175 110" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Golden Ratio Spiral (simplified) -->
+                        <path d="M 210 105 Q 220 95, 230 95 Q 250 95, 250 115 Q 250 140, 220 140 Q 180 140, 180 100" 
+                              stroke="rgba(125,211,192,0.6)" fill="none" stroke-width="1.5" class="draw-path"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 260 105 L 290 105" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 285 100 L 290 105 L 285 110" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Final Design (billboard shape) -->
+                        <rect x="300" y="75" width="70" height="60" rx="2" stroke="rgba(125,211,192,0.6)" fill="url(#videoGrad)" stroke-width="1" class="draw-path"/>
+                        <text x="200" y="180" text-anchor="middle" fill="rgba(125,211,192,0.5)" font-size="10" font-family="monospace">48 HOURS</text>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Rapid Design Systems</h3>
+                    <p class="service-desc">Billboards to business cards. All AI-accelerated.</p>
+                    <div class="service-expand" data-expanded="false">
+                        <button class="service-toggle">What We Deliver</button>
+                        <div class="service-details">
+                            <ul>
+                                <li>Billboard & outdoor campaigns</li>
+                                <li>Print materials at scale</li>
+                                <li>Digital graphics & social assets</li>
+                                <li>Brand identity systems</li>
+                            </ul>
+                            <p class="service-why"><strong>Why Different:</strong> 48-hour turnaround. Iterate at internet speed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Vibe Coding -->
+            <div class="service-item" data-service="code">
+                <div class="service-visual">
+                    <svg viewBox="0 0 400 300" class="service-svg">
+                        <!-- Code Block -->
+                        <rect x="40" y="70" width="100" height="70" rx="4" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.03)" stroke-width="1" class="draw-path"/>
+                        <text x="50" y="90" fill="rgba(125,211,192,0.6)" font-size="12" font-family="monospace">&lt;code/&gt;</text>
+                        <line x1="60" y1="105" x2="120" y2="105" stroke="rgba(125,211,192,0.3)" stroke-width="1"/>
+                        <line x1="60" y1="115" x2="110" y2="115" stroke="rgba(125,211,192,0.3)" stroke-width="1"/>
+                        <line x1="60" y1="125" x2="115" y2="125" stroke="rgba(125,211,192,0.3)" stroke-width="1"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 150 105 L 190 105" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 185 100 L 190 105 L 185 110" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Transform/Compile (gear) -->
+                        <circle cx="220" cy="105" r="25" stroke="rgba(125,211,192,0.6)" fill="none" stroke-width="1" class="draw-path"/>
+                        <path d="M 220 85 L 225 90 L 220 95 L 215 90 Z" fill="rgba(125,211,192,0.4)" class="draw-path"/>
+                        <path d="M 240 105 L 235 110 L 230 105 L 235 100 Z" fill="rgba(125,211,192,0.4)" class="draw-path"/>
+                        <path d="M 220 125 L 215 120 L 220 115 L 225 120 Z" fill="rgba(125,211,192,0.4)" class="draw-path"/>
+                        <path d="M 200 105 L 205 100 L 210 105 L 205 110 Z" fill="rgba(125,211,192,0.4)" class="draw-path"/>
+                        
+                        <!-- Flow Arrow -->
+                        <path d="M 250 105 L 290 105" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path" stroke-dasharray="5,5"/>
+                        <path d="M 285 100 L 290 105 L 285 110" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- UI Component -->
+                        <rect x="300" y="70" width="70" height="70" rx="4" stroke="rgba(125,211,192,0.6)" fill="url(#videoGrad)" stroke-width="1" class="draw-path"/>
+                        <rect x="310" y="85" width="50" height="8" rx="2" fill="rgba(125,211,192,0.4)"/>
+                        <rect x="310" y="100" width="35" height="8" rx="2" fill="rgba(125,211,192,0.3)"/>
+                        <circle cx="320" cy="120" r="5" fill="rgba(125,211,192,0.5)"/>
+                        <text x="200" y="180" text-anchor="middle" fill="rgba(125,211,192,0.5)" font-size="10" font-family="monospace">1 WEEK</text>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Vibe Coding</h3>
+                    <p class="service-desc">Web apps that feel like magic. Built like engineering.</p>
+                    <div class="service-expand" data-expanded="false">
+                        <button class="service-toggle">What We Deliver</button>
+                        <div class="service-details">
+                            <ul>
+                                <li>Custom web applications (SaaS, dashboards)</li>
+                                <li>Landing pages that convert</li>
+                                <li>Internal tools that eliminate busywork</li>
+                                <li>Revenue-generating platforms</li>
+                            </ul>
+                            <p class="service-why"><strong>Why Different:</strong> Clean, scalable code. Weeks, not quarters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Automation -->
+            <div class="service-item" data-service="automation">
+                <div class="service-visual">
+                    <svg viewBox="0 0 400 300" class="service-svg">
+                        <!-- Workflow nodes -->
+                        <circle cx="80" cy="80" r="15" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.1)" stroke-width="1" class="draw-path"/>
+                        <circle cx="200" cy="80" r="15" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.1)" stroke-width="1" class="draw-path"/>
+                        <circle cx="320" cy="80" r="15" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.1)" stroke-width="1" class="draw-path"/>
+                        <circle cx="140" cy="140" r="15" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.1)" stroke-width="1" class="draw-path"/>
+                        <circle cx="260" cy="140" r="15" stroke="rgba(125,211,192,0.6)" fill="rgba(125,211,192,0.1)" stroke-width="1" class="draw-path"/>
+                        
+                        <!-- Connection lines -->
+                        <path d="M 95 80 L 185 80" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        <path d="M 215 80 L 305 80" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        <path d="M 88 93 L 133 133" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        <path d="M 207 93 L 253 133" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        <path d="M 155 140 L 245 140" stroke="rgba(125,211,192,0.6)" stroke-width="1.5" fill="none" class="draw-path"/>
+                        
+                        <!-- Data flow particles -->
+                        <circle cx="100" cy="80" r="2" fill="rgba(125,211,192,0.8)" class="flow-particle"/>
+                        <circle cx="220" cy="80" r="2" fill="rgba(125,211,192,0.8)" class="flow-particle"/>
+                        <circle cx="150" cy="140" r="2" fill="rgba(125,211,192,0.8)" class="flow-particle"/>
+                        
+                        <text x="200" y="190" text-anchor="middle" fill="rgba(125,211,192,0.5)" font-size="10" font-family="monospace">CONTINUOUS</text>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Intelligent Automation</h3>
+                    <p class="service-desc">Workflows that think. Systems that scale.</p>
+                    <div class="service-expand" data-expanded="false">
+                        <button class="service-toggle">What We Deliver</button>
+                        <div class="service-details">
+                            <ul>
+                                <li>Custom workflow automation</li>
+                                <li>AI agents & chatbots</li>
+                                <li>Data pipelines that sync automatically</li>
+                                <li>Process automation end-to-end</li>
+                            </ul>
+                            <p class="service-why"><strong>Why Different:</strong> Re-engineer operations. Scale without headcount.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Posthumane - Ultra Premium -->
+            <div class="why-section">
+                <h2 class="why-title">Why Posthumane?</h2>
+                <p class="why-subtitle">the old way → the posthumane way</p>
+
+                <div class="comparison-flow">
+
+                    <!-- Comparison 1: Cost -->
+                    <div class="comparison-item">
+                        <div class="comparison-side traditional">
+                            <div class="side-label">Traditional Agencies</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="1"/>
+                                <path d="M12 6v6l4 2" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">$200K+</div>
+                            <p class="side-description">Enterprise retainers. Multiple teams multiply costs. Fixed fees drain budgets before you ship.</p>
+                        </div>
+
+                        <div class="comparison-divider">
+                            <div class="divider-line"></div>
+                            <div class="divider-arrow">→</div>
+                            <div class="divider-line"></div>
+                        </div>
+
+                        <div class="comparison-side posthumane">
+                            <div class="side-label">Posthumane</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="1"/>
+                                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                            </svg>
+                            <div class="side-value">From $2K</div>
+                            <p class="side-description">AI workflows eliminate overhead. Pay for results, not hours. Transparent pricing, zero surprises.</p>
+                        </div>
+                    </div>
+
+                    <!-- Comparison 2: Speed -->
+                    <div class="comparison-item">
+                        <div class="comparison-side traditional">
+                            <div class="side-label">Traditional Timeline</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke-width="1"/>
+                                <path d="M12 6v6h6" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">6+ Months</div>
+                            <p class="side-description">Endless discovery phases. Committee approvals. Waterfall processes. Coordination chaos between agencies.</p>
+                        </div>
+
+                        <div class="comparison-divider">
+                            <div class="divider-line"></div>
+                            <div class="divider-arrow">→</div>
+                            <div class="divider-line"></div>
+                        </div>
+
+                        <div class="comparison-side posthumane">
+                            <div class="side-label">Posthumane Speed</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">24h to 7 Days</div>
+                            <p class="side-description">AI accelerates production. Streamlined workflows. Real-time collaboration. Ship fast, iterate faster.</p>
+                        </div>
+                    </div>
+
+                    <!-- Comparison 3: Team -->
+                    <div class="comparison-item">
+                        <div class="comparison-side traditional">
+                            <div class="side-label">Fragmented Approach</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="6" cy="6" r="3" stroke-width="1"/>
+                                <circle cx="18" cy="6" r="3" stroke-width="1"/>
+                                <circle cx="6" cy="18" r="3" stroke-width="1"/>
+                                <circle cx="18" cy="18" r="3" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">4+ Agencies</div>
+                            <p class="side-description">Video team. Dev shop. Design studio. Automation consultant. Coordination nightmare. Fragmented vision.</p>
+                        </div>
+
+                        <div class="comparison-divider">
+                            <div class="divider-line"></div>
+                            <div class="divider-arrow">→</div>
+                            <div class="divider-line"></div>
+                        </div>
+
+                        <div class="comparison-side posthumane">
+                            <div class="side-label">Integrated Solution</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke-width="1"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <circle cx="12" cy="6" r="1" fill="currentColor"/>
+                                <circle cx="12" cy="18" r="1" fill="currentColor"/>
+                                <circle cx="6" cy="12" r="1" fill="currentColor"/>
+                                <circle cx="18" cy="12" r="1" fill="currentColor"/>
+                            </svg>
+                            <div class="side-value">One Team</div>
+                            <p class="side-description">Video, web, automation under one roof. Single point of contact. Unified vision. Seamless execution.</p>
+                        </div>
+                    </div>
+
+                    <!-- Comparison 4: Flexibility -->
+                    <div class="comparison-item">
+                        <div class="comparison-side traditional">
+                            <div class="side-label">Limited Revisions</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="5" y="11" width="14" height="10" rx="2" stroke-width="1"/>
+                                <path d="M12 11V7m0 0l-3 3m3-3l3 3" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">2-3 Rounds</div>
+                            <p class="side-description">Every change costs extra. Revision limits in contracts. Additional rounds = additional invoices. Fear of feedback.</p>
+                        </div>
+
+                        <div class="comparison-divider">
+                            <div class="divider-line"></div>
+                            <div class="divider-arrow">→</div>
+                            <div class="divider-line"></div>
+                        </div>
+
+                        <div class="comparison-side posthumane">
+                            <div class="side-label">Creative Freedom</div>
+                            <svg class="side-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="1"/>
+                                <path d="M21 3v5m0 0h-5m5 0l-6 6" stroke-width="1"/>
+                            </svg>
+                            <div class="side-value">Unlimited</div>
+                            <p class="side-description">Iterate until it's perfect. No revision limits. No extra charges. AI-powered tweaks in minutes, not days.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Manifesto Section -->
+            <div class="manifesto-section">
+                <div class="manifesto-content">
+                    <h2 class="manifesto-quote">We don't replace humans.<br>We give them <span class="handwritten">superpowers</span>.</h2>
+                    <p class="manifesto-tagline">Speed × Quality × Cost. Pick all three.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PORTFOLIO SECTION ========== -->
+    <section class="portfolio-section" id="portfolioSection">
+        <!-- Portfolio Background -->
+        <div class="portfolio-bg">
+            <img src="" alt="Our Work Portfolio - AI video production showcase and client projects">
+        </div>
+
+        <!-- Portfolio Container -->
+        <div class="portfolio-container">
+            <div class="portfolio-label">OUR WORK</div>
+
+            <!-- 3D Card Carousel -->
+            <div class="portfolio-carousel" id="portfolioCarousel">
+                <!-- Navigation Arrows -->
+                <button class="portfolio-nav left" id="portfolioPrev">‹</button>
+                <button class="portfolio-nav right" id="portfolioNext">›</button>
+
+                <!-- Carousel Inner -->
+                <div class="portfolio-carousel-inner" id="portfolioCarouselInner">
+                    <!-- Card 2 - MEDICAL MONITOR (2nd) -->
+                    <div class="portfolio-card active" data-id="0" data-video-id="G6qVwP4EdKw">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/G6qVwP4EdKw/maxresdefault.jpg" alt="Medical Pressure Monitor">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Medical Pressure Monitor</div>
+                                <div class="portfolio-card-desc">Healthcare innovation</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - SOVIET SURREAL HORROR II (NEW) -->
+                    <div class="portfolio-card" data-id="1" data-video-id="sZQLqMFsJj8">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/sZQLqMFsJj8/maxresdefault.jpg" alt="Soviet Surreal Horror II - Anomaly Mafia Short">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Soviet Surreal Horror II</div>
+                                <div class="portfolio-card-desc">Anomaly Mafia Short, 2025</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 - SOVIET HORROR SURREALISM (NEW) -->
+                    <div class="portfolio-card" data-id="2" data-video-id="-3WF6vhtzqw">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/-3WF6vhtzqw/maxresdefault.jpg" alt="Soviet Horror Surrealism - 1980s Anomaly Figures">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Soviet Horror Surrealism</div>
+                                <div class="portfolio-card-desc">1980s Anomaly Figures, 2025</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 - İSTANBUL VALİLİĞİ (NEW) -->
+                    <div class="portfolio-card" data-id="3" data-video-id="268l-S9PBzk">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/268l-S9PBzk/maxresdefault.jpg" alt="İstanbul Valiliği - Babı Ali">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">İstanbul Valiliği - Babı Ali</div>
+                                <div class="portfolio-card-desc">Official production, 2025</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 - NEW VIDEO (NEW) -->
+                    <div class="portfolio-card" data-id="4" data-video-id="q_kpxMBvLaM">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/q_kpxMBvLaM/maxresdefault.jpg" alt="Creative Production">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Creative Production</div>
+                                <div class="portfolio-card-desc">Latest work, 2025</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 - TRANSFORMATION -->
+                    <div class="portfolio-card" data-id="5" data-video-id="9nYB1vwJAlI">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/9nYB1vwJAlI/maxresdefault.jpg" alt="Transformation Story">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Digital Transformation</div>
+                                <div class="portfolio-card-desc">Evolution story</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="portfolio-card" data-id="7" data-video-id="SaLdAB9B_f0">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/SaLdAB9B_f0/maxresdefault.jpg" alt="Creator Community Sales">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Creator Community</div>
+                                <div class="portfolio-card-desc">Sales engagement</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="portfolio-card" data-id="8" data-video-id="lfmiu53kkSc">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/lfmiu53kkSc/maxresdefault.jpg" alt="AI Tools Breakdown">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">AI Tools Breakdown</div>
+                                <div class="portfolio-card-desc">Technical analysis</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="portfolio-card" data-id="9" data-video-id="LOm4Bk6JhTo">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/LOm4Bk6JhTo/maxresdefault.jpg" alt="Vogue AI Editorial">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Vogue AI Editorial</div>
+                                <div class="portfolio-card-desc">Fashion meets AI</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 11 -->
+                    <div class="portfolio-card" data-id="10" data-video-id="K53AaBEz2iQ">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/K53AaBEz2iQ/maxresdefault.jpg" alt="Veo 3.1 Community">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Veo 3.1 Launch</div>
+                                <div class="portfolio-card-desc">Product reveal</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 12 -->
+                    <div class="portfolio-card" data-id="11" data-video-id="xCuY-Kvvi58">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/xCuY-Kvvi58/maxresdefault.jpg" alt="Mythological Horror">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Mythological Horror</div>
+                                <div class="portfolio-card-desc">Dark narrative</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 13 -->
+                    <div class="portfolio-card" data-id="12" data-video-id="Y6lwtkzrZYE">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/Y6lwtkzrZYE/maxresdefault.jpg" alt="Wes Anderson Ad">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Wes Anderson Style</div>
+                                <div class="portfolio-card-desc">Cinematic ad</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 14 -->
+                    <div class="portfolio-card" data-id="13" data-video-id="9FU033g-ioc">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/9FU033g-ioc/maxresdefault.jpg" alt="Visual Study">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Visual Study</div>
+                                <div class="portfolio-card-desc">Experimental art</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 15 -->
+                    <div class="portfolio-card" data-id="14" data-video-id="A3Eo2CFR9pI">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/A3Eo2CFR9pI/maxresdefault.jpg" alt="Çınar Koleji 30th Anniversary">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Çınar 30th</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 16 -->
+                    <div class="portfolio-card" data-id="15" data-video-id="Rlz6dWB9toY">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/Rlz6dWB9toY/maxresdefault.jpg" alt="Çınar Koleji Pixar Style">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Çınar Pixar</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 17 -->
+                    <div class="portfolio-card" data-id="16" data-video-id="9qyKLSSpQNs">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/9qyKLSSpQNs/maxresdefault.jpg" alt="Demsa Bab-ı Ali Istanbul">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Demsa Istanbul</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 18 -->
+                    <div class="portfolio-card" data-id="17" data-video-id="zL1lKx5yZU8">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/zL1lKx5yZU8/maxresdefault.jpg" alt="Vinsight Working AI">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Vinsight AI</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 19 -->
+                    <div class="portfolio-card" data-id="18" data-video-id="Jx3WWetX7Qc">
+                        <div class="portfolio-card-inner">
+                            <img src="https://img.youtube.com/vi/Jx3WWetX7Qc/maxresdefault.jpg" alt="Just Two Minutes">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Two Minutes</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 20 -->
+                    <div class="portfolio-card" data-id="19" data-video="https://drive.google.com/file/d/1CpMFcL8vSziwUGx_i3eEED53lGNBJxbJ/preview">
+                        <div class="portfolio-card-inner">
+                            <img src="https://via.placeholder.com/1280x720/30cfd0/330867?text=Art+Film+Experimental" alt="Art Film Experimental">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Art Film</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 18 -->
+                    <div class="portfolio-card" data-id="17" data-video="https://drive.google.com/file/d/1ZL4rFTTgQTI9JFubfLapOciC_YGPfeF7/preview">
+                        <div class="portfolio-card-inner">
+                            <img src="https://via.placeholder.com/1280x720/43e97b/38f9d7?text=Rhythm+AI+Ads" alt="Rhythm AI Ads Montage">
+                            <div class="portfolio-card-overlay">
+                                <div class="portfolio-play-icon">▶</div>
+                                <div class="portfolio-card-title">Rhythm AI</div>
+                            </div>
+                            <div class="portfolio-card-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="portfolio-dots" id="portfolioDots">
+                <span class="portfolio-dot active" data-id="0"></span>
+                <span class="portfolio-dot" data-id="0"></span>
+                <span class="portfolio-dot" data-id="1"></span>
+                <span class="portfolio-dot" data-id="2"></span>
+                <span class="portfolio-dot" data-id="3"></span>
+                <span class="portfolio-dot" data-id="4"></span>
+                <span class="portfolio-dot" data-id="5"></span>
+                <span class="portfolio-dot" data-id="7"></span>
+                <span class="portfolio-dot" data-id="8"></span>
+                <span class="portfolio-dot" data-id="9"></span>
+                <span class="portfolio-dot" data-id="10"></span>
+                <span class="portfolio-dot" data-id="11"></span>
+                <span class="portfolio-dot" data-id="12"></span>
+                <span class="portfolio-dot" data-id="13"></span>
+                <span class="portfolio-dot" data-id="14"></span>
+                <span class="portfolio-dot" data-id="15"></span>
+                <span class="portfolio-dot" data-id="16"></span>
+                <span class="portfolio-dot" data-id="17"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS SECTION ========== -->
+    <section class="how-section" id="howSection">
+        <div class="how-bg">
+            <img src="https://i.ibb.co/vfjcBNR/u4938782892-httpss-mj-run4p1ezs64l-FM-valley-of-shadows-ar-169-04aff505-6243-4a76-ad0a-ff2c0efd5ba7.png" alt="How It Works - Fast delivery process for AI video and web development" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+
+        <div class="how-container">
+            <div class="how-header">
+                <h2>From Ideas to Launch. <span class="handwritten">Faster</span> Than You Think</h2>
+                <p>No meetings. No endless revisions. No months of waiting. Pick your service, see how we work, and launch at startup speed.</p>
+            </div>
+            
+            <div class="how-services-nav" id="howServicesNav">
+                <!-- Video Production -->
+                <div class="how-nav-item active" data-service="video">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span>Video Production</span>
+                </div>
+                <!-- Web Development -->
+                <div class="how-nav-item" data-service="web">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>Web Development</span>
+                </div>
+                <!-- Design Systems -->
+                <div class="how-nav-item" data-service="design">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    <span>Design Systems</span>
+                </div>
+                <!-- Automation -->
+                <div class="how-nav-item" data-service="automation">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m10-8h-6m-6 0H1"></path>
+                    </svg>
+                    <span>Automation</span>
+                </div>
+            </div>
+            
+            <div class="how-showcase" id="howShowcase">
+                <!-- Timeline Visual -->
+                <div class="how-timeline-visual">
+                    <div class="how-timeline-track"></div>
+                    <div class="how-timeline-progress" id="howTimelineProgress"></div>
+                    <div class="how-timeline-dots" id="howTimelineDots"></div>
+                </div>
+                <!-- Steps Flow -->
+                <div class="how-steps-flow" id="howStepsFlow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section class="pricing-section" id="pricingSection">
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <div class="pricing-label">SERVICES & PRICING</div>
+                <h2>Transparent Pricing <span class="handwritten">No Hidden Fees</span></h2>
+                <p class="pricing-subtitle">Pick your service - Every project includes unlimited revisions</p>
+            </div>
+
+            <div class="pricing-services-grid">
+                <!-- AI VIDEO PRODUCTION -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3.5 6.2c0-.8.6-1.4 1.4-1.4h10.2c.8 0 1.4.6 1.4 1.4v11.6c0 .8-.6 1.4-1.4 1.4H4.9c-.8 0-1.4-.6-1.4-1.4V6.2z"/>
+                            <path d="M16.8 9.2l3.8-2.4c.3-.2.6.0.6.4v9.6c0 .4-.3.6-.6.4l-3.8-2.4"/>
+                            <circle cx="9" cy="12" r="1.2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">AI Video Production</h3>
+                    <div class="service-price">Starting at $3,000</div>
+                    <div class="service-delivery">Delivery: 24-48 hours</div>
+                    <ul class="service-includes">
+                        <li>Professional AI-generated video</li>
+                        <li>Unlimited revisions</li>
+                        <li>All social media formats</li>
+                        <li>Source files included</li>
+                    </ul>
+                    <div class="service-examples">Brand story, product launch, social ads</div>
+                    <button class="service-btn open-quote-modal" data-service="AI Video Production">💬 Get Free Quote</button>
+                </div>
+
+                <!-- WEB DEVELOPMENT -->
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+                            <path d="M22 8H2M8 3v5"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Web Development</h3>
+                    <div class="service-price">Starting at $5,000</div>
+                    <div class="service-delivery">Delivery: 3-4 weeks</div>
+                    <ul class="service-includes">
+                        <li>Custom web app or landing page</li>
+                        <li>Modern tech stack (React/Next.js)</li>
+                        <li>Fully responsive design</li>
+                        <li>SEO optimized</li>
+                    </ul>
+                    <div class="service-examples">Landing pages, SaaS apps, e-commerce</div>
+                    <button class="service-btn featured open-quote-modal" data-service="Web Development">💬 Get Free Quote</button>
+                </div>
+
+                <!-- DESIGN SYSTEMS -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Design Systems</h3>
+                    <div class="service-price">Starting at $2,000</div>
+                    <div class="service-delivery">Delivery: 48-72 hours</div>
+                    <ul class="service-includes">
+                        <li>Complete visual identity</li>
+                        <li>All formats (print & digital)</li>
+                        <li>Brand guidelines</li>
+                        <li>Unlimited iterations</li>
+                    </ul>
+                    <div class="service-examples">Logos, billboards, marketing materials</div>
+                    <button class="service-btn open-quote-modal" data-service="Design Systems">💬 Get Free Quote</button>
+                </div>
+
+                <!-- WORKFLOW AUTOMATION -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8"/>
+                            <path d="M12 4v2.5M12 17.5V20M4 12h2.5M17.5 12H20"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Workflow Automation</h3>
+                    <div class="service-price">Starting at $4,000</div>
+                    <div class="service-delivery">Delivery: 2-3 weeks</div>
+                    <ul class="service-includes">
+                        <li>Custom automation setup</li>
+                        <li>System integrations</li>
+                        <li>Documentation & training</li>
+                        <li>30-day support</li>
+                    </ul>
+                    <div class="service-examples">CRM automation, data pipelines, chatbots</div>
+                    <button class="service-btn open-quote-modal" data-service="Workflow Automation">💬 Get Free Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER CTA SECTION ========== -->
+    <section class="footer-cta-section">
+        <h2>Let's Create Something Amazing Together</h2>
+        <p>Schedule a free 30-minute consultation to discuss your project</p>
+        <div class="cta-group" style="justify-content: center;">
+            <a href="https://calendar.app.google/dBJ1DCbqLdDYyLgCA" target="_blank" class="cta-primary">Schedule a Consultation</a>
+        </div>
+        <p class="footer-cta-alternative">
+            Prefer email? <a href="mailto:omur@posthumane.com">Send us a message</a>
+        </p>
+    </section>
+
+    <!-- ========== QUOTE MODAL ========== -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="quote-modal-content">
+            <button class="quote-modal-close" id="closeModal">&times;</button>
+            <h3>Get Free Quote</h3>
+            <p>Tell us about your project and we'll send you a detailed quote within 24 hours.</p>
+            <form class="quote-form" id="quoteForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <select name="service" id="serviceSelect" required>
+                    <option value="">Select a Service</option>
+                    <option value="AI Video Production">AI Video Production</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Design Systems">Design Systems</option>
+                    <option value="Workflow Automation">Workflow Automation</option>
+                    <option value="Multiple Services">Multiple Services</option>
+                </select>
+                <select name="budget">
+                    <option value="">Estimated Budget (Optional)</option>
+                    <option value="Under $5K">Under $5K</option>
+                    <option value="$5K - $10K">$5K - $10K</option>
+                    <option value="$10K - $30K">$10K - $30K</option>
+                    <option value="$30K+">$30K+</option>
+                </select>
+                <textarea name="description" placeholder="Brief project description" required></textarea>
+                <button type="submit">Send Quote Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== FAQ MODAL ========== -->
+    <div class="faq-modal" id="faqModal">
+        <button class="faq-modal-close" id="closeFaqModal" aria-label="Close FAQ">×</button>
+
+        <div class="faq-modal-container">
+            <div class="faq-modal-header">
+                <div class="faq-modal-label">FREQUENTLY ASKED QUESTIONS</div>
+                <h1 class="faq-modal-title">Everything You Need to Know <span class="highlight">About Posthumane</span></h1>
+                <p class="faq-modal-subtitle">Get answers to common questions about our AI video production, web development, and automation services</p>
+            </div>
+
+            <div class="faq-search-container">
+                <input type="text" class="faq-search-input" id="faqSearchInput" placeholder="Search for answers... (e.g., 'pricing', 'timeline', 'video quality')">
+            </div>
+
+            <!-- Category 1: AI Video & Web Production -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">VIDEO</div>
+                    <h2 class="faq-category-title">AI Video & Web Production</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Will AI-generated videos look "fake" or lack emotion?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            No. We combine AI tools with human creative direction. Every video is crafted by experienced creators who ensure emotional depth, storytelling quality, and brand authenticity. AI handles the heavy lifting (rendering, effects, edits), while humans handle the heart and soul.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Can you match our brand's specific style and tone?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely. Send us your brand guidelines, existing content, or style preferences. We'll create videos and designs that feel like a natural extension of your brand—not generic templates.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Do we own the final files, or do you retain rights?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You own everything. All source files, assets, code, and final deliverables belong to you after project completion. We never retain rights to your content.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What if the video/website doesn't look quite right?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <strong>Video & design:</strong> Unlimited revisions until you're 100% satisfied.<br><br>
+                            <strong>Web & automation:</strong> Iterative development with feedback loops at every stage.<br><br>
+                            We don't stop until you love it.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">How does AI video production actually work? Is it just pressing buttons?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Not even close. We use advanced AI tools (Runway, MidJourney, etc.) for generation, but every frame is directed, refined, and quality-checked by humans. Think of it as a chef using a high-tech oven—the tool is sophisticated, but expertise makes the difference.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Can you create videos in multiple languages or formats?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! We can deliver videos optimized for any platform (TikTok, Instagram, YouTube, broadcast) and in multiple languages using AI voice/translation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Timeline & Process -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">TIME</div>
+                    <h2 class="faq-category-title">Timeline & Process</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">How long does it REALLY take? (Not the marketing version)</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Honest timelines:
+                            <ul>
+                                <li><strong>Video production:</strong> 24-72 hours from brief to delivery</li>
+                                <li><strong>Web development:</strong> 3-4 weeks for full apps, 1 week for landing pages</li>
+                                <li><strong>Design systems:</strong> 48-72 hours</li>
+                                <li><strong>Automation:</strong> 2-3 weeks</li>
+                            </ul>
+                            These aren't aspirational—they're our actual track record with 200+ projects.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What happens if we need it even faster?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Rush delivery available for an additional fee. We've delivered videos in 12 hours when clients had urgent deadlines. Contact us to discuss.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What if we don't know exactly what we want yet?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            That's totally normal! We start with a 30-min consultation where we help you define:
+                            <ul>
+                                <li><strong>Your goals</strong> (what are you trying to achieve?)</li>
+                                <li><strong>Your audience</strong> (who's watching/using this?)</li>
+                                <li><strong>Your constraints</strong> (budget, timeline, technical requirements)</li>
+                            </ul>
+                            Many clients come with vague ideas and leave with crystal-clear project plans.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Can you explain your process without technical jargon?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sure. Every project follows 4 simple steps:
+                            <ul>
+                                <li><strong>Brief</strong> - Quick call, you tell us what you need</li>
+                                <li><strong>Create</strong> - We build the first version (fast!)</li>
+                                <li><strong>Refine</strong> - You give feedback, we improve it</li>
+                                <li><strong>Deliver</strong> - Production-ready files in your hands</li>
+                            </ul>
+                            That's it. No mystery, no complexity.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Cost & Pricing -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">COST</div>
+                    <h2 class="faq-category-title">Cost & Pricing</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Why are you 90% cheaper than traditional agencies?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Three reasons:
+                            <ul>
+                                <li><strong>AI acceleration</strong> - Tasks that took days now take hours</li>
+                                <li><strong>Lean team</strong> - No bloated agency overhead (account managers, office rent, etc.)</li>
+                                <li><strong>Efficient workflow</strong> - We've optimized every step through 200+ projects</li>
+                            </ul>
+                            Lower cost doesn't mean lower quality—it means smarter production.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What's the REAL cost? (Hidden fees? Surprise charges?)</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            The price we quote is what you pay. Zero hidden fees. If scope changes mid-project, we'll notify you BEFORE any additional work.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Do you offer payment plans for larger projects?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! For projects over $10K, we offer milestone-based payment plans (e.g., 50% upfront, 25% mid-project, 25% on delivery).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Is there a minimum project size?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nope! We work with startups, solo founders, and enterprises alike. If you need a single $500 video or a $50K automation system, we're here for it.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Automation & Integration -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">AUTO</div>
+                    <h2 class="faq-category-title">Automation & Integration</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What can actually be automated? (Be honest)</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Tons! But not everything. Here's what works well:
+                            <ul>
+                                <li><strong>Great fits:</strong> Data entry, lead routing, report generation, customer onboarding, invoice processing, social media scheduling, email workflows</li>
+                                <li><strong>Tough fits:</strong> High-stakes decisions requiring judgment, deeply creative tasks, processes that change constantly</li>
+                            </ul>
+                            We'll tell you upfront if automation isn't the right solution.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Will this work with [insert tool we already use]?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Probably! We integrate with 5,000+ apps via Make, Zapier, and custom APIs (Salesforce, HubSpot, Slack, Google Workspace, Notion, Airtable—you name it). Send us your tech stack and we'll confirm compatibility.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What happens if the automation breaks?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We build in error handling and monitoring. If something fails, you get instant alerts. All automation projects include 30 days of post-launch support—we'll fix any issues fast.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Do I need to understand the technical details?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Nope! We explain everything in plain English and provide simple documentation for your team. You'll know how it works without needing to be a developer.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 5: Working Relationship -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">WORK</div>
+                    <h2 class="faq-category-title">Working Relationship</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">How involved do we need to be?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            As much or as little as you want:
+                            <ul>
+                                <li><strong>Hands-off:</strong> Brief us once, we deliver the final product</li>
+                                <li><strong>Collaborative:</strong> Weekly check-ins, iterative feedback</li>
+                                <li><strong>Hands-on:</strong> Daily Slack communication, real-time collaboration</li>
+                            </ul>
+                            You choose your level of involvement.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">What if we're not happy with the result?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We keep revising until you are. If there's a fundamental misalignment (rare, but happens), we'll discuss a partial refund or pivot strategy. Client satisfaction is non-negotiable.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Can we hire you for ongoing work (retainer)?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Many clients start with a one-off project, then switch to monthly retainers for ongoing video production, design updates, or automation maintenance.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Do you sign NDAs?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely. We sign standard NDAs for all projects. Your ideas and data are 100% confidential.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 6: Comparison Questions -->
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon">VS</div>
+                    <h2 class="faq-category-title">Comparison Questions</h2>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Why not just hire a full-time employee or freelancer?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <strong>Full-time employee:</strong> $80K+/year for ONE skill (video OR dev OR design). We give you a full team for a fraction of that cost.<br><br>
+                            <strong>Freelancer:</strong> Often unreliable, no accountability, and limited scope. We're a professional studio with proven processes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">How are you different from other AI-powered agencies?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Most "AI agencies" slap GPT on generic templates. We combine cutting-edge AI tools with human creativity, strategic thinking, and industry expertise. You get speed + quality, not just speed.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-question-text">Can't I just use AI tools myself (ChatGPT, MidJourney, etc.)?</div>
+                        <div class="faq-toggle">↓</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You could! But here's the difference:
+                            <ul>
+                                <li><strong>DIY:</strong> Hours of trial-and-error, mediocre results, steep learning curve</li>
+                                <li><strong>Posthumane:</strong> Professional-grade output in a fraction of the time, no learning required</li>
+                            </ul>
+                            We're not selling tools—we're selling expertise and results.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MINIMAL STATS BAR ========== -->
+    <section class="stats-section" id="statsSection">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Brands Served</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number" data-target="200">0</div>
+                <div class="stat-label">Videos Created</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">Avg Delivery Hours</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number" data-target="90">0</div>
+                <div class="stat-label">Cost Savings %</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT FORM SECTION ========== -->
+    <section class="contact-section" id="contactSection">
+        <div class="contact-container">
+            <!-- Header -->
+            <div class="contact-header">
+                <div class="contact-label" data-translate="contact.label">GET IN TOUCH</div>
+                <h2 class="contact-title" data-translate="contact.title">Let's Create Something <span class="highlight">Amazing</span> Together</h2>
+                <p class="contact-subtitle" data-translate="contact.subtitle">Have a project in mind? Fill out the form below and we'll get back to you within 24 hours.</p>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="name" id="contactName" required>
+                        <label for="contactName" data-translate="contact.name">Your Name</label>
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="contactEmail" required>
+                        <label for="contactEmail" data-translate="contact.email">Your Email</label>
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" name="phone" id="contactPhone">
+                        <label for="contactPhone" data-translate="contact.phone">Phone (Optional)</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" id="contactService" required>
+                            <option value="" disabled selected>Select Service</option>
+                            <option value="AI Video Production" data-translate="contact.service.video">AI Video Production</option>
+                            <option value="Web Development" data-translate="contact.service.web">Web Development</option>
+                            <option value="Workflow Automation" data-translate="contact.service.automation">Workflow Automation</option>
+                            <option value="Other" data-translate="contact.service.other">Other</option>
+                        </select>
+                        <label for="contactService" data-translate="contact.service">Select Service</label>
+                        <span class="form-error" id="serviceError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <textarea name="message" id="contactMessage" rows="5" required></textarea>
+                    <label for="contactMessage" data-translate="contact.message">Tell us about your project...</label>
+                    <span class="form-error" id="messageError"></span>
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">
+                        <span data-translate="contact.submit">Send Message</span>
+                        <svg class="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Success/Error Messages -->
+                <div class="form-message success-message" id="successMessage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <p data-translate="contact.success">Thank you! We'll get back to you within 24 hours.</p>
+                </div>
+                <div class="form-message error-message" id="errorMessage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <p data-translate="contact.error">Oops! Something went wrong. Please try again or email us directly.</p>
+                </div>
+            </form>
+
+            <!-- Alternative Contact -->
+            <div class="contact-alternative">
+                <p data-translate="contact.whatsapp">Or message us on WhatsApp</p>
+                <a href="https://wa.me/905330269946?text=Hi!%20I'm%20interested%20in%20Posthumane's%20services" target="_blank" class="whatsapp-btn">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="main-footer" id="mainFooter">
+        <div class="footer-container">
+            <div class="footer-logo-minimal">
+                <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane Logo" width="80" height="80" loading="lazy" decoding="async">
+            </div>
+
+            <nav class="footer-links-minimal">
+                <a href="#heroSection" class="footer-link-minimal">Home</a>
+                <a href="#aboutSection" class="footer-link-minimal">About</a>
+                <a href="#servicesSection" class="footer-link-minimal">Services</a>
+                <a href="#portfolioSection" class="footer-link-minimal">Work</a>
+                <a href="#pricingSection" class="footer-link-minimal">Pricing</a>
+            </nav>
+
+            <div class="footer-emails-minimal">
+                <a href="mailto:omur@posthumane.com" class="footer-email-minimal">omur@posthumane.com</a>
+                <a href="mailto:emre@posthumane.com" class="footer-email-minimal">emre@posthumane.com</a>
+            </div>
+
+            <p class="footer-copyright-minimal">
+                &copy; 2025 Posthumane. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/905330269946?text=Hi!%20I'm%20interested%20in%20Posthumane's%20services" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Posthumane",
+        "url": "https://posthumane.com",
+        "logo": "https://posthumane.com/logo.png",
+        "description": "AI-powered video production, web development, and intelligent automation services delivered at startup speed.",
+        "foundingDate": "2024",
+        "founders": [
+            {
+                "@type": "Person",
+                "name": "Ömür",
+                "jobTitle": "Co-Founder"
+            },
+            {
+                "@type": "Person",
+                "name": "Emre",
+                "jobTitle": "Co-Founder"
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "TR"
+        },
+        "sameAs": [
+            "https://twitter.com/posthumane",
+            "https://linkedin.com/company/posthumane"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Sales",
+            "email": "hello@posthumane.com"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "#ai-video-production",
+        "serviceType": "AI Video Production",
+        "provider": {
+            "@type": "Organization",
+            "name": "Posthumane"
+        },
+        "description": "AI-powered video production service delivering ads, explainers, social content, and brand stories in 24 hours.",
+        "areaServed": "Worldwide",
+        "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://posthumane.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "deliveryLeadTime": {
+                "@type": "QuantitativeValue",
+                "value": "24",
+                "unitCode": "HUR"
+            }
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "#web-development",
+        "serviceType": "Web Development",
+        "provider": {
+            "@type": "Organization",
+            "name": "Posthumane"
+        },
+        "description": "Modern web development services creating websites, web apps, and landing pages that are fast and built to convert.",
+        "areaServed": "Worldwide",
+        "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://posthumane.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "deliveryLeadTime": {
+                "@type": "QuantitativeValue",
+                "value": "7",
+                "unitCode": "DAY"
+            }
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "#automation",
+        "serviceType": "Business Automation",
+        "provider": {
+            "@type": "Organization",
+            "name": "Posthumane"
+        },
+        "description": "Intelligent automation services connecting tools, building AI agents, and eliminating repetitive tasks.",
+        "areaServed": "Worldwide",
+        "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://posthumane.com"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://posthumane.com",
+        "name": "Posthumane",
+        "description": "AI Video Production, Web Development & Automation Services",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Posthumane"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://posthumane.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Service",
+                    "name": "AI Video Production",
+                    "description": "24-hour AI video creation service"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Service",
+                    "name": "Vibe Coding",
+                    "description": "Modern web development in 7 days"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Service",
+                    "name": "Smart Automation",
+                    "description": "Intelligent business process automation"
+                }
+            }
+        ]
+    }
+    </script>
+
+        const quoteForm = document.getElementById('quoteForm');
+        const serviceSelect = document.getElementById('serviceSelect');
+        const openModalButtons = document.querySelectorAll('.open-quote-modal');
+
+        // Open modal when "Get Free Quote" buttons are clicked
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const serviceName = this.getAttribute('data-service');
+                quoteModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+                // Pre-fill service dropdown if data-service attribute exists
+                if (serviceName) {
+                    serviceSelect.value = serviceName;
+                }
+            });
+        });
+
+        // Close modal when X button is clicked
+        closeModal.addEventListener('click', function() {
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+
+        // Close modal when clicking outside the content
+        quoteModal.addEventListener('click', function(e) {
+            if (e.target === quoteModal) {
+                quoteModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && quoteModal.classList.contains('active')) {
+                quoteModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Handle form submission
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(quoteForm);
+            const data = Object.fromEntries(formData);
+
+            // Create mailto link with form data
+            const subject = `Quote Request: ${data.service}`;
+            const body = `
+Name: ${data.name}
+Email: ${data.email}
+Service: ${data.service}
+Budget: ${data.budget || 'Not specified'}
+
+Project Description:
+${data.description}
+            `.trim();
+
+            const mailtoLink = `mailto:omur@posthumane.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            alert('Thank you! Your default email client will open. We\'ll respond within 24 hours.');
+
+            // Close modal and reset form
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = '';
+            quoteForm.reset();
+        });
+    </script>
+
+    <!-- ========== HEADER SCRIPT ========== -->
+            scrollThreshold: 80,
+            observerMargin: '-50% 0px -50% 0px'
+        };
+
+        const elements = {
+            header: null,
+            navLinks: null,
+            mobileMenuToggle: null,
+            headerNav: null,
+            sections: null
+        };
+
+        let lastScroll = 0;
+        let rafId = null;
+        let observer = null;
+
+        function init() {
+            elements.header = document.getElementById('minimalHeader');
+            elements.navLinks = document.querySelectorAll('.nav-link');
+            elements.mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            elements.headerNav = document.getElementById('headerNav');
+            elements.sections = document.querySelectorAll('section[id]');
+
+            if (!elements.header) return;
+
+            setupScrollHandler();
+            setupNavigationLinks();
+            setupMobileMenu();
+            setupIntersectionObserver();
+            handleScroll();
+        }
+
+        function setupScrollHandler() {
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                lastScroll = window.pageYOffset;
+
+                if (!ticking) {
+                    rafId = window.requestAnimationFrame(() => {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        function handleScroll() {
+            if (lastScroll > CONFIG.scrollThreshold) {
+                elements.header.classList.add('scrolled');
+            } else {
+                elements.header.classList.remove('scrolled');
+            }
+        }
+
+        function setupNavigationLinks() {
+            elements.navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    if (targetSection) {
+                        const headerHeight = elements.header.offsetHeight;
+                        const targetPosition = targetSection.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        }
+                    }
+
+                    closeMobileMenu();
+                });
+            });
+        }
+
+        function setupMobileMenu() {
+            if (!elements.mobileMenuToggle) return;
+
+            elements.mobileMenuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!elements.header.contains(e.target) && elements.headerNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && elements.headerNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const isActive = elements.headerNav.classList.toggle('active');
+            elements.mobileMenuToggle.classList.toggle('active', isActive);
+            elements.mobileMenuToggle.setAttribute('aria-expanded', isActive);
+        }
+
+        function closeMobileMenu() {
+            elements.headerNav.classList.remove('active');
+            elements.mobileMenuToggle.classList.remove('active');
+            elements.mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function setupIntersectionObserver() {
+            if (!elements.sections.length) return;
+
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateActiveNavLink(entry.target.getAttribute('id'));
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: CONFIG.observerMargin,
+                threshold: 0
+            });
+
+            elements.sections.forEach(section => {
+                if (section.id) observer.observe(section);
+            });
+        }
+
+        function updateActiveNavLink(sectionId) {
+            if (!sectionId) return;
+
+            elements.navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                link.classList.toggle('active', href === `#${sectionId}`);
+            });
+        }
+
+        window.MinimalHeader = {
+            init,
+            destroy: () => {
+                if (rafId) window.cancelAnimationFrame(rafId);
+                if (observer) observer.disconnect();
+            },
+            closeMobileMenu,
+            updateActiveNavLink
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+    </script>
+
+    <!-- ========== PREMIUM INTERACTIVE FEATURES (APPLE-STYLE) ========== -->
+        const EASINGS = {
+            // Apple's signature easing
+            apple: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            appleOut: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            appleIn: 'cubic-bezier(0.4, 0, 1, 1)',
+            spring: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+            smooth: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+        };
+
+        // ========== APPLE-STYLE LOADER ==========
+        const pageLoader = document.getElementById('pageLoader');
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 800);
+                }
+            }, 1500);
+        });
+
+        // ========== MANIFESTO MODAL ==========
+        const headerManifestoBtn = document.getElementById('headerManifestoBtn');
+        const manifestoModal = document.getElementById('manifestoModal');
+        const manifestoOverlay = document.getElementById('manifestoOverlay');
+        const manifestoClose = document.getElementById('manifestoClose');
+
+        // Open modal from header button
+        if (headerManifestoBtn) {
+            headerManifestoBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (manifestoModal) {
+                    manifestoModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
+
+        // Close modal function
+        function closeManifestoModal() {
+            if (manifestoModal) {
+                manifestoModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close button
+        if (manifestoClose) {
+            manifestoClose.addEventListener('click', closeManifestoModal);
+        }
+
+        // Click outside to close
+        if (manifestoOverlay) {
+            manifestoOverlay.addEventListener('click', closeManifestoModal);
+        }
+
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && manifestoModal && manifestoModal.classList.contains('active')) {
+                closeManifestoModal();
+            }
+        });
+
+        // ========== SMOOTH SCROLL PROGRESS (OPTIMIZED) ==========
+        const scrollProgress = document.getElementById('scrollProgress');
+        let ticking = false;
+
+        function updateScrollProgress() {
+            if (!scrollProgress) return;
+
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+            requestAnimationFrame(() => {
+                scrollProgress.style.width = Math.min(scrollPercentage, 100) + '%';
+                ticking = false;
+            });
+        }
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollProgress);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateScrollProgress();
+
+        // ========== BACK TO TOP BUTTON (APPLE-STYLE) ==========
+        const backToTopBtn = document.getElementById('backToTop');
+        let lastScrollTop = 0;
+        let scrollDirection = 'down';
+
+        function toggleBackToTop() {
+            if (!backToTopBtn) return;
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+            lastScrollTop = scrollTop;
+
+            if (scrollTop > 500) {
+                backToTopBtn.classList.add('visible');
+                backToTopBtn.setAttribute('aria-hidden', 'false');
+                // Apple-style entrance
+                backToTopBtn.style.transform = 'translateY(0) scale(1)';
+                backToTopBtn.style.opacity = '1';
+            } else {
+                backToTopBtn.classList.remove('visible');
+                backToTopBtn.setAttribute('aria-hidden', 'true');
+                backToTopBtn.style.transform = 'translateY(10px) scale(0.9)';
+                backToTopBtn.style.opacity = '0';
+            }
+        }
+
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        toggleBackToTop();
+
+        if (backToTopBtn) {
+            // Apple-style smooth scroll to top
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Custom smooth scroll with easing
+                const duration = 800;
+                const start = window.pageYOffset;
+                const startTime = performance.now();
+
+                function easeOutQuart(t) {
+                    return 1 - Math.pow(1 - t, 4);
+                }
+
+                function scrollAnimation(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easing = easeOutQuart(progress);
+
+                    window.scrollTo(0, start * (1 - easing));
+
+                    if (progress < 1) {
+                        requestAnimationFrame(scrollAnimation);
+                    }
+                }
+
+                requestAnimationFrame(scrollAnimation);
+            });
+
+            // Hover effect
+            backToTopBtn.addEventListener('mouseenter', () => {
+                backToTopBtn.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+
+            backToTopBtn.addEventListener('mouseleave', () => {
+                backToTopBtn.style.transform = 'translateY(0) scale(1)';
+            });
+        }
+
+        // ========== FAQ ACCORDION (APPLE-STYLE) ==========
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            if (question) {
+                // Apple-style entrance animation
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.5s ${EASINGS.appleOut} ${index * 0.05}s, transform 0.5s ${EASINGS.appleOut} ${index * 0.05}s`;
+
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100);
+
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all other FAQs with animation
+                    faqItems.forEach(faq => {
+                        if (faq !== item && faq.classList.contains('active')) {
+                            faq.classList.remove('active');
+                            const faqAnswer = faq.querySelector('.faq-answer');
+                            if (faqAnswer) {
+                                faqAnswer.style.maxHeight = '0';
+                            }
+                        }
+                    });
+
+                    // Toggle current FAQ with Apple-style animation
+                    if (!isActive) {
+                        item.classList.add('active');
+                        if (answer) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                            answer.style.transition = `max-height 0.4s ${EASINGS.appleOut}, padding 0.4s ${EASINGS.appleOut}`;
+                        }
+                    } else {
+                        item.classList.remove('active');
+                        if (answer) {
+                            answer.style.maxHeight = '0';
+                        }
+                    }
+                });
+
+                // Keyboard accessibility
+                question.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        question.click();
+                    }
+                });
+
+                // Hover effect
+                question.addEventListener('mouseenter', () => {
+                    if (!item.classList.contains('active')) {
+                        question.style.transform = 'translateX(4px)';
+                    }
+                });
+
+                question.addEventListener('mouseleave', () => {
+                    question.style.transform = 'translateX(0)';
+                });
+            }
+        });
+
+        // ========== APPLE-STYLE INTERSECTION OBSERVER ==========
+        const animatedElements = document.querySelectorAll('.service-card, .portfolio-item');
+
+        const appleObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const delay = parseFloat(entry.target.dataset.delay || 0);
+
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }, delay);
+
+                    appleObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        });
+
+        animatedElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px) scale(0.95)';
+            element.style.transition = `opacity 0.7s ${EASINGS.appleOut}, transform 0.7s ${EASINGS.appleOut}`;
+            element.dataset.delay = (index % 3) * 100; // Stagger effect
+            appleObserver.observe(element);
+        });
+
+        // ========== APPLE-STYLE SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                if (href === '#' || this.classList.contains('faq-question')) {
+                    return;
+                }
+
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    e.preventDefault();
+
+                    // Custom Apple-style smooth scroll
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 100;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1000;
+                    let start = null;
+
+                    function easeInOutCubic(t) {
+                        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+                    }
+
+                    function animation(currentTime) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        const easing = easeInOutCubic(progress);
+
+                        window.scrollTo(0, startPosition + distance * easing);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+            });
+        });
+
+        // ========== PARALLAX SCROLL EFFECT (APPLE-STYLE) ==========
+        const parallaxElements = document.querySelectorAll('.hero-section');
+        let parallaxTicking = false;
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+
+                requestAnimationFrame(() => {
+                    element.style.transform = `translateY(${yPos}px)`;
+                    parallaxTicking = false;
+                });
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!parallaxTicking) {
+                requestAnimationFrame(updateParallax);
+                parallaxTicking = true;
+            }
+        }, { passive: true });
+
+        // ========== PERFORMANCE OPTIMIZATION ==========
+        // Lazy load images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.src = img.dataset.src || img.src;
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+            document.body.appendChild(script);
+        }
+
+        console.log('🍎 Apple-style premium features loaded!');
+        console.log('✨ Page Loader (fixed), Smooth Scroll, Parallax, Micro-interactions');
+        console.log('⚡ Performance optimized with RAF and passive listeners');
+
+    })();
+    </script>
+
+    <!-- ========== FAQ MODAL JAVASCRIPT ========== -->
+        const faqModal = document.getElementById('faqModal');
+        const openFaqBtn = document.getElementById('openFaqModal');
+        const closeFaqBtn = document.getElementById('closeFaqModal');
+        const faqSearchInput = document.getElementById('faqSearchInput');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // Open FAQ Modal
+        if (openFaqBtn) {
+            openFaqBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                faqModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Focus search input after animation
+                setTimeout(() => {
+                    if (faqSearchInput) {
+                        faqSearchInput.focus();
+                    }
+                }, 500);
+            });
+        }
+
+        // Footer FAQ Link
+        const footerFaqLink = document.getElementById('footerFaqLink');
+        if (footerFaqLink) {
+            footerFaqLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                faqModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Smooth scroll to top first
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Focus search input after animation
+                setTimeout(() => {
+                    if (faqSearchInput) {
+                        faqSearchInput.focus();
+                    }
+                }, 500);
+            });
+        }
+
+        // Close FAQ Modal
+        function closeFaq() {
+            faqModal.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear search and reset all items
+            if (faqSearchInput) {
+                faqSearchInput.value = '';
+            }
+            faqItems.forEach(item => {
+                item.classList.remove('hidden', 'active');
+            });
+        }
+
+        if (closeFaqBtn) {
+            closeFaqBtn.addEventListener('click', closeFaq);
+        }
+
+        // Close on overlay click
+        if (faqModal) {
+            faqModal.addEventListener('click', (e) => {
+                if (e.target === faqModal) {
+                    closeFaq();
+                }
+            });
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && faqModal.classList.contains('active')) {
+                closeFaq();
+            }
+        });
+
+        // FAQ Accordion Toggle
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            if (question) {
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all other FAQs
+                    faqItems.forEach(faq => {
+                        if (faq !== item && faq.classList.contains('active')) {
+                            faq.classList.remove('active');
+                            const faqAnswer = faq.querySelector('.faq-answer');
+                            if (faqAnswer) {
+                                faqAnswer.style.maxHeight = '0';
+                            }
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    if (!isActive) {
+                        item.classList.add('active');
+                        if (answer) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    } else {
+                        item.classList.remove('active');
+                        if (answer) {
+                            answer.style.maxHeight = '0';
+                        }
+                    }
+                });
+            }
+        });
+
+        // Search Functionality
+        if (faqSearchInput) {
+            faqSearchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+
+                faqItems.forEach(item => {
+                    const questionText = item.querySelector('.faq-question-text').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+
+                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Show/hide categories based on visible items
+                document.querySelectorAll('.faq-category').forEach(category => {
+                    const visibleItems = category.querySelectorAll('.faq-item:not(.hidden)');
+                    if (visibleItems.length === 0) {
+                        category.style.display = 'none';
+                    } else {
+                        category.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        console.log('❓ FAQ Modal loaded successfully');
+
+    })();
+    </script>
+        'use strict';
+
+        const missionSection = document.getElementById('missionSection');
+        const missionTitle = document.getElementById('missionTitle');
+        const missionCta = document.getElementById('missionCta');
+        const missionParticles = document.getElementById('missionParticles');
+
+        // ========== CREATE FLOATING PARTICLES ==========
+        function createParticles() {
+            if (!missionParticles) return;
+
+            const particleCount = 40;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'mission-particle';
+
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                particle.style.left = x + '%';
+                particle.style.top = y + '%';
+
+                // Random animation
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 5;
+                const distance = 50 + Math.random() * 100;
+                const angle = Math.random() * 360;
+
+                particle.style.animation = `particleFloat${i} ${duration}s ease-in-out ${delay}s infinite`;
+
+                // Create unique keyframe for each particle
+                const keyframes = `
+                    @keyframes particleFloat${i} {
+                        0%, 100% {
+                            transform: translate(0, 0);
+                            opacity: 0.3;
+                        }
+                        50% {
+                            transform: translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px);
+                            opacity: 0.8;
+                        }
+                    }
+                `;
+
+                // Inject keyframes
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = keyframes;
+                document.head.appendChild(styleSheet);
+
+                missionParticles.appendChild(particle);
+            }
+        }
+
+        // ========== WORD-BY-WORD REVEAL ANIMATION ==========
+        function splitTextToWords() {
+            if (!missionTitle) return;
+
+            const text = missionTitle.innerHTML;
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = text;
+
+            const nodes = Array.from(tempDiv.childNodes);
+            let wordIndex = 0;
+
+            const result = nodes.map(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    // Split text into words
+                    const words = node.textContent.split(' ').filter(w => w.length > 0);
+                    return words.map(word => {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = word + ' ';
+                        span.style.animationDelay = (wordIndex * 0.05) + 's';
+                        wordIndex++;
+                        return span.outerHTML;
+                    }).join('');
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    // Keep highlight spans intact
+                    const span = document.createElement('span');
+                    span.className = 'word ' + node.className;
+                    span.innerHTML = node.innerHTML;
+                    span.style.animationDelay = (wordIndex * 0.05) + 's';
+                    wordIndex++;
+                    return span.outerHTML + ' ';
+                }
+                return '';
+            }).join('');
+
+            missionTitle.innerHTML = result;
+        }
+
+        // ========== MAGNETIC CTA EFFECT ==========
+        function addMagneticEffect() {
+            if (!missionCta) return;
+
+            let rafId = null;
+
+            missionCta.addEventListener('mousemove', (e) => {
+                if (rafId) return;
+
+                rafId = requestAnimationFrame(() => {
+                    const rect = missionCta.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    const moveX = x * 0.3;
+                    const moveY = y * 0.3;
+
+                    missionCta.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                    missionCta.classList.add('magnetic');
+
+                    rafId = null;
+                });
+            });
+
+            missionCta.addEventListener('mouseleave', () => {
+                missionCta.style.transform = '';
+                setTimeout(() => {
+                    missionCta.classList.remove('magnetic');
+                }, 200);
+            });
+        }
+
+        // ========== TYPEWRITER EFFECT ==========
+        function startTypewriter() {
+            const paragraphs = document.querySelectorAll('.mission-paragraph');
+
+            paragraphs.forEach((p, index) => {
+                setTimeout(() => {
+                    p.classList.add('typewriter');
+
+                    setTimeout(() => {
+                        p.classList.remove('typewriter');
+                        p.classList.add('typewriter-done');
+                    }, 3000);
+                }, index * 3200);
+            });
+        }
+
+        // ========== INTERSECTION OBSERVER FOR SCROLL TRIGGER ==========
+        function initScrollTrigger() {
+            if (!missionSection) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        missionSection.classList.add('active');
+
+                        setTimeout(() => {
+                            startTypewriter();
+                        }, 1000);
+
+                        observer.unobserve(missionSection);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            observer.observe(missionSection);
+        }
+
+        // ========== INITIALIZE ==========
+        function init() {
+            createParticles();
+            splitTextToWords();
+            addMagneticEffect();
+            initScrollTrigger();
+            console.log('✨ Mission Section initialized with unprecedented animations');
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+    </script>
+        'use strict';
+
+        // ========== DEBOUNCE UTILITY ==========
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // ========== THROTTLE UTILITY ==========
+        function throttle(func, limit) {
+            let inThrottle;
+            return function(...args) {
+                if (!inThrottle) {
+                    func.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // ========== LAZY LOAD IMAGES ==========
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[data-src]');
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px'
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // ========== REDUCE ANIMATIONS ON LOW-END DEVICES ==========
+        function optimizeForDevice() {
+            const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+
+            if (isLowEndDevice) {
+                // Reduce particle count for mission section
+                const particles = document.querySelectorAll('.mission-particle');
+                particles.forEach((particle, index) => {
+                    if (index % 2 === 0) {
+                        particle.remove();
+                    }
+                });
+
+                // Reduce liquid blobs
+                const blobs = document.querySelectorAll('.liquid-blob');
+                if (blobs.length > 2) {
+                    blobs[2].remove();
+                }
+
+                console.log('⚡ Optimized for low-end device');
+            }
+        }
+
+        // ========== PASSIVE EVENT LISTENERS ==========
+        function optimizeEventListeners() {
+            // Add passive listeners for better scroll performance
+            document.addEventListener('touchstart', () => {}, { passive: true });
+            document.addEventListener('touchmove', () => {}, { passive: true });
+            document.addEventListener('wheel', () => {}, { passive: true });
+        }
+
+        // ========== PREVENT MEMORY LEAKS ==========
+        function preventMemoryLeaks() {
+            // Clear animations when elements leave viewport
+            const animatedElements = document.querySelectorAll('.word, .mission-particle');
+
+            const cleanupObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        entry.target.style.willChange = 'auto';
+                    } else {
+                        entry.target.style.willChange = 'transform, opacity';
+                    }
+                });
+            });
+
+            animatedElements.forEach(el => {
+                if (el) cleanupObserver.observe(el);
+            });
+        }
+
+        // ========== SMOOTH ANCHOR SCROLLING WITH OFFSET ==========
+        function enhanceSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Skip if it's just "#" or opens a modal
+                    if (href === '#' || this.id === 'openFaqModal' || this.id === 'footerFaqLink') {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+
+                    if (target) {
+                        const offset = 80; // Navigation height offset
+                        const targetPosition = target.offsetTop - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ========== PRELOAD CRITICAL IMAGES ==========
+        function preloadCriticalImages() {
+            const criticalImages = [
+                'https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png'
+            ];
+
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+
+        // ========== VIEWPORT HEIGHT FIX FOR MOBILE ==========
+        function fixMobileViewportHeight() {
+            const setVH = () => {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            };
+
+            setVH();
+            window.addEventListener('resize', debounce(setVH, 250));
+        }
+
+        // ========== INITIALIZE ALL OPTIMIZATIONS ==========
+        function init() {
+            lazyLoadImages();
+            optimizeForDevice();
+            optimizeEventListeners();
+            preventMemoryLeaks();
+            enhanceSmoothScroll();
+            preloadCriticalImages();
+            fixMobileViewportHeight();
+
+            console.log('🚀 All performance optimizations loaded');
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+    </script>
+
+    <\!-- External JavaScript -->
+    <!-- ========== PORTFOLIO LIGHTBOX ========== -->
+    <div class="portfolio-lightbox" id="portfolioLightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <div class="lightbox-content" id="lightboxContent">
+            <div class="lightbox-video-wrapper" id="lightboxVideoWrapper">
+                <!-- Video will be injected here -->
+            </div>
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightboxTitle"></h3>
+                <p class="lightbox-description" id="lightboxDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Posthumane",
+      "url": "https://posthumane.com",
+      "logo": "https://posthumane.com/https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png",
+      "description": "AI-powered video production, web development, and automation services. Fast, affordable, startup-friendly solutions.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "omur@posthumane.com",
+        "availableLanguage": ["English", "Turkish"]
+      },
+      "sameAs": [
+        "https://twitter.com/posthumane",
+        "https://linkedin.com/company/posthumane"
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "offerCount": "3",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "AI Video Production",
+            "description": "Professional AI-powered video production delivered in 24 hours",
+            "category": "Video Production"
+          },
+          {
+            "@type": "Offer",
+            "name": "Web Development",
+            "description": "Modern web applications and websites built in 7 days",
+            "category": "Web Development"
+          },
+          {
+            "@type": "Offer",
+            "name": "Smart Automation",
+            "description": "Intelligent automation solutions and workflow optimization",
+            "category": "Business Automation"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- ========== GDPR COOKIE CONSENT ========== -->
+    <div id="cookieConsent" class="cookie-consent" style="display:none;">
+        <div class="cookie-consent-content">
+            <div class="cookie-text">
+                <p>
+                    <strong>🍪 We use cookies</strong><br>
+                    We use cookies to enhance your experience, analyze traffic, and personalize content. By continuing to browse, you agree to our use of cookies.
+                </p>
+            </div>
+            <div class="cookie-consent-buttons">
+                <button id="acceptCookies" class="btn-cookie-accept">Accept All</button>
+                <button id="rejectCookies" class="btn-cookie-reject">Reject All</button>
+                <button id="customizeCookies" class="btn-cookie-customize">Customize</button>
+            </div>
+            <a href="#" class="privacy-link" onclick="alert('Privacy Policy page coming soon!'); return false;">Privacy Policy</a>
+        </div>
+    </div>
+
+    <style>
+    .cookie-consent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(125, 211, 192, 0.2);
+        padding: 1.5rem;
+        z-index: 99999;
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .cookie-consent-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .cookie-text {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .cookie-text p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .cookie-text strong {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .cookie-consent-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .cookie-consent button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+    }
+
+    .btn-cookie-accept {
+        background: #7dd3c0;
+        color: #0a0a0a;
+    }
+
+    .btn-cookie-accept:hover {
+        background: #6cc2af;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(125, 211, 192, 0.3);
+    }
+
+    .btn-cookie-reject {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-cookie-reject:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .btn-cookie-customize {
+        background: transparent;
+        color: #7dd3c0;
+        border: 1px solid #7dd3c0;
+    }
+
+    .btn-cookie-customize:hover {
+        background: rgba(125, 211, 192, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .privacy-link {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: underline;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+    }
+
+    .privacy-link:hover {
+        color: #7dd3c0;
+    }
+
+    @media (max-width: 768px) {
+        .cookie-consent {
+            padding: 1rem;
+        }
+
+        .cookie-consent-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .cookie-text {
+            min-width: auto;
+        }
+
+        .cookie-consent-buttons {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .cookie-consent button {
+            width: 100%;
+        }
+    }
+    </style>
+
+    <script>
+    (function() {
+        const COOKIE_CONSENT_KEY = 'posthumane_cookie_consent';
+
+        function showCookieConsent() {
+            const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+            if (!consent) {
+                setTimeout(() => {
+                    document.getElementById('cookieConsent').style.display = 'block';
+                }, 1000); // Show after 1 second
+            }
+        }
+
+        function hideCookieConsent() {
+            const banner = document.getElementById('cookieConsent');
+            banner.style.animation = 'slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 400);
+        }
+
+        // Accept all cookies
+        document.getElementById('acceptCookies')?.addEventListener('click', () => {
+            const consentData = {
+                necessary: true,
+                analytics: true,
+                marketing: true,
+                preferences: true,
+                timestamp: new Date().toISOString(),
+                version: '1.0'
+            };
+
+            localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            hideCookieConsent();
+
+            // Enable analytics if available
+            if (typeof gtag !== 'undefined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted'
+                });
+            }
+
+            console.log('✓ All cookies accepted');
+        });
+
+        // Reject all (except necessary)
+        document.getElementById('rejectCookies')?.addEventListener('click', () => {
+            const consentData = {
+                necessary: true,
+                analytics: false,
+                marketing: false,
+                preferences: false,
+                timestamp: new Date().toISOString(),
+                version: '1.0'
+            };
+
+            localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            hideCookieConsent();
+
+            // Disable analytics if available
+            if (typeof gtag !== 'undefined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied',
+                    'ad_storage': 'denied'
+                });
+            }
+
+            console.log('✓ Optional cookies rejected');
+        });
+
+        // Customize cookies (show modal)
+        document.getElementById('customizeCookies')?.addEventListener('click', () => {
+            alert('Cookie customization coming soon! For now, please choose Accept All or Reject All.');
+        });
+
+        // Add slide down animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateY(0); opacity: 1; }
+                to { transform: translateY(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Show consent banner on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showCookieConsent);
+        } else {
+            showCookieConsent();
+        }
+    })();
+    </script>
+
+    <!-- Scripts with defer for better performance -->
+    <!-- Feature Detection (load first for progressive enhancement) -->
+    <script src="js/feature-detection.min.js" defer></script>
+
+    <!-- Performance Monitoring (load early to track metrics) -->
+    <script src="js/monitoring.min.js" defer></script>
+
+    <!-- Core functionality -->
+    <script src="js/translations.min.js" defer></script>
+    <script src="js/script.min.js" defer></script>
+
+</body>
+</html>
