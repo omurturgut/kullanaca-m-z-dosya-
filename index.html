@@ -51,9 +51,8 @@
     <link rel="dns-prefetch" href="https://calendar.app.google">
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="js/script.js" as="script">
-    <link rel="preload" href="js/translations.js" as="script">
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="js/script.min.js" as="script">
     <link rel="preload" href="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" as="image">
 
     <!-- Prefetch Next-Page Resources -->
@@ -107,8 +106,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- External CSS - Async loading for better performance -->
-    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    <link rel="preload" href="css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -141,7 +140,7 @@
     <div class="page-loader" id="pageLoader">
         <div class="loader-logo-container">
             <div class="loader-glow"></div>
-            <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane" class="loader-logo">
+            <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane" class="loader-logo" width="80" height="80" fetchpriority="high" decoding="async">
         </div>
     </div>
 
@@ -164,6 +163,9 @@
                     src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png"
                     alt="Posthumane"
                     class="header-logo-image"
+                    width="45"
+                    height="45"
+                    decoding="async"
                 >
             </a>
 
@@ -199,7 +201,7 @@
     <section class="hero-section" id="heroSection">
         <!-- Hero Background -->
         <div class="hero-bg" id="heroBg">
-            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="Green landscape with beautiful sky" class="active">
+            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="Green landscape with beautiful sky" class="active" width="1920" height="1080" fetchpriority="high" decoding="async">
         </div>
 
         <!-- Hero Content -->
@@ -223,10 +225,10 @@
         <div class="trust-section">
             <span class="trust-text">Trusted By Teams At</span>
             <div class="trust-logos">
-                <img src="https://i.ibb.co/tMxZnmNT/pngwing-com.png" alt="Turkish Airlines - Trusted Client of Posthumane" class="trust-logo">
-                <img src="https://i.ibb.co/4wF2Y2xs/logo-9.webp" alt="Anadolu Agency - Trusted Client" class="trust-logo">
-                <img src="https://i.ibb.co/d0BcjnjW/bilgi-logotype-tr.png" alt="Istanbul Bilgi University - Trusted Client" class="trust-logo">
-                <img src="https://i.ibb.co/jZVV9PNF/logo-13.webp" alt="ODTÜ METU - Trusted Client" class="trust-logo">
+                <img src="https://i.ibb.co/tMxZnmNT/pngwing-com.png" alt="Turkish Airlines - Trusted Client of Posthumane" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/4wF2Y2xs/logo-9.webp" alt="Anadolu Agency - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/d0BcjnjW/bilgi-logotype-tr.png" alt="Istanbul Bilgi University - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
+                <img src="https://i.ibb.co/jZVV9PNF/logo-13.webp" alt="ODTÜ METU - Trusted Client" class="trust-logo" width="120" height="40" decoding="async">
             </div>
         </div>
     </section>
@@ -289,7 +291,7 @@
                                 <p class="founder-quote-text">"AI doesn't replace creativity. It accelerates it."</p>
                             </div>
                             <div class="founder-photo">
-                                <img src="https://i.ibb.co/204ZfRfZ/7cf81a69-da32-47cd-83ba-a0331b49c454.png" alt="Ömür - Co-Founder of Posthumane, AI Video Production Expert">
+                                <img src="https://i.ibb.co/204ZfRfZ/7cf81a69-da32-47cd-83ba-a0331b49c454.png" alt="Ömür - Co-Founder of Posthumane, AI Video Production Expert" width="400" height="400" loading="lazy" decoding="async">
                             </div>
                             <h3 class="founder-name">Ömür</h3>
                             <p class="founder-role">Co-Founder</p>
@@ -300,7 +302,7 @@
                                 <p class="founder-quote-text">"Why hire 6 people when one workflow scales infinitely?"</p>
                             </div>
                             <div class="founder-photo">
-                                <img src="https://i.ibb.co/KMjQ4zZ/55d4f0e4-a44a-4d90-837b-771a9090918a.png" alt="Emre - Co-Founder of Posthumane, Automation & Development Expert">
+                                <img src="https://i.ibb.co/KMjQ4zZ/55d4f0e4-a44a-4d90-837b-771a9090918a.png" alt="Emre - Co-Founder of Posthumane, Automation & Development Expert" width="400" height="400" loading="lazy" decoding="async">
                             </div>
                             <h3 class="founder-name">Emre</h3>
                             <p class="founder-role">Co-Founder</p>
@@ -431,7 +433,7 @@
     <!-- ========== WHAT WE DO SECTION ========== -->
     <section class="services-section" id="servicesSection">
         <div class="services-bg">
-            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="What We Do - AI video production, vibe coding, smart automation services">
+            <img src="https://i.ibb.co/hJ2918VB/u4938782892-Full-green-plain-ground-with-beautiful-white-sky-35e12c56-5db6-4c04-855d-eb1c49863e35.png" alt="What We Do - AI video production, vibe coding, smart automation services" width="1920" height="1080" loading="lazy" decoding="async">
         </div>
 
         <div class="services-container">
@@ -1078,7 +1080,7 @@
     <!-- ========== HOW IT WORKS SECTION ========== -->
     <section class="how-section" id="howSection">
         <div class="how-bg">
-            <img src="https://i.ibb.co/vfjcBNR/u4938782892-httpss-mj-run4p1ezs64l-FM-valley-of-shadows-ar-169-04aff505-6243-4a76-ad0a-ff2c0efd5ba7.png" alt="How It Works - Fast delivery process for AI video and web development">
+            <img src="https://i.ibb.co/vfjcBNR/u4938782892-httpss-mj-run4p1ezs64l-FM-valley-of-shadows-ar-169-04aff505-6243-4a76-ad0a-ff2c0efd5ba7.png" alt="How It Works - Fast delivery process for AI video and web development" width="1920" height="1080" loading="lazy" decoding="async">
         </div>
 
         <div class="how-container">
@@ -1804,7 +1806,7 @@
     <footer class="main-footer" id="mainFooter">
         <div class="footer-container">
             <div class="footer-logo-minimal">
-                <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane Logo">
+                <img src="https://i.ibb.co/YBSFK4FQ/posthumane-logo-geometric.png" alt="Posthumane Logo" width="80" height="80" loading="lazy" decoding="async">
             </div>
 
             <nav class="footer-links-minimal">
@@ -3411,14 +3413,14 @@ ${data.description}
 
     <!-- Scripts with defer for better performance -->
     <!-- Feature Detection (load first for progressive enhancement) -->
-    <script src="js/feature-detection.js"></script>
+    <script src="js/feature-detection.min.js" defer></script>
 
     <!-- Performance Monitoring (load early to track metrics) -->
-    <script src="js/monitoring.js" defer></script>
+    <script src="js/monitoring.min.js" defer></script>
 
     <!-- Core functionality -->
-    <script src="js/translations.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/translations.min.js" defer></script>
+    <script src="js/script.min.js" defer></script>
 
 </body>
 </html>
