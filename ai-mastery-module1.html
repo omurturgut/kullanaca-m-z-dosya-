@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mastery: Visual Language</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            /* Palette: Apple Cleanliness + Google Accents */
+            --bg-body: #F5F5F7; /* Apple Light Grey */
+            --text-main: #1D1D1F;
+            --text-secondary: #86868B;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --blur-amt: 20px;
+
+            --accent-blue: #0071e3; /* Apple Blue */
+            --google-red: #ea4335;
+            --google-yellow: #fbbc04;
+            --google-green: #34a853;
+
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+            --shadow-soft: 0 4px 24px rgba(0,0,0,0.04);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; }
+        h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.03em; }
+        h2 { font-size: 40px; margin-bottom: 24px; }
+        h3 { font-size: 24px; margin-bottom: 12px; }
+
+        p {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1a73e8, #ea4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 120px 0; position: relative; }
+        .grid { display: grid; gap: 40px; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+        /* Centered Content Block for readability */
+        .content-block {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content-block.left { text-align: left; margin: 0; }
+
+        /* --- GLASSMORPHISM COMPONENTS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amt));
+            -webkit-backdrop-filter: blur(var(--blur-amt));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Background Logic */
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2; /* Subtle texture */
+            filter: blur(80px); /* Highly abstracted */
+            transform: scale(1.1);
+            z-index: 0;
+            animation: breathe 10s infinite alternate;
+        }
+        @keyframes breathe { from { transform: scale(1.1); } to { transform: scale(1.2); } }
+
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 20px; }
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-main);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--text-main);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* --- OPERATOR VS DIRECTOR --- */
+        .role-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .role-header {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .role-list { list-style: none; }
+        .role-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+        .role-list li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10px;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+        .role-bad li::before { background: var(--google-red); }
+
+        /* --- INTERACTIVE LAYERS (Apple Settings Style) --- */
+        .layers-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .layers-menu {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 10px;
+            box-shadow: var(--shadow-soft);
+            position: sticky;
+            top: 40px;
+        }
+
+        .layer-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .layer-item:hover { background: #F5F5F7; color: var(--text-main); }
+        .layer-item.active { background: var(--accent-blue); color: white; }
+
+        .layer-display {
+            min-height: 400px;
+            position: relative;
+        }
+        .layer-content {
+            display: none;
+            animation: fadeUp 0.4s ease forwards;
+        }
+        .layer-content.active { display: block; }
+
+        .prompt-card {
+            background: #1D1D1F;
+            color: white;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .highlight { color: var(--google-yellow); }
+
+        /* --- MISTAKES ACCORDION --- */
+        .accordion-item {
+            background: white;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: box-shadow 0.3s;
+        }
+        .accordion-item:hover { box-shadow: var(--shadow-hover); }
+
+        .accordion-header {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .icon-plus {
+            width: 24px; height: 24px;
+            background: #F5F5F7;
+            border-radius: 50%;
+            display: grid; place-items: center;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+        .accordion-item.open .icon-plus { transform: rotate(45deg); background: var(--text-main); color: white; }
+
+        .accordion-body {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0;
+        }
+        .accordion-item.open .accordion-body {
+            padding: 0 24px 24px 24px;
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .comparison {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        .bad { color: var(--google-red); flex: 1; }
+        .good { color: var(--google-green); flex: 1; font-weight: 500; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .layers-container { grid-template-columns: 1fr; }
+            .layers-menu { display: flex; overflow-x: auto; padding: 10px; white-space: nowrap; top: 0; z-index: 10; }
+            .layer-item { width: auto; margin-right: 10px; margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO BACKGROUND -->
+    <div class="hero-bg"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">AI Mastery / Module 1</span>
+            <h1>From Prompt Noise<br>to <span class="text-gradient">Visual Language</span></h1>
+            <p style="margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Stop hoping for magic. Start directing the scene. A guide to intentional design with AI.
+            </p>
+            <a href="#philosophy" class="btn-primary">Start the Journey</a>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY SECTION -->
+    <section id="philosophy" class="section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Why Most AI Images Feel Empty</h2>
+                <p>Modern models are infinite engines of possibility. Yet, the feed is flooded with flatness. Why?</p>
+                <p>Because many treat the system like a slot machine. They pull the lever (generate) and hope for a jackpot. This is not design. It is gambling.</p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 60px;">
+                <div class="glass-card">
+                    <h3>Taste First, Tools Second</h3>
+                    <p>AI creates content, but it cannot create intent. If your understanding of light, composition, and mood is weak, AI simply speeds up the production of weak images.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>The Multiplier Effect</h3>
+                    <p>If you have a director's eye, the AI becomes a studio of 100 artists working for you. It amplifies your taste, it does not replace it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPERATOR VS DIRECTOR -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="content-block" style="margin-bottom: 60px;">
+                <h2>Operator vs Director</h2>
+                <p>The difference isn't the software. It's the mindset.</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Operator -->
+                <div class="glass-card role-card" style="border: 1px solid #f0f0f0;">
+                    <div class="role-header">
+                        <h3 style="color: var(--text-secondary);">The Prompt Operator</h3>
+                    </div>
+                    <ul class="role-list role-bad">
+                        <li>Types vague prompts like "cool city"</li>
+                        <li>Randomly changes adjectives when stuck</li>
+                        <li>Relies on luck and volume (generating 100x)</li>
+                        <li>Accepts whatever the model gives</li>
+                    </ul>
+                </div>
+
+                <!-- Director -->
+                <div class="glass-card role-card" style="background: #FAFAFA; border: 1px solid #E5E5E5;">
+                    <div class="role-header">
+                        <h3 style="color: var(--text-main);">The Visual Director</h3>
+                    </div>
+                    <ul class="role-list">
+                        <li>Starts with a clear story or campaign goal</li>
+                        <li>Breaks the goal into lens, light, and texture</li>
+                        <li>Iterates systematically on one variable at a time</li>
+                        <li>Forces the model to follow their vision</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE LAYERED BLUEPRINT -->
+    <section class="section">
+        <div class="container">
+            <div class="content-block left" style="margin-bottom: 40px;">
+                <h2>The 7-Layer Blueprint</h2>
+                <p>Professional prompts are structured architecture. We build them layer by layer.</p>
+            </div>
+
+            <div class="layers-container">
+                <!-- Sidebar Menu -->
+                <div class="layers-menu">
+                    <button class="layer-item active" onclick="showLayer(0)">1. Subject & Action</button>
+                    <button class="layer-item" onclick="showLayer(1)">2. Environment</button>
+                    <button class="layer-item" onclick="showLayer(2)">3. Camera & Lens</button>
+                    <button class="layer-item" onclick="showLayer(3)">4. Light & Color</button>
+                    <button class="layer-item" onclick="showLayer(4)">5. Materiality</button>
+                    <button class="layer-item" onclick="showLayer(5)">6. Composition</button>
+                    <button class="layer-item" onclick="showLayer(6)">7. Style Finish</button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="layer-display">
+
+                    <!-- L1 -->
+                    <div class="layer-content active glass-card">
+                        <h3>1. Subject and Action</h3>
+                        <p>Define the 'Who' and the 'Verb'. Be specific about the moment.</p>
+                        <div class="prompt-card">
+                            <span style="opacity:0.5">// Weak</span><br>
+                            "Happy woman in kitchen"<br><br>
+                            <span style="opacity:0.5">// Strong</span><br>
+                            "Older woman <span class="highlight">laughing while stirring coffee</span> at a small kitchen table"
+                        </div>
+                    </div>
+
+                    <!-- L2 -->
+                    <div class="layer-content glass-card">
+                        <h3>2. Environment & Story</h3>
+                        <p>Context creates emotion. Don't just list a room; describe the atmosphere.</p>
+                        <div class="prompt-card">
+                            "...small city apartment kitchen <span class="highlight">at night, rain on the window, quiet intimate mood</span> after a long day..."
+                        </div>
+                    </div>
+
+                    <!-- L3 -->
+                    <div class="layer-content glass-card">
+                        <h3>3. Camera & Perspective</h3>
+                        <p>Control the viewer's relationship to the subject through focal length.</p>
+                        <ul class="role-list" style="margin-top: 20px;">
+                            <li><strong>24mm:</strong> Contextual, slightly distorted, immersive.</li>
+                            <li><strong>50mm:</strong> Human eye, honest, neutral.</li>
+                            <li><strong>85mm+:</strong> Cinematic, isolated subject, compressed background.</li>
+                        </ul>
+                        <div class="prompt-card">
+                            "Medium shot at <span class="highlight">50mm lens</span>, gentle eye-level angle"
+                        </div>
+                    </div>
+
+                    <!-- L4 -->
+                    <div class="layer-content glass-card">
+                        <h3>4. Light & Color</h3>
+                        <p>Light is the emotional carrier of the image.</p>
+                        <p>Is it soft window light (nostalgic)? Hard neon light (tense)? Backlight (mysterious)?</p>
+                        <div class="prompt-card">
+                            "Soft window light from camera left, <span class="highlight">gentle falloff into shadow</span>, warm tungsten color temperature"
+                        </div>
+                    </div>
+
+                    <!-- L5 -->
+                    <div class="layer-content glass-card">
+                        <h3>5. Materials & Texture</h3>
+                        <p>Digital images look fake because they lack imperfections. Ask for them.</p>
+                        <div class="prompt-card">
+                            "Ceramic mug with <span class="highlight">small chips on the rim</span>, slightly scratched metal spoon, steam catching the light"
+                        </div>
+                    </div>
+
+                    <!-- L6 -->
+                    <div class="layer-content glass-card">
+                        <h3>6. Composition</h3>
+                        <p>Guide the eye. Use classical rules to structure the chaos.</p>
+                        <div class="prompt-card">
+                            "Centered composition, <span class="highlight">foreground blur</span> from an out of focus plant to add depth"
+                        </div>
+                    </div>
+
+                    <!-- L7 -->
+                    <div class="layer-content glass-card">
+                        <h3>7. Style & Finish</h3>
+                        <p>The final polish. Reference specific media or aesthetics.</p>
+                        <div class="prompt-card">
+                            "Cinematic still frame, <span class="highlight">subtle film grain</span>, Kodak Portra 400 color grading"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMON MISTAKES -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="content-block" style="margin-bottom: 50px;">
+                <h2>Common Mistakes</h2>
+                <p>Avoid these traps to elevate your visual output.</p>
+            </div>
+
+            <div class="accordion">
+                <!-- Item 1 -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Describing Object vs. Describing Shot
+                        <div class="icon-plus">+</div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Don't just describe what is there. Describe how we see it.</p>
+                        <div class="comparison">
+                            <div class="bad">✕ "A woman with a laptop"</div>
+                            <div class="good">✓ "Over-the-shoulder shot of a woman typing..."</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Using Vague Mood Words
+                        <div class="icon-plus">+</div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Words like "Moody" or "Vibe" are subjective. Be technical.</p>
+                        <div class="comparison">
+                            <div class="bad">✕ "Moody city"</div>
+                            <div class="good">✓ "Foggy street, dim streetlamps, high contrast"</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        Style Soup
+                        <div class="icon-plus">+</div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Don't mix too many conflicting aesthetics.</p>
+                        <div class="comparison">
+                            <div class="bad">✕ "Cyberpunk anime oil painting 8k photo"</div>
+                            <div class="good">✓ "Cyberpunk aesthetic, anime art style"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE PRINCIPLES -->
+    <section class="section">
+        <div class="container">
+            <div class="content-block" style="margin-bottom: 50px;">
+                <h2>Core Principles</h2>
+                <p>Remember these rules to stay in Director Mode.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="glass-card" style="padding: 30px;">
+                    <h4 style="margin-bottom: 10px; color: var(--accent-blue);">Taste Multiplier</h4>
+                    <p style="font-size: 16px; margin: 0;">AI multiplies your taste instead of replacing it.</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h4 style="margin-bottom: 10px; color: var(--google-red);">Systems > Luck</h4>
+                    <p style="font-size: 16px; margin: 0;">Directors design with systems; operators collect accidents.</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h4 style="margin-bottom: 10px; color: var(--google-yellow);">Technical > Emotional</h4>
+                    <p style="font-size: 16px; margin: 0;">Models need physics and optics, not just vague vibes.</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h4 style="margin-bottom: 10px; color: var(--google-green);">Layered Control</h4>
+                    <p style="font-size: 16px; margin: 0;">A blueprint gives you repeatable control over the shot.</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h4 style="margin-bottom: 10px; color: var(--text-main);">Visual Identity</h4>
+                    <p style="font-size: 16px; margin: 0;">Consistency in lens and light builds a recognizable brand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXERCISE SECTION -->
+    <section class="section" style="background: #1D1D1F; color: white;">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <span class="badge" style="background: rgba(255,255,255,0.1); color: white; border: none;">Module 1 Exercise</span>
+                    <h2 style="margin-top: 20px;">Audit Your Visuals</h2>
+                    <p style="color: rgba(255,255,255,0.7);">Close the gap between random prompting and deliberate design.</p>
+
+                    <div style="margin-top: 40px; padding-left: 20px; border-left: 2px solid var(--accent-blue);">
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>1. Group your last 10 images.</strong><br>Do they look like a family or chaos?</p>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>2. Check for logic.</strong><br>Is the focal length consistent? Is the lighting direction random?</p>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 0;"><strong>3. Rewrite one prompt.</strong><br>Use the 7-Layer Blueprint. Compare the results.</p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div class="glass-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.1); max-width: 400px;">
+                        <h3 style="font-size: 20px; margin-bottom: 20px;">Reflection</h3>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.8);">"Which version feels more intentional? Which version feels easier to reproduce repeatedly?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <span class="badge" style="background: var(--text-main); color: white;">AI Mastery</span>
+            <p style="font-size: 14px; margin-top: 20px;">Designed for the new era of creatives.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Layer Switching Logic
+        function showLayer(index) {
+            const buttons = document.querySelectorAll('.layer-item');
+            const contents = document.querySelectorAll('.layer-content');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            buttons[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+
+        // Accordion Logic
+        function toggleAccordion(element) {
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
