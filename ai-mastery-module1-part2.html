@@ -229,8 +229,10 @@
         <div class="container">
             <div class="content-block">
                 <h2>Not Just Prompts</h2>
-                <p>Two people can use the same model and still produce images from different worlds. The difference is never one secret word. It is the presence or absence of a system.</p>
+                <p>Two people can use the same model and the same subject and still produce images that feel like they came from different worlds. The difference is never one secret word. It is the presence or absence of a system.</p>
+                <p>Modern image models like Midjourney, Stable Diffusion, DALL·E, and newer tools built on diffusion architectures all start from noise and iteratively refine it toward your text.</p>
                 <p>When your prompt is vague, the refinement drifts. When your prompt is structured, the refinement becomes predictable.</p>
+                <p>The three engine idea is exactly that structure. It turns “type something and hope” into “design a shot and reproduce it whenever you want”.</p>
 
                 <div class="glass-card" style="margin-top: 40px; text-align: left;">
                     <h3 style="text-align: center; margin-bottom: 30px;">The Three Engines</h3>
@@ -259,22 +261,29 @@
     <!-- ENGINE 1: STRUCTURE -->
     <section class="section" style="background: white;">
         <div class="container">
-            <div class="grid-2" style="align-items: center;">
+            <div class="grid-2" style="align-items: start;">
                 <div>
                     <span class="badge" style="background: var(--accent-blue); color: white;">Engine One</span>
                     <h2>Structure</h2>
-                    <h3>The Technical Skeleton</h3>
-                    <p>Structure answers a simple question: <strong>If a real crew tried to shoot this, how would they set it up?</strong></p>
-                    <p>Most weak prompts only describe the object. Strong prompts describe the shot.</p>
+                    <h3>The Technical Skeleton of the Shot</h3>
+                    <p>Structure answers a simple question: <strong>If a real crew tried to shoot this as a photograph or a film frame, how would they set it up?</strong></p>
+                    <p>Most weak prompts only describe the object. Strong prompts also describe the shot. Current professional guides for Midjourney and Stable Diffusion all converge on the same elements.</p>
+
+                    <div style="background: #e8f0fe; padding: 24px; border-radius: var(--radius-sm); margin-top: 30px;">
+                        <h4 style="color: var(--accent-blue); font-size: 16px; margin-bottom: 10px;">Case Study: The Motorcycle</h4>
+                        <p style="font-size: 16px; margin-bottom: 10px;"><strong>Amateur Prompt:</strong> "Cool motorcycle at night"</p>
+                        <p style="font-size: 16px; margin-bottom: 0;"><strong>Professional Prompt:</strong> Defines camera, shutter speed, lighting conditions, texture of the dirt, and even the way motion blur behaves across the wheels.</p>
+                    </div>
                 </div>
                 <div class="glass-card" style="background: #FAFAFA;">
-                    <h4 style="margin-bottom: 20px;">The Structure Checklist</h4>
+                    <h4 style="margin-bottom: 20px;">Defining Structure</h4>
+                    <p style="font-size: 16px; margin-bottom: 20px;">Once you learn to describe structure clearly, models consistently give you sharper, more intentional results.</p>
                     <ul class="check-list">
-                        <li><strong>Subject & Action:</strong> Who is doing what? Which precise moment?</li>
-                        <li><strong>Camera:</strong> Focal length (Wide/Tele), Shot size (Close-up), Angle.</li>
-                        <li><strong>Lighting:</strong> Source, Direction, Quality (Soft/Hard), Temp.</li>
-                        <li><strong>Materials:</strong> Texture visibility, surface reflectivity.</li>
-                        <li><strong>Composition:</strong> Foreground/Background, Leading lines.</li>
+                        <li><strong>Subject and action:</strong> Who is doing what? What precise moment are you freezing?</li>
+                        <li><strong>Camera and perspective:</strong> Focal length (wide, normal, telephoto), shot size, camera angle.</li>
+                        <li><strong>Lighting:</strong> Source (window, neon), Direction (front, side), Quality (soft/hard), Color temperature.</li>
+                        <li><strong>Materials and environment:</strong> Reflectivity, texture visibility at distance, interaction with the subject.</li>
+                        <li><strong>Composition:</strong> Where the subject sits, leading lines, brightest areas guiding the eye.</li>
                     </ul>
                 </div>
             </div>
@@ -287,28 +296,28 @@
             <div class="content-block">
                 <span class="badge" style="background: var(--google-red); color: white;">Engine Two</span>
                 <h2>Style</h2>
-                <h3>Anchoring Images in Lineage</h3>
+                <h3>Anchoring Images In A Visual Lineage</h3>
                 <p>Structure makes an image believable. Style makes it recognizable.</p>
+                <p>Every modern model has some way to anchor style, whether through text cues, reference images, or specific parameters.</p>
             </div>
 
             <div class="grid-2" style="margin-top: 40px;">
                 <div class="glass-card">
-                    <h4>Visual Traditions</h4>
-                    <p>You are not copying one image. You are borrowing language from a lineage.</p>
+                    <h4>Deciding on Style</h4>
+                    <p>In this engine you decide which visual traditions you are borrowing from:</p>
                     <ul class="check-list" style="margin-top: 20px;">
-                        <li>Classic film stills</li>
-                        <li>Analog sports photography</li>
-                        <li>Art movements (Minimalism, Noir)</li>
+                        <li><strong>Visual Traditions:</strong> Classic film stills, analog sports photography, or clean product work.</li>
+                        <li><strong>Influence Level:</strong> Subtle lift from a reference vs. strong homage.</li>
+                        <li><strong>Consistency:</strong> Same palette, contrast rules, and level of polish across a series.</li>
                     </ul>
+                    <div style="background: #fce8e6; padding: 20px; border-radius: var(--radius-sm); margin-top: 20px;">
+                        <p style="font-size: 15px; margin: 0; color: #c5221f;"><strong>Note:</strong> Current Midjourney documentation recommends keeping prompts simple and letting the style reference do most of the look work.</p>
+                    </div>
                 </div>
                 <div class="glass-card">
-                    <h4>Consistency Tools</h4>
-                    <p>How do we lock the look?</p>
-                    <ul class="check-list" style="margin-top: 20px;">
-                        <li>Style Reference Images (sref)</li>
-                        <li>Parameter sliders (strength)</li>
-                        <li>Consistent palettes & contrast rules</li>
-                    </ul>
+                    <h4>The DNA Metaphor</h4>
+                    <p>In your original three pillar system, you used style references like <strong>vintage motorcycle ads</strong> and <strong>famous street photographers</strong> to give the motocross image a very specific visual DNA.</p>
+                    <p>This is a perfect example of the style engine at work. You are not copying one image. You are borrowing language from a whole lineage.</p>
                 </div>
             </div>
         </div>
@@ -317,22 +326,34 @@
     <!-- ENGINE 3: VISION -->
     <section class="section" style="background: white;">
         <div class="container">
-            <div class="grid-2" style="align-items: center;">
+            <div class="grid-2" style="align-items: start;">
                 <div class="glass-card" style="background: #1D1D1F; color: white;">
-                    <h3 style="color: white;">Vision Questions</h3>
-                    <p style="color: rgba(255,255,255,0.7);">Vision turns technical facts into designed experiences.</p>
+                    <h3 style="color: white;">Turning Technical Choices Into Emotion</h3>
+                    <p style="color: rgba(255,255,255,0.7);">Structure and style can already produce clean images. Vision turns those images into communication.</p>
+
+                    <h4 style="color: var(--google-yellow); margin-top: 30px;">Vision Answers Three Questions:</h4>
                     <div style="margin-top: 20px; border-left: 2px solid var(--google-yellow); padding-left: 20px;">
-                        <p style="color: white; margin-bottom: 10px;">1. What should someone feel in the first second?</p>
-                        <p style="color: white; margin-bottom: 10px;">2. What story beat does this frame carry?</p>
-                        <p style="color: white; margin-bottom: 0;">3. How do structure and style support that feeling?</p>
+                        <p style="color: white; margin-bottom: 10px;">1. What should someone feel in the first second of seeing this?</p>
+                        <p style="color: white; margin-bottom: 10px;">2. What story beat or message does this frame carry?</p>
+                        <p style="color: white; margin-bottom: 0;">3. How should structure and style support that feeling?</p>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: var(--radius-sm); margin-top: 30px;">
+                        <p style="color: white; font-size: 15px; margin: 0;"><strong>Case Study:</strong> The motocross photo was designed to feel "intense gritty unfiltered realism", with handheld imperfection, film grain, and lens softness serving that mood.</p>
                     </div>
                 </div>
                 <div style="padding-left: 40px;">
                     <span class="badge" style="background: var(--google-yellow); color: black;">Engine Three</span>
                     <h2>Vision</h2>
-                    <h3>Turning Choices Into Emotion</h3>
-                    <p>Structure and style produce clean images. Vision turns them into communication.</p>
-                    <p>Example: Making an image "dreamlike" by removing detail, or "documentary" by pushing contrast and grain.</p>
+                    <h3 style="margin-bottom: 20px;">Taste First, Tools Second</h3>
+                    <p>Systematic prompting is only useful when it serves a clear intention. The three pillar system is your bridge between taste and output.</p>
+                    <p>As you move into more advanced work, you will use the vision engine to make choices like:</p>
+                    <ul class="check-list">
+                        <li>Removing detail to make an image feel dreamlike instead of clinical.</li>
+                        <li>Pushing contrast and texture to make an image feel raw and documentary.</li>
+                        <li>Shifting color toward colder or warmer ranges to support the emotional temperature of the scene.</li>
+                    </ul>
+                    <p>Without vision, prompts are collections of technical facts. With vision, prompts become designed experiences.</p>
                 </div>
             </div>
         </div>
@@ -342,26 +363,39 @@
     <section class="section">
         <div class="container">
             <div class="content-block">
-                <h2>Training Your Eye</h2>
-                <p>AI is a laboratory where you can run thousands of experiments in minutes.</p>
+                <h2>Training Your Eye Faster With AI</h2>
+                <p>Traditional art education relied on slow cycles of study and practice. AI lets you compress those cycles dramatically, because you can generate, compare, and adjust in minutes.</p>
             </div>
 
-            <div class="glass-card" style="margin-top: 40px; text-align: left;">
-                <div class="timeline-step">
-                    <h4>The Loop Method</h4>
-                    <p>Pick a strong reference. Generate your own version. Place them side-by-side. Ask: Why does theirs work better?</p>
+            <div class="grid-2" style="margin-top: 40px; align-items: start;">
+                 <div class="glass-card">
+                    <h3 style="margin-bottom: 20px;">The Comparison Loop</h3>
+                    <p>This comparison loop mirrors what current AI prompt guides recommend: quick visual feedback, structured iteration, and deliberate reflection.</p>
+                    <ul class="check-list">
+                        <li><strong>Pick strong reference images</strong> that truly move you.</li>
+                        <li><strong>Generate your own image</strong> inspired by that reference.</li>
+                        <li><strong>Place them side by side</strong> and ask specific questions about composition, light, and mood.</li>
+                        <li><strong>Adjust one variable</strong> at a time and regenerate.</li>
+                        <li><strong>Document</strong> which prompt changes produced improvements.</li>
+                    </ul>
                 </div>
-                <div class="timeline-step">
-                    <h4>Weeks 1-2: Detection</h4>
-                    <p>You start to notice when a generation actually matches the quality of a reference.</p>
-                </div>
-                <div class="timeline-step">
-                    <h4>Weeks 3-4: Diagnosis</h4>
-                    <p>You can name concrete reasons (silhouette, palette, light) why an image fails.</p>
-                </div>
-                <div class="timeline-step">
-                    <h4>Week 5+: Prediction</h4>
-                    <p>You can predict which prompt decisions will work before you even press generate.</p>
+
+                <div class="glass-card" style="background: white;">
+                    <h3>The Accelerator</h3>
+                    <p>Used daily, this becomes an accelerator for taste.</p>
+                    <div class="timeline-step" style="margin-top: 30px;">
+                        <h4>Week One and Two</h4>
+                        <p>You start to notice when a generation actually matches the quality of a reference.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <h4>Week Three and Four</h4>
+                        <p>You can name concrete reasons why an image feels better such as cleaner silhouette, simpler palette, stronger light.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <h4>Week Five Onward</h4>
+                        <p>You can predict which prompt decisions will work before you even press generate.</p>
+                    </div>
+                    <p style="font-weight: 500; color: var(--text-main); margin-top: 20px;">AI is not a shortcut around taste. It is a laboratory where you can run thousands of mini experiments in a fraction of the time.</p>
                 </div>
             </div>
         </div>
@@ -371,22 +405,41 @@
     <section class="section" style="background: white;">
         <div class="container">
             <div class="content-block">
-                <h2>The Framework</h2>
-                <p>Over time, you won't think "Three Engines". You just won't press generate until you've decided.</p>
+                <h2>Putting The Three Engines Together</h2>
+                <p>A Practical Framework. When you design any serious shot, move through these steps in order.</p>
             </div>
             <div class="grid-3" style="margin-top: 40px;">
                 <div class="glass-card" style="border-top: 4px solid var(--accent-blue);">
                     <h4>1. Define Structure</h4>
-                    <p style="font-size: 15px;">Subject, Camera, Light, Material, Composition.</p>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>Subject and action in one sentence</li>
+                        <li>Shot type and focal length range</li>
+                        <li>Camera angle</li>
+                        <li>Light source, direction, quality, color</li>
+                        <li>Key materials and interaction with light</li>
+                        <li>Basic composition and depth plan</li>
+                    </ul>
                 </div>
                 <div class="glass-card" style="border-top: 4px solid var(--google-red);">
                     <h4>2. Choose Style</h4>
-                    <p style="font-size: 15px;">Visual tradition, references, consistent logic.</p>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>One or two clear visual traditions or references</li>
+                        <li>Consistent color and contrast logic</li>
+                        <li>Any model specific style tools (style reference)</li>
+                    </ul>
                 </div>
                 <div class="glass-card" style="border-top: 4px solid var(--google-yellow);">
-                    <h4>3. State Vision</h4>
-                    <p style="font-size: 15px;">The feeling, the story, the technical support.</p>
+                    <h4>3. State Vision & Loop</h4>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>One sentence about the feeling</li>
+                        <li>One sentence about what the frame communicates</li>
+                        <li>Technical decisions supporting feeling</li>
+                        <li><strong>Run the Comparison Loop</strong></li>
+                    </ul>
                 </div>
+            </div>
+            <div class="content-block" style="margin-top: 40px;">
+                 <p>Over time this becomes second nature. You do not think “three engines” in words. You simply refuse to press generate until you have made decisions in all three areas.</p>
             </div>
         </div>
     </section>
