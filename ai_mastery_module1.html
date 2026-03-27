@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing Images on Purpose | AI Mastery Module 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Google/Material Palette */
+            --primary: #1a73e8;
+            --primary-light: #e8f0fe;
+            --secondary: #5f6368;
+            --surface: #ffffff;
+            --background: #f8f9fa;
+            --text-main: #202124;
+            --text-secondary: #5f6368;
+            --divider: #dadce0;
+            --success: #1e8e3e;
+            --error: #d93025;
+
+            /* Spacing & Layout */
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 6rem 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1a73e8 0%, #8ab4f8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Interactive Sections */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--divider);
+            text-align: center;
+        }
+
+        .comparison-card.director {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .comparison-card.director h3 {
+            color: var(--primary);
+        }
+
+        /* 7 Layers Accordion */
+        .layer-item {
+            border: 1px solid var(--divider);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            background: var(--surface);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .layer-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            background: var(--surface);
+        }
+
+        .layer-header:hover {
+            background-color: var(--background);
+        }
+
+        .layer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .layer-number {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .layer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            border-top: 1px solid transparent;
+        }
+
+        .layer-item.active .layer-content {
+            max-height: 1000px; /* Arbitrary large number for expansion */
+            padding: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .layer-example {
+            background: #202124;
+            color: #e8f0fe;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            font-family: 'Courier New', monospace;
+            margin-top: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Mistakes Grid */
+        .mistake-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .mistake-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mistake-box {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .mistake-box.bad {
+            background-color: #fce8e6;
+            color: #c5221f;
+        }
+
+        .mistake-box.good {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+
+        /* Footer/Exercise */
+        .exercise-section {
+            background: var(--text-main);
+            color: var(--surface);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .exercise-section h2 {
+            color: var(--surface);
+            margin-bottom: 2rem;
+        }
+
+        .step-list {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .step-list li {
+            margin-bottom: 1rem;
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-icon {
+            min-width: 24px;
+            color: #8ab4f8;
+        }
+
+        /* Icons */
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .mistake-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <div class="fade-in-up">
+            <h1 style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <!-- Icon: Viewfinder/Camera Focus -->
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 21l-3.5-3.5"/>
+                    <path d="M15 3h6v6"/>
+                    <path d="M9 21H3v-6"/>
+                    <path d="M21 3l-7 7"/>
+                    <path d="M3 21l7-7"/>
+                </svg>
+                Designing Images on Purpose
+            </h1>
+            <p class="subtitle">From Prompt Noise to Visual Language</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Intro -->
+        <section class="card fade-in-up">
+            <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                <div style="flex: 1;">
+                    <h2>Why Most AI Images Feel Empty</h2>
+                    <br>
+                    <p>Modern image models can generate almost any visual idea. Yet most images that flood social media feel flat.</p>
+                    <p>Many people treat these systems like a toy. They type loose prompts, press generate, and hope for magic. In this module, you begin to move from random prompting toward intentional design. The goal is not a lucky hit.</p>
+                </div>
+                <!-- Icon: Empty/Flat Image vs Rich Image -->
+                <div style="display: none; @media(min-width: 768px){display:block;}">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#dadce0" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Taste First -->
+        <section class="card fade-in-up">
+            <h2>Taste First, Tools Second</h2>
+            <p>AI does not give you taste. It multiplies the taste you already have.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card" style="border-left: 4px solid #d93025;">
+                    <div style="color: #d93025; margin-bottom: 1rem;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                    <h4>Weak Composition</h4>
+                    <p>AI helps you create more weak images in less time.</p>
+                </div>
+                <div class="comparison-card" style="border-left: 4px solid #1e8e3e;">
+                    <div style="color: #1e8e3e; margin-bottom: 1rem;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h4>Understanding</h4>
+                    <p>AI becomes a multiplier for your vision.</p>
+                </div>
+            </div>
+            <br>
+            <p>Your job is not only to learn the interface of a model. Your job is to train your eye, so you can answer questions like: <em>Why does this angle feel powerful? Why does this lighting feel cinematic?</em></p>
+        </section>
+
+        <!-- Operator vs Director -->
+        <section class="fade-in-up">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Operator versus Director</h2>
+            <div class="comparison-grid">
+                <!-- Operator -->
+                <div class="comparison-card">
+                    <h3>The Prompt Operator</h3>
+                    <ul style="text-align: left; list-style: none; margin-top: 1.5rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #d93025;">✕</span> Types vague prompts like “beautiful cyberpunk city”
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #d93025;">✕</span> Changes random adjectives when something feels wrong
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #d93025;">✕</span> Relies on luck and volume instead of intention
+                        </li>
+                    </ul>
+                </div>
+                <!-- Director -->
+                <div class="comparison-card director">
+                    <h3>The Visual Director</h3>
+                    <ul style="text-align: left; list-style: none; margin-top: 1.5rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #1e8e3e;">✓</span> Starts from a clear goal (campaign, story, brand)
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #1e8e3e;">✓</span> Breaks goals into technical decisions (lens, light, color)
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #1e8e3e;">✓</span> Iterates in a structured way and saves systems
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+
+        <!-- Logic Section -->
+        <section class="card fade-in-up" style="background-color: #202124; color: white;">
+            <h2>How Image Models Respond to Your Words</h2>
+            <p style="color: #dadce0;">Diffusion based models do not feel emotion. They work with patterns. When you write “dramatic portrait”, the model doesn't feel drama. It looks for patterns that appear with that phrase:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;">Strong contrast</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;">Directional key light</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;">Specific framing</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;">Color temperature</span>
+            </div>
+        </section>
+
+        <!-- The 7 Layers -->
+        <section class="fade-in-up">
+            <h2 style="margin-bottom: 0.5rem;">The Layered Prompt Blueprint</h2>
+            <p>Professional prompts are structured blueprints, not poetic one-liners.</p>
+
+            <!-- Layer 1 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">1</div>
+                        Subject and Action
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Who or what is in focus? What are they doing?</strong></p>
+                    <p>This defines the clear verb of the scene.</p>
+                    <div class="layer-example">
+                        “Older woman laughing while stirring coffee at a small kitchen table”
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">(Better than "happy person in kitchen")</p>
+                </div>
+            </div>
+
+            <!-- Layer 2 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">2</div>
+                        Environment and Story Context
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Where is this happening? What time/season?</strong></p>
+                    <p>Now the model understands atmosphere and story.</p>
+                    <div class="layer-example">
+                        “Small city apartment kitchen at night, warm practical lights, rain on the window, quiet intimate mood after a long day”
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 3 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">3</div>
+                        Camera and Perspective
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Focal Length, Shot Size, Camera Angle.</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 24mm (environment), 35-50mm (human), 85mm+ (isoaltion).</li>
+                        <li><strong>Shot Size:</strong> Wide, Medium, Close-up.</li>
+                        <li><strong>Angle:</strong> Eye level (honest), Low (power), High (fragility).</li>
+                    </ul>
+                    <div class="layer-example">
+                        “Medium shot at 50 millimeter, gentle eye level angle, camera two meters from the subject”
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 4 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">4</div>
+                        Light and Color
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Source, Direction, Quality.</strong></p>
+                    <p>Light carries most of the mood. Decide if it's soft/diffused or hard/textured.</p>
+                    <div class="layer-example">
+                        “Soft window light from camera left, gentle falloff into shadow, warm color temperature, subtle rim from a lamp in background”
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 5 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">5</div>
+                        Materials and Texture
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p>Diffusion models excel at small surface details. Think about matte vs glossy, weave of fabric, scratches.</p>
+                    <div class="layer-example">
+                        “Ceramic mug with small chips on the rim, slightly scratched metal spoon, steam catching the light, wooden table grain”
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 6 -->
+            <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">6</div>
+                        Composition and Depth
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Framing, Depth, Flow.</strong></p>
+                    <p>Use foreground objects, clear midground, and lines that guide the eye.</p>
+                    <div class="layer-example">
+                        “Centered composition, foreground blur from an out of focus plant, subject in midground, window frame lines guiding eye to face”
+                    </div>
+                </div>
+            </div>
+
+             <!-- Layer 7 -->
+             <div class="layer-item">
+                <div class="layer-header" onclick="toggleLayer(this)">
+                    <div class="layer-title">
+                        <div class="layer-number">7</div>
+                        Style Reference and Finish
+                    </div>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Art Reference, Realism, Technical Finish.</strong></p>
+                    <p>Last, direct the overall style (Cinematic, Documentary, Illustration).</p>
+                    <div class="layer-example">
+                        “Cinematic still frame inspired by modern natural light photography, subtle film grain, realistic color grading”
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Common Mistakes -->
+        <section class="fade-in-up" style="margin-top: 4rem;">
+            <h2>Common Mistakes & Better Options</h2>
+            <div class="mistake-grid">
+
+                <!-- Mistake 1 -->
+                <div class="mistake-row">
+                    <div class="mistake-box bad">
+                        <strong>Weak:</strong> “A woman with a laptop”
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Describing the object but not the shot.</p>
+                    </div>
+                    <div class="mistake-box good">
+                        <strong>Better:</strong> “Medium shot of a woman working on a laptop at a small wooden table...”
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Add clear decisions, not random adjectives.</p>
+                    </div>
+                </div>
+
+                <!-- Mistake 2 -->
+                <div class="mistake-row">
+                    <div class="mistake-box bad">
+                        <strong>Weak:</strong> “Moody city at night”
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Vague mood words.</p>
+                    </div>
+                    <div class="mistake-box good">
+                        <strong>Better:</strong> “Wide shot of a dense city street, reflections of neon on wet asphalt...”
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Mood becomes a set of measurable choices.</p>
+                    </div>
+                </div>
+
+                <!-- Mistake 3 -->
+                <div class="mistake-row">
+                    <div class="mistake-box bad">
+                        <strong>Weak:</strong> “Ultra realistic cyberpunk anime oil painting...”
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Mixing too many styles.</p>
+                    </div>
+                    <div class="mistake-box good">
+                        <strong>Better:</strong> Choose one primary visual language.
+                        <p style="font-size:0.9rem; margin-top:0.5rem; color:inherit;">Makes the model's job easier and results cleaner.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Core Principles -->
+        <section class="card fade-in-up" style="margin-top: 4rem; background: linear-gradient(to right, #e8f0fe, #ffffff);">
+            <h2>Core Principles</h2>
+            <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                <li>AI multiplies your taste instead of replacing it.</li>
+                <li>Directors design images with systems, operators collect lucky accidents.</li>
+                <li>Diffusion models respond best to precise technical language, not vague emotion.</li>
+                <li>A layered prompt blueprint gives you repeatable control over the shot.</li>
+                <li>Consistency in lens, light, and color builds a recognizable visual identity.</li>
+            </ul>
+        </section>
+
+        <!-- Exercise -->
+        <footer class="exercise-section fade-in-up">
+            <h2>Exercise for You</h2>
+            <div class="step-list">
+                <ul>
+                    <li>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div>
+                            <strong>Audit:</strong> Take the last 10 images you generated. Group them as if they belong to a single brand. Are the focal length, light, and colors consistent or chaotic?
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                        <div>
+                            <strong>Rewrite:</strong> Pick one image and rewrite the prompt using the full 7-Layer Blueprint.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        </div>
+                        <div>
+                            <strong>Compare:</strong> Which version feels more intentional? That gap is what this course closes.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Accordion Logic
+        function toggleLayer(header) {
+            const item = header.parentElement;
+
+            // Close others if you want only one open at a time (optional, but cleaner)
+            /*
+            document.querySelectorAll('.layer-item').forEach(el => {
+                if(el !== item) el.classList.remove('active');
+            });
+            */
+
+            item.classList.toggle('active');
+
+            // Rotate Chevron
+            const chevron = header.querySelector('.chevron');
+            if (item.classList.contains('active')) {
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Scroll Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

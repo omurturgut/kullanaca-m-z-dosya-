@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mastery: The Image Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & VARIABLES (Identical to Part 1) --- */
+        :root {
+            /* Palette: Apple Cleanliness + Google Accents */
+            --bg-body: #F5F5F7; /* Apple Light Grey */
+            --text-main: #1D1D1F;
+            --text-secondary: #86868B;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --blur-amt: 20px;
+
+            --accent-blue: #0071e3; /* Apple Blue */
+            --google-red: #ea4335;
+            --google-yellow: #fbbc04;
+            --google-green: #34a853;
+
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+            --shadow-soft: 0 4px 24px rgba(0,0,0,0.04);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; color: var(--text-main); }
+        h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.03em; }
+        h2 { font-size: 40px; margin-bottom: 24px; }
+        h3 { font-size: 24px; margin-bottom: 12px; }
+        h4 { font-size: 18px; margin-bottom: 8px; }
+
+        p {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1a73e8, #ea4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 120px 0; position: relative; }
+        .grid { display: grid; gap: 40px; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+        .content-block {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content-block.left { text-align: left; margin: 0; }
+
+        /* --- GLASSMORPHISM COMPONENTS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amt));
+            -webkit-backdrop-filter: blur(var(--blur-amt));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+            height: 100%;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            filter: blur(80px);
+            transform: scale(1.1);
+            z-index: 0;
+            animation: breathe 15s infinite alternate;
+        }
+        @keyframes breathe { from { transform: scale(1.1); } to { transform: scale(1.2); } }
+
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 20px; }
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-main);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- ENGINE TABS (PILLARS) --- */
+        .engine-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .engine-tab {
+            padding: 16px 32px;
+            background: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            box-shadow: var(--shadow-soft);
+            color: var(--text-secondary);
+        }
+        .engine-tab.active {
+            background: var(--text-main);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- TIMELINE / STEPS --- */
+        .timeline-step {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 40px;
+        }
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 8px;
+            width: 12px; height: 12px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            left: 5px; top: 20px;
+            width: 2px; height: 100%;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        .timeline-step:last-child::after { display: none; }
+
+        /* --- LIST STYLES --- */
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            list-style: none;
+            color: var(--text-secondary);
+        }
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--google-green);
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .engine-tabs { flex-direction: column; width: 100%; }
+            .engine-tab { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-bg"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">AI Mastery / Module 1 / Part 2</span>
+            <h1>Why You Need An<br><span class="text-gradient">Image Engine</span></h1>
+            <p style="margin-top: 24px;">The difference between a lucky hit and a repeatable design.</p>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Not Just Prompts</h2>
+                <p>Two people can use the same model and the same subject and still produce images that feel like they came from different worlds. The difference is never one secret word. It is the presence or absence of a system.</p>
+                <p>Modern image models like Midjourney, Stable Diffusion, DALL·E, and newer tools built on diffusion architectures all start from noise and iteratively refine it toward your text.</p>
+                <p>When your prompt is vague, the refinement drifts. When your prompt is structured, the refinement becomes predictable.</p>
+                <p>The three engine idea is exactly that structure. It turns “type something and hope” into “design a shot and reproduce it whenever you want”.</p>
+
+                <div class="glass-card" style="margin-top: 40px; text-align: left;">
+                    <h3 style="text-align: center; margin-bottom: 30px;">The Three Engines</h3>
+                    <div class="grid-3">
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; background: var(--accent-blue); border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center; color: white; font-weight: bold;">1</div>
+                            <h4>Structure</h4>
+                            <p style="font-size: 15px;">The technical skeleton.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; background: var(--google-red); border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center; color: white; font-weight: bold;">2</div>
+                            <h4>Style</h4>
+                            <p style="font-size: 15px;">The visual lineage.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 50px; height: 50px; background: var(--google-yellow); border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center; color: white; font-weight: bold;">3</div>
+                            <h4>Vision</h4>
+                            <p style="font-size: 15px;">The emotional intent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINE 1: STRUCTURE -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="grid-2" style="align-items: start;">
+                <div>
+                    <span class="badge" style="background: var(--accent-blue); color: white;">Engine One</span>
+                    <h2>Structure</h2>
+                    <h3>The Technical Skeleton of the Shot</h3>
+                    <p>Structure answers a simple question: <strong>If a real crew tried to shoot this as a photograph or a film frame, how would they set it up?</strong></p>
+                    <p>Most weak prompts only describe the object. Strong prompts also describe the shot. Current professional guides for Midjourney and Stable Diffusion all converge on the same elements.</p>
+
+                    <div style="background: #e8f0fe; padding: 24px; border-radius: var(--radius-sm); margin-top: 30px;">
+                        <h4 style="color: var(--accent-blue); font-size: 16px; margin-bottom: 10px;">Case Study: The Motorcycle</h4>
+                        <p style="font-size: 16px; margin-bottom: 10px;"><strong>Amateur Prompt:</strong> "Cool motorcycle at night"</p>
+                        <p style="font-size: 16px; margin-bottom: 0;"><strong>Professional Prompt:</strong> Defines camera, shutter speed, lighting conditions, texture of the dirt, and even the way motion blur behaves across the wheels.</p>
+                    </div>
+                </div>
+                <div class="glass-card" style="background: #FAFAFA;">
+                    <h4 style="margin-bottom: 20px;">Defining Structure</h4>
+                    <p style="font-size: 16px; margin-bottom: 20px;">Once you learn to describe structure clearly, models consistently give you sharper, more intentional results.</p>
+                    <ul class="check-list">
+                        <li><strong>Subject and action:</strong> Who is doing what? What precise moment are you freezing?</li>
+                        <li><strong>Camera and perspective:</strong> Focal length (wide, normal, telephoto), shot size, camera angle.</li>
+                        <li><strong>Lighting:</strong> Source (window, neon), Direction (front, side), Quality (soft/hard), Color temperature.</li>
+                        <li><strong>Materials and environment:</strong> Reflectivity, texture visibility at distance, interaction with the subject.</li>
+                        <li><strong>Composition:</strong> Where the subject sits, leading lines, brightest areas guiding the eye.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINE 2: STYLE -->
+    <section class="section">
+        <div class="container">
+            <div class="content-block">
+                <span class="badge" style="background: var(--google-red); color: white;">Engine Two</span>
+                <h2>Style</h2>
+                <h3>Anchoring Images In A Visual Lineage</h3>
+                <p>Structure makes an image believable. Style makes it recognizable.</p>
+                <p>Every modern model has some way to anchor style, whether through text cues, reference images, or specific parameters.</p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="glass-card">
+                    <h4>Deciding on Style</h4>
+                    <p>In this engine you decide which visual traditions you are borrowing from:</p>
+                    <ul class="check-list" style="margin-top: 20px;">
+                        <li><strong>Visual Traditions:</strong> Classic film stills, analog sports photography, or clean product work.</li>
+                        <li><strong>Influence Level:</strong> Subtle lift from a reference vs. strong homage.</li>
+                        <li><strong>Consistency:</strong> Same palette, contrast rules, and level of polish across a series.</li>
+                    </ul>
+                    <div style="background: #fce8e6; padding: 20px; border-radius: var(--radius-sm); margin-top: 20px;">
+                        <p style="font-size: 15px; margin: 0; color: #c5221f;"><strong>Note:</strong> Current Midjourney documentation recommends keeping prompts simple and letting the style reference do most of the look work.</p>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h4>The DNA Metaphor</h4>
+                    <p>In your original three pillar system, you used style references like <strong>vintage motorcycle ads</strong> and <strong>famous street photographers</strong> to give the motocross image a very specific visual DNA.</p>
+                    <p>This is a perfect example of the style engine at work. You are not copying one image. You are borrowing language from a whole lineage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINE 3: VISION -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="grid-2" style="align-items: start;">
+                <div class="glass-card" style="background: #1D1D1F; color: white;">
+                    <h3 style="color: white;">Turning Technical Choices Into Emotion</h3>
+                    <p style="color: rgba(255,255,255,0.7);">Structure and style can already produce clean images. Vision turns those images into communication.</p>
+
+                    <h4 style="color: var(--google-yellow); margin-top: 30px;">Vision Answers Three Questions:</h4>
+                    <div style="margin-top: 20px; border-left: 2px solid var(--google-yellow); padding-left: 20px;">
+                        <p style="color: white; margin-bottom: 10px;">1. What should someone feel in the first second of seeing this?</p>
+                        <p style="color: white; margin-bottom: 10px;">2. What story beat or message does this frame carry?</p>
+                        <p style="color: white; margin-bottom: 0;">3. How should structure and style support that feeling?</p>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: var(--radius-sm); margin-top: 30px;">
+                        <p style="color: white; font-size: 15px; margin: 0;"><strong>Case Study:</strong> The motocross photo was designed to feel "intense gritty unfiltered realism", with handheld imperfection, film grain, and lens softness serving that mood.</p>
+                    </div>
+                </div>
+                <div style="padding-left: 40px;">
+                    <span class="badge" style="background: var(--google-yellow); color: black;">Engine Three</span>
+                    <h2>Vision</h2>
+                    <h3 style="margin-bottom: 20px;">Taste First, Tools Second</h3>
+                    <p>Systematic prompting is only useful when it serves a clear intention. The three pillar system is your bridge between taste and output.</p>
+                    <p>As you move into more advanced work, you will use the vision engine to make choices like:</p>
+                    <ul class="check-list">
+                        <li>Removing detail to make an image feel dreamlike instead of clinical.</li>
+                        <li>Pushing contrast and texture to make an image feel raw and documentary.</li>
+                        <li>Shifting color toward colder or warmer ranges to support the emotional temperature of the scene.</li>
+                    </ul>
+                    <p>Without vision, prompts are collections of technical facts. With vision, prompts become designed experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE COMPARISON LOOP -->
+    <section class="section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Training Your Eye Faster With AI</h2>
+                <p>Traditional art education relied on slow cycles of study and practice. AI lets you compress those cycles dramatically, because you can generate, compare, and adjust in minutes.</p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px; align-items: start;">
+                 <div class="glass-card">
+                    <h3 style="margin-bottom: 20px;">The Comparison Loop</h3>
+                    <p>This comparison loop mirrors what current AI prompt guides recommend: quick visual feedback, structured iteration, and deliberate reflection.</p>
+                    <ul class="check-list">
+                        <li><strong>Pick strong reference images</strong> that truly move you.</li>
+                        <li><strong>Generate your own image</strong> inspired by that reference.</li>
+                        <li><strong>Place them side by side</strong> and ask specific questions about composition, light, and mood.</li>
+                        <li><strong>Adjust one variable</strong> at a time and regenerate.</li>
+                        <li><strong>Document</strong> which prompt changes produced improvements.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card" style="background: white;">
+                    <h3>The Accelerator</h3>
+                    <p>Used daily, this becomes an accelerator for taste.</p>
+                    <div class="timeline-step" style="margin-top: 30px;">
+                        <h4>Week One and Two</h4>
+                        <p>You start to notice when a generation actually matches the quality of a reference.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <h4>Week Three and Four</h4>
+                        <p>You can name concrete reasons why an image feels better such as cleaner silhouette, simpler palette, stronger light.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <h4>Week Five Onward</h4>
+                        <p>You can predict which prompt decisions will work before you even press generate.</p>
+                    </div>
+                    <p style="font-weight: 500; color: var(--text-main); margin-top: 20px;">AI is not a shortcut around taste. It is a laboratory where you can run thousands of mini experiments in a fraction of the time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUTTING IT TOGETHER -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="content-block">
+                <h2>Putting The Three Engines Together</h2>
+                <p>A Practical Framework. When you design any serious shot, move through these steps in order.</p>
+            </div>
+            <div class="grid-3" style="margin-top: 40px;">
+                <div class="glass-card" style="border-top: 4px solid var(--accent-blue);">
+                    <h4>1. Define Structure</h4>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>Subject and action in one sentence</li>
+                        <li>Shot type and focal length range</li>
+                        <li>Camera angle</li>
+                        <li>Light source, direction, quality, color</li>
+                        <li>Key materials and interaction with light</li>
+                        <li>Basic composition and depth plan</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="border-top: 4px solid var(--google-red);">
+                    <h4>2. Choose Style</h4>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>One or two clear visual traditions or references</li>
+                        <li>Consistent color and contrast logic</li>
+                        <li>Any model specific style tools (style reference)</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="border-top: 4px solid var(--google-yellow);">
+                    <h4>3. State Vision & Loop</h4>
+                    <ul class="role-list" style="margin-top: 10px; font-size: 14px;">
+                        <li>One sentence about the feeling</li>
+                        <li>One sentence about what the frame communicates</li>
+                        <li>Technical decisions supporting feeling</li>
+                        <li><strong>Run the Comparison Loop</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-block" style="margin-top: 40px;">
+                 <p>Over time this becomes second nature. You do not think “three engines” in words. You simply refuse to press generate until you have made decisions in all three areas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXERCISE -->
+    <section class="section" style="background: #1D1D1F; color: white;">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <span class="badge" style="background: rgba(255,255,255,0.1); color: white; border: none;">Module 1 / Part 2 Exercise</span>
+                    <h2 style="margin-top: 20px;">The 3-Engine Audit</h2>
+                    <p style="color: rgba(255,255,255,0.7);">Pick a subject you care about. A product, character, or landscape.</p>
+
+                    <div style="margin-top: 40px; padding-left: 20px; border-left: 2px solid var(--google-green);">
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>1. The Amateur Prompt.</strong><br>Write it quickly. No system. Generate once.</p>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>2. The 3-Engine Prompt.</strong><br>Define Structure, Style, and Vision explicitly.</p>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 0;"><strong>3. Compare & Document.</strong><br>Write down 3 differences that make the second image more intentional.</p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div class="glass-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.1); max-width: 400px;">
+                        <h3 style="font-size: 20px; margin-bottom: 20px; color: white;">Goal</h3>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.8);">This combination—Three Engines + Comparison Loop—is the base layer for everything we build next.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <span class="badge" style="background: var(--text-main); color: white;">AI Mastery</span>
+            <p style="font-size: 14px; margin-top: 20px;">Designed for the new era of creatives.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
