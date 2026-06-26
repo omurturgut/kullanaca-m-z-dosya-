@@ -1,0 +1,44 @@
+name: Deploy childrens-book-studio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - claude/childrens-book-automation-r1cnm2
+      - main
+    paths:
+      - "childrens-book-studio/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda tek dağıtım çalışsın
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site (only the studio folder)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./childrens-book-studio
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
