@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çocuk Kitabı Stüdyosu</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ea; --panel:#ffffff; --ink:#2b2b33; --muted:#7a7a86;
+  --accent:#7c5cff; --accent-2:#ff8fab; --line:#e6e2d8; --ok:#1faa59;
+  --radius:14px; --shadow:0 8px 30px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Quicksand',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit}
+
+/* ---------- Layout ---------- */
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.sidebar{
+  background:#1f1d2b;color:#cfcce0;padding:22px 18px;position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;gap:6px
+}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-size:18px}
+.brand b{font-family:'Fredoka';font-size:17px;color:#fff;letter-spacing:.2px}
+.brand small{display:block;color:#8a86a8;font-size:11px;font-weight:500}
+.steps{list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.step{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:11px;color:#9d99b8;font-weight:600;font-size:14px;transition:.15s;border:1px solid transparent}
+.step .num{width:24px;height:24px;border-radius:50%;background:#2c2940;display:grid;place-items:center;font-size:12px;flex:none}
+.step.active{background:#2c2940;color:#fff;border-color:#3b3756}
+.step.done .num{background:var(--ok);color:#fff}
+.step.active .num{background:var(--accent);color:#fff}
+.sidebar .foot{margin-top:auto;font-size:11px;color:#6a6786;line-height:1.5}
+
+.main{padding:34px 40px;max-width:1100px;width:100%}
+.head h1{font-family:'Fredoka';font-size:26px;font-weight:600}
+.head p{color:var(--muted);margin-top:4px;font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-top:22px}
+
+label.fld{display:block;margin-bottom:14px}
+label.fld span{display:block;font-weight:600;font-size:13px;margin-bottom:6px;color:#4a4a55}
+.input,textarea.input,select.input{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fbfaf7;font-size:14px;color:var(--ink);transition:.15s
+}
+.input:focus,textarea.input:focus,select.input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(124,92,255,.12)}
+textarea.input{resize:vertical;min-height:80px;line-height:1.5}
+
+.btn{padding:11px 20px;border:none;border-radius:11px;font-weight:700;font-size:14px;background:#eee;color:#333}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:#555}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;justify-content:space-between;margin-top:26px;gap:12px}
+
+/* ---------- Pages editor ---------- */
+.page-item{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px;background:#fbfaf7}
+.page-item .ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.page-item .ph b{font-size:13px;color:var(--accent)}
+.page-grid{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:start}
+.drop{border:2px dashed #d9d4c8;border-radius:10px;height:130px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:12px;font-weight:600;background:#fff;overflow:hidden;cursor:pointer;position:relative}
+.drop img{width:100%;height:100%;object-fit:cover}
+.iconbtn{background:none;border:none;color:#c0392b;font-weight:700;font-size:12px}
+
+/* ---------- Option cards (size / age / template) ---------- */
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.opt{border:2px solid var(--line);border-radius:12px;padding:14px;background:#fbfaf7;text-align:center;transition:.15s;position:relative}
+.opt:hover{border-color:#c9bef7}
+.opt.sel{border-color:var(--accent);background:#f5f2ff}
+.opt .shape{margin:0 auto 10px;background:#fff;border:1px solid var(--line);border-radius:4px}
+.opt b{display:block;font-size:14px}
+.opt small{color:var(--muted);font-size:12px}
+.opt .check{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:none;place-items:center;font-size:12px}
+.opt.sel .check{display:grid}
+
+/* ---------- Template thumbnails ---------- */
+.tmpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.tmpl{border:2px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;transition:.15s;position:relative}
+.tmpl:hover{border-color:#c9bef7}
+.tmpl.sel{border-color:var(--accent)}
+.tmpl .thumb{height:150px;position:relative;overflow:hidden}
+.tmpl .meta{padding:9px 12px}
+.tmpl .meta b{font-size:13px}
+.tmpl .meta small{display:block;color:var(--muted);font-size:11px}
+.tmpl .check{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:none;place-items:center;font-size:13px;z-index:2}
+.tmpl.sel .check{display:grid}
+.theme-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.swatch{display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:30px;padding:6px 14px 6px 8px;background:#fbfaf7;font-weight:600;font-size:13px}
+.swatch.sel{border-color:var(--accent);background:#f5f2ff}
+.swatch .dots{display:flex}
+.swatch .dots i{width:16px;height:16px;border-radius:50%;display:block;margin-left:-5px;border:2px solid #fff}
+
+/* ---------- Preview ---------- */
+.preview-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.spread{display:flex;gap:2px;background:#cfcabb;padding:2px;border-radius:6px;box-shadow:var(--shadow)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.pgnav{display:flex;align-items:center;gap:14px;font-weight:700}
+.chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#555}
+
+/* ---------- Book page (shared by preview + print) ---------- */
+.book-page{position:relative;overflow:hidden;background:#fff;color:#222}
+.bp-img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+.bp-noimg{position:absolute;inset:0;display:grid;place-items:center;color:rgba(0,0,0,.25);font-weight:700;font-size:13px}
+.bp-text{position:relative;z-index:2}
+.bp-pageno{position:absolute;bottom:3%;width:100%;text-align:center;font-size:10px;color:rgba(0,0,0,.4);z-index:3}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1f1d2b;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;font-size:14px;box-shadow:var(--shadow);opacity:0;transition:.3s;pointer-events:none;z-index:99}
+.toast.show{opacity:1}
+
+.hint{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d1f;padding:10px 14px;border-radius:10px;font-size:13px;margin-top:14px;line-height:1.5}
+
+@media(max-width:820px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.steps{flex-direction:row;flex-wrap:wrap}.main{padding:22px}.page-grid{grid-template-columns:1fr}}
+
+/* ================= PRINT ================= */
+#printArea{display:none}
+@media print{
+  body *{visibility:hidden}
+  #printArea,#printArea *{visibility:visible}
+  #printArea{display:block;position:absolute;left:0;top:0}
+  .book-page{page-break-after:always;break-after:page}
+  .book-page:last-child{page-break-after:auto}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">📖</div>
+      <div><b>Kitap Stüdyosu</b><small>çocuk kitabı otomasyonu</small></div>
+    </div>
+    <ul class="steps" id="steps">
+      <li class="step" data-step="0"><span class="num">1</span> Metin</li>
+      <li class="step" data-step="1"><span class="num">2</span> Boyut</li>
+      <li class="step" data-step="2"><span class="num">3</span> Yaş kategorisi</li>
+      <li class="step" data-step="3"><span class="num">4</span> Şablon</li>
+      <li class="step" data-step="4"><span class="num">5</span> Önizleme & PDF</li>
+    </ul>
+    <div class="foot">Tüm veriler yalnızca bu tarayıcıda saklanır.<br>Otomatik kaydedilir.</div>
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<div id="printArea"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DURUM (STATE)
+   ============================================================ */
+const SIZES = [
+  {id:'sq20', name:'Kare 20×20', w:200, h:200, note:'En sevilen çocuk kitabı boyutu'},
+  {id:'sq21', name:'Kare 21×21', w:210, h:210, note:'Geniş kare'},
+  {id:'a5p',  name:'A5 Dikey',   w:148, h:210, note:'14,8 × 21 cm'},
+  {id:'a5l',  name:'A5 Yatay',   w:210, h:148, note:'21 × 14,8 cm'},
+  {id:'a4p',  name:'A4 Dikey',   w:210, h:297, note:'21 × 29,7 cm'},
+  {id:'a4l',  name:'A4 Yatay',   w:297, h:210, note:'29,7 × 21 cm'},
+];
+
+const AGES = [
+  {id:'0-3', name:'0–3 yaş', sub:'Bebek / tek cümle', font:34, words:8,  lh:1.3, family:"'Fredoka'"},
+  {id:'3-6', name:'3–6 yaş', sub:'Okul öncesi',        font:24, words:25, lh:1.4, family:"'Quicksand'"},
+  {id:'6-9', name:'6–9 yaş', sub:'İlk okuyucu',         font:18, words:60, lh:1.5, family:"'Nunito'"},
+  {id:'9-12',name:'9–12 yaş',sub:'Akıcı okuyucu',       font:14, words:120,lh:1.6, family:"'Nunito'"},
+];
+
+// layout = metnin & görselin yerleşimi
+const LAYOUTS = [
+  {id:'img-top',  name:'Üstte görsel',  sub:'Görsel üst, metin alt'},
+  {id:'img-bottom',name:'Altta görsel', sub:'Metin üst, görsel alt'},
+  {id:'split',    name:'Yan yana',      sub:'Solda görsel, sağda metin'},
+  {id:'full-band',name:'Tam görsel + şerit', sub:'Tam sayfa görsel, metin şeridi'},
+  {id:'overlay',  name:'Üstüne yazı',   sub:'Tam görsel, metin görsel üstünde'},
+  {id:'text-only',name:'Sadece metin',  sub:'Renkli zemin, görselsiz'},
+];
+
+// theme = renk paleti + başlık fontu
+const THEMES = [
+  {id:'pastel', name:'Pastel',  bg:'#fff7f2', panel:'#ffe3ec', text:'#5a3d4f', accent:'#ff8fab', title:"'Caveat'"},
+  {id:'forest', name:'Orman',   bg:'#eef6ec', panel:'#cfe8c8', text:'#2f4a2c', accent:'#4f9d4a', title:"'Fredoka'"},
+  {id:'ocean',  name:'Okyanus', bg:'#eaf4fb', panel:'#c9e6f7', text:'#234a63', accent:'#2f8fd6', title:"'Fredoka'"},
+  {id:'candy',  name:'Şeker',   bg:'#fdf0ff', panel:'#f3d2ff', text:'#5a2f63', accent:'#b65cd6', title:"'Caveat'"},
+  {id:'sunny',  name:'Güneş',   bg:'#fff9e8', panel:'#ffe7a8', text:'#6b521f', accent:'#f0a91f', title:"'Fredoka'"},
+  {id:'night',  name:'Gece',    bg:'#eceaf6', panel:'#d6d2f0', text:'#3a3360', accent:'#6a5cff', title:"'Fredoka'"},
+];
+
+const BLANK = {
+  title:'', author:'',
+  pages:[ {text:'', img:null}, {text:'', img:null} ],
+  sizeId:'sq20', bleed:true,
+  ageId:'3-6',
+  layoutId:'img-top', themeId:'pastel',
+  step:0
+};
+
+let S = load();
+
+function load(){
+  try{ const r = JSON.parse(localStorage.getItem('cbs_state')); if(r&&r.pages) return Object.assign({},BLANK,r);}catch(e){}
+  return JSON.parse(JSON.stringify(BLANK));
+}
+function save(){ localStorage.setItem('cbs_state', JSON.stringify(S)); }
+const sizeOf  = ()=>SIZES.find(s=>s.id===S.sizeId);
+const ageOf   = ()=>AGES.find(a=>a.id===S.ageId);
+const layoutOf= ()=>LAYOUTS.find(l=>l.id===S.layoutId);
+const themeOf = ()=>THEMES.find(t=>t.id===S.themeId);
+
+/* ============================================================
+   YÖNLENDİRME (NAV)
+   ============================================================ */
+const STEPS = [renderText, renderSize, renderAge, renderTemplate, renderPreview];
+function go(i){ S.step=Math.max(0,Math.min(4,i)); save(); render(); window.scrollTo(0,0); }
+function render(){
+  document.querySelectorAll('.step').forEach(el=>{
+    const i=+el.dataset.step;
+    el.classList.toggle('active', i===S.step);
+    el.classList.toggle('done', i<S.step);
+    el.onclick=()=>go(i);
+  });
+  STEPS[S.step]();
+}
+
+function nav(backLabel, nextLabel, nextFn, nextEnabled=true){
+  return `<div class="btnrow">
+    <button class="btn ghost" ${S.step===0?'disabled':''} onclick="go(${S.step-1})">← Geri</button>
+    <button class="btn primary" id="nextBtn" ${nextEnabled?'':'disabled'}>${nextLabel} →</button>
+  </div>`;
+}
+function bindNext(fn){ const b=document.getElementById('nextBtn'); if(b) b.onclick=fn; }
+
+/* ============================================================
+   ADIM 1 — METİN
+   ============================================================ */
+function renderText(){
+  const m=document.getElementById('main');
+  m.innerHTML=`
+  <div class="head"><h1>1 · Hikâyenin metni</h1><p>Kitabın adını, yazarını ve sayfa sayfa metinleri gir. Dilersen her sayfaya görsel yükle.</p></div>
+  <div class="card">
+    <label class="fld"><span>Kitap adı</span><input class="input" id="title" placeholder="Örn. Küçük Tilki Uykuya Dalıyor" value="${esc(S.title)}"></label>
+    <label class="fld"><span>Yazar</span><input class="input" id="author" placeholder="Örn. Ömür Turgut" value="${esc(S.author)}"></label>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <b style="font-size:15px">Sayfalar (${S.pages.length})</b>
+      <button class="btn ghost" onclick="addPage()">+ Sayfa ekle</button>
+    </div>
+    <div id="pages"></div>
+  </div>
+  <div class="hint">💡 İpucu: Görseller bu araçta yalnızca tarayıcında saklanır. En iyi baskı için <b>en az 300 DPI</b> görseller kullan (örn. 20×20 cm için ~2400×2400 piksel).</div>
+  ${nav()}`;
+  document.getElementById('title').oninput=e=>{S.title=e.target.value;save()};
+  document.getElementById('author').oninput=e=>{S.author=e.target.value;save()};
+  renderPages();
+  bindNext(()=>go(1));
+}
+function renderPages(){
+  const wrap=document.getElementById('pages'); if(!wrap)return;
+  wrap.innerHTML=S.pages.map((p,i)=>`
+    <div class="page-item">
+      <div class="ph"><b>Sayfa ${i+1}</b>${S.pages.length>1?`<button class="iconbtn" onclick="delPage(${i})">✕ Sil</button>`:''}</div>
+      <div class="page-grid">
+        <label class="drop" title="Görsel yükle">
+          ${p.img?`<img src="${p.img}">`:'+ Görsel<br>yükle'}
+          <input type="file" accept="image/*" style="display:none" onchange="setImg(${i},this)">
+        </label>
+        <div>
+          <textarea class="input" placeholder="Bu sayfanın metni..." oninput="setText(${i},this.value)">${esc(p.text)}</textarea>
+          <small style="color:var(--muted)">${wordCount(p.text)} kelime</small>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function addPage(){ S.pages.push({text:'',img:null}); save(); renderPages(); }
+function delPage(i){ S.pages.splice(i,1); save(); renderText(); }
+function setText(i,v){ S.pages[i].text=v; save(); const c=document.querySelectorAll('.page-item')[i].querySelector('small'); if(c)c.textContent=wordCount(v)+' kelime'; }
+function setImg(i,inp){
+  const f=inp.files[0]; if(!f)return;
+  const rd=new FileReader();
+  rd.onload=e=>{ S.pages[i].img=e.target.result; save(); renderPages(); };
+  rd.readAsDataURL(f);
+}
+
+/* ============================================================
+   ADIM 2 — BOYUT
+   ============================================================ */
+function renderSize(){
+  const m=document.getElementById('main');
+  m.innerHTML=`
+  <div class="head"><h1>2 · Kitap boyutu</h1><p>Baskı boyutunu seç. Matbaa için taşma payı (bleed) ekleyebilirsin.</p></div>
+  <div class="card"><div class="opts">${SIZES.map(s=>{
+    const max=70, sc=max/Math.max(s.w,s.h);
+    return `<div class="opt ${S.sizeId===s.id?'sel':''}" onclick="pickSize('${s.id}')">
+      <div class="check">✓</div>
+      <div class="shape" style="width:${s.w*sc}px;height:${s.h*sc}px"></div>
+      <b>${s.name}</b><small>${s.note}</small>
+    </div>`;}).join('')}</div>
+    <label class="chk" style="margin-top:18px"><input type="checkbox" id="bleed" ${S.bleed?'checked':''} onchange="S.bleed=this.checked;save()"> Taşma payı (bleed) ekle — 3&nbsp;mm <span style="color:var(--muted)">(matbaa için önerilir)</span></label>
+  </div>
+  ${nav()}`;
+  bindNext(()=>go(2));
+}
+function pickSize(id){ S.sizeId=id; save(); renderSize(); }
+
+/* ============================================================
+   ADIM 3 — YAŞ
+   ============================================================ */
+function renderAge(){
+  const m=document.getElementById('main');
+  m.innerHTML=`
+  <div class="head"><h1>3 · Yaş kategorisi</h1><p>Yaş grubu; font boyutunu, satır aralığını ve sayfa başına önerilen kelime sayısını ayarlar.</p></div>
+  <div class="card"><div class="opts">${AGES.map(a=>`
+    <div class="opt ${S.ageId===a.id?'sel':''}" onclick="pickAge('${a.id}')" style="padding:18px 14px">
+      <div class="check">✓</div>
+      <div style="font-family:${a.family};font-size:${Math.min(a.font,30)}px;line-height:1;margin-bottom:8px">Aa</div>
+      <b>${a.name}</b><small>${a.sub}</small>
+      <small style="display:block;margin-top:6px;color:var(--accent);font-weight:700">~${a.words} kelime/sayfa</small>
+    </div>`).join('')}</div></div>
+  <div class="hint" id="ageHint"></div>
+  ${nav()}`;
+  updateAgeHint();
+  bindNext(()=>go(3));
+}
+function pickAge(id){ S.ageId=id; save(); renderAge(); }
+function updateAgeHint(){
+  const a=ageOf(); const over=S.pages.filter(p=>wordCount(p.text)>a.words*1.6).length;
+  const el=document.getElementById('ageHint'); if(!el)return;
+  el.innerHTML = over>0
+    ? `⚠️ ${over} sayfada metin bu yaş grubu için uzun görünüyor (öneri ~${a.words} kelime). İstersen metni kısaltabilir ya da bölebilirsin.`
+    : `✅ Metin uzunlukların ${a.name} grubu için uygun görünüyor.`;
+}
+
+/* ============================================================
+   ADIM 4 — ŞABLON (layout + tema)
+   ============================================================ */
+function renderTemplate(){
+  const m=document.getElementById('main');
+  m.innerHTML=`
+  <div class="head"><h1>4 · Tasarım şablonu</h1><p>Bir yerleşim düzeni ve renk teması seç. Önizleme anında güncellenir.</p></div>
+  <div class="card">
+    <b style="font-size:14px">Yerleşim düzeni</b>
+    <div class="tmpls" style="margin-top:12px">${LAYOUTS.map(l=>`
+      <div class="tmpl ${S.layoutId===l.id?'sel':''}" onclick="pickLayout('${l.id}')">
+        <div class="check">✓</div>
+        <div class="thumb">${layoutThumb(l.id)}</div>
+        <div class="meta"><b>${l.name}</b><small>${l.sub}</small></div>
+      </div>`).join('')}</div>
+  </div>
+  <div class="card">
+    <b style="font-size:14px">Renk teması</b>
+    <div class="theme-row">${THEMES.map(t=>`
+      <div class="swatch ${S.themeId===t.id?'sel':''}" onclick="pickTheme('${t.id}')">
+        <span class="dots"><i style="background:${t.accent}"></i><i style="background:${t.panel}"></i><i style="background:${t.bg}"></i></span>
+        ${t.name}
+      </div>`).join('')}</div>
+  </div>
+  ${nav()}`;
+  bindNext(()=>go(4));
+}
+function pickLayout(id){ S.layoutId=id; save(); renderTemplate(); }
+function pickTheme(id){ S.themeId=id; save(); renderTemplate(); }
+function layoutThumb(id){
+  const t=themeOf(); const img=`background:linear-gradient(135deg,${t.accent}55,${t.panel})`;
+  const txt=`background:${t.panel};`;
+  const bar=`<div style="${txt};height:8px;border-radius:3px;margin:3px 0"></div>`;
+  const box=(s)=>`<div style="${s}"></div>`;
+  const W='style="position:absolute;inset:0;background:'+t.bg+';padding:14px;display:flex;flex-direction:column;gap:6px"';
+  let inner='';
+  if(id==='img-top') inner=box(img+';flex:1.4;border-radius:6px')+`<div style="${txt};border-radius:5px;padding:6px">${bar}${bar}</div>`;
+  else if(id==='img-bottom') inner=`<div style="${txt};border-radius:5px;padding:6px">${bar}${bar}</div>`+box(img+';flex:1.4;border-radius:6px');
+  else if(id==='split') inner=`<div style="display:flex;gap:6px;flex:1">${box(img+';flex:1;border-radius:6px')}<div style="flex:1;${txt};border-radius:5px;padding:6px">${bar}${bar}${bar}</div></div>`;
+  else if(id==='full-band') inner=box(img+';position:absolute;inset:0;border-radius:0')+`<div style="margin-top:auto;${txt};border-radius:6px;padding:7px;position:relative">${bar}${bar}</div>`;
+  else if(id==='overlay') inner=box(img+';position:absolute;inset:0')+`<div style="margin:auto;color:#fff;font-weight:700;position:relative;text-shadow:0 1px 3px #0007;text-align:center">Aa Bb</div>`;
+  else inner=`<div style="margin:auto;text-align:center;color:${t.text};font-family:${t.title};font-size:20px">Aa Bb Cc</div>`;
+  return `<div ${W}>${inner}</div>`;
+}
+
+/* ============================================================
+   ADIM 5 — ÖNİZLEME & PDF
+   ============================================================ */
+let previewIndex=0; // hangi yaprak (spread)
+function renderPreview(){
+  const m=document.getElementById('main');
+  m.innerHTML=`
+  <div class="head"><h1>5 · Önizleme & basıma hazır PDF</h1><p>Kitabını kontrol et, sonra PDF olarak dışa aktar.</p></div>
+  <div class="card">
+    <div class="toolbar" style="margin-bottom:16px">
+      <div class="pgnav">
+        <button class="btn ghost" onclick="flip(-1)">‹</button>
+        <span id="spLabel"></span>
+        <button class="btn ghost" onclick="flip(1)">›</button>
+      </div>
+      <span style="flex:1"></span>
+      <label class="chk"><input type="checkbox" id="cover" ${S.cover!==false?'checked':''} onchange="S.cover=this.checked;save()"> Kapak sayfası ekle</label>
+      <label class="chk"><input type="checkbox" id="pgno" ${S.pageNo?'checked':''} onchange="S.pageNo=this.checked;save();drawPreview()"> Sayfa numarası</label>
+    </div>
+    <div class="preview-wrap"><div class="spread" id="spread"></div>
+      <small style="color:var(--muted)">Boyut: ${sizeOf().name} (${sizeOf().w}×${sizeOf().h} mm)${S.bleed?' + 3 mm bleed':''} · ${ageOf().name} · ${layoutOf().name} · ${themeOf().name}</small>
+    </div>
+  </div>
+  <div class="card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+    <div><b style="font-size:15px">Basıma hazır PDF</b><br><small style="color:var(--muted)">Aşağıdaki buton yazdırma penceresini açar. <b>Hedef: "PDF olarak kaydet"</b> seç, kenar boşluğu <b>Yok/None</b> olsun.</small></div>
+    <button class="btn primary" onclick="exportPDF()" style="font-size:15px;padding:13px 26px">⬇ PDF oluştur</button>
+  </div>
+  <div class="hint">📐 Matbaa kontrol listesi: Bleed açık · Görseller 300 DPI · Yazdırırken <b>Kenar boşluğu: Yok</b> ve <b>Arka plan grafikleri</b> açık. Toplam sayfa: <b id="totPg"></b></div>
+  ${nav()}`;
+  previewIndex=0; drawPreview();
+  bindNext(()=>go(0));
+  document.getElementById('nextBtn').textContent='Baştan düzenle ↺';
+}
+
+function buildBookPages(){
+  // kitabın tüm sayfalarını (kapak dahil) sıralı diziye çevir
+  const arr=[];
+  if(S.cover!==false) arr.push({kind:'cover'});
+  S.pages.forEach((p,i)=>arr.push({kind:'page', p, n:i+1}));
+  return arr;
+}
+function flip(d){ const total=Math.ceil(buildBookPages().length/2); previewIndex=Math.max(0,Math.min(total-1,previewIndex+d)); drawPreview(); }
+function drawPreview(){
+  const all=buildBookPages();
+  const total=Math.ceil(all.length/2);
+  const sp=document.getElementById('spread'); if(!sp)return;
+  const sz=sizeOf(); const scale=Math.min(330/sz.w, 420/sz.h, 1.6);
+  const left=all[previewIndex*2], right=all[previewIndex*2+1];
+  sp.innerHTML=[left,right].map(item=>item?pageHTML(item,scale):`<div class="book-page" style="width:${sz.w*scale}px;height:${sz.h*scale}px;background:#efece3"></div>`).join('');
+  const lbl=document.getElementById('spLabel'); if(lbl)lbl.textContent=`Yaprak ${previewIndex+1} / ${total}`;
+  const tp=document.getElementById('totPg'); if(tp)tp.textContent=all.length+' sayfa';
+}
+
+/* tek bir kitap sayfasının HTML'i (önizleme + PDF ortak) */
+function pageHTML(item, scale, forPrint=false){
+  const sz=sizeOf(), age=ageOf(), th=themeOf(), lay=S.layoutId;
+  const bleed = S.bleed?3:0;
+  const W=sz.w+bleed*2, H=sz.h+bleed*2;
+  const unit = forPrint ? 'mm' : 'px';
+  const k = forPrint ? 1 : scale;
+  const fs = (forPrint? age.font : age.font*scale)+ (forPrint?'pt':'px');
+  const pad = (forPrint?8:8*scale);
+  const dim = (v)=> (forPrint? v : v*scale)+unit;
+
+  const wrapStyle=`width:${dim(W)};height:${dim(H)};background:${th.bg};font-family:${age.family};color:${th.text}`;
+
+  if(item.kind==='cover'){
+    return `<div class="book-page" style="${wrapStyle};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:${dim(14)}">
+      <div style="font-family:${th.title};font-size:${forPrint?'30pt':30*scale+'px'};color:${th.accent};line-height:1.1">${esc(S.title)||'Kitap Adı'}</div>
+      <div style="margin-top:${dim(10)};font-size:${forPrint?'13pt':14*scale+'px'};opacity:.8">${esc(S.author)||''}</div>
+    </div>`;
+  }
+
+  const p=item.p;
+  const imgDiv = p.img ? `<div class="bp-img" style="background-image:url('${p.img}')"></div>` : `<div class="bp-noimg" style="background:${th.panel}">görsel yok</div>`;
+  const textInner = `<div style="font-size:${fs};line-height:${age.lh}">${esc(p.text).replace(/\n/g,'<br>')}</div>`;
+  const pno = S.pageNo? `<div class="bp-pageno">${item.n}</div>`:'';
+  let body='';
+
+  const txtBox=(extra='')=>`<div class="bp-text" style="padding:${dim(14)};${extra}">${textInner}</div>`;
+  const imgBox=(flex)=>`<div style="position:relative;flex:${flex};margin:${dim(8)};border-radius:${dim(6)};overflow:hidden">${imgDiv}</div>`;
+
+  if(lay==='img-top'){
+    body=`<div style="height:100%;display:flex;flex-direction:column">${imgBox(1.5)}${txtBox('flex:1')}</div>`;
+  }else if(lay==='img-bottom'){
+    body=`<div style="height:100%;display:flex;flex-direction:column">${txtBox('flex:1')}${imgBox(1.5)}</div>`;
+  }else if(lay==='split'){
+    body=`<div style="height:100%;display:flex">${imgBox(1)}<div style="flex:1;display:flex;align-items:center">${txtBox()}</div></div>`;
+  }else if(lay==='full-band'){
+    body=`<div style="position:absolute;inset:0">${imgDiv}</div><div style="position:absolute;left:${dim(8)};right:${dim(8)};bottom:${dim(8)};background:${th.panel}ee;border-radius:${dim(8)};padding:${dim(12)}">${textInner}</div>`;
+  }else if(lay==='overlay'){
+    body=`<div style="position:absolute;inset:0">${imgDiv}<div style="position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.45))"></div></div>
+      <div class="bp-text" style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:${dim(16)};color:#fff;text-shadow:0 1px 4px #000a"><div style="font-size:${fs};line-height:${age.lh}">${esc(p.text).replace(/\n/g,'<br>')}</div></div>`;
+  }else{ // text-only
+    body=`<div style="height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:${dim(20)}"><div style="font-size:${fs};line-height:${age.lh};font-family:${th.title};color:${th.text}">${esc(p.text).replace(/\n/g,'<br>')||'…'}</div></div>`;
+  }
+  return `<div class="book-page" style="${wrapStyle}">${body}${pno}</div>`;
+}
+
+/* ============================================================
+   PDF DIŞA AKTARIM
+   ============================================================ */
+function exportPDF(){
+  const sz=sizeOf(); const bleed=S.bleed?3:0;
+  const W=sz.w+bleed*2, H=sz.h+bleed*2;
+  // @page boyutunu dinamik ayarla
+  let st=document.getElementById('printPage'); if(!st){st=document.createElement('style');st.id='printPage';document.head.appendChild(st);}
+  st.textContent=`@page{size:${W}mm ${H}mm;margin:0}`;
+  const all=buildBookPages();
+  document.getElementById('printArea').innerHTML=all.map(it=>pageHTML(it,1,true)).join('');
+  toast('Yazdırma penceresi açılıyor — "PDF olarak kaydet" seç');
+  setTimeout(()=>window.print(),250);
+}
+
+/* ============================================================
+   YARDIMCILAR
+   ============================================================ */
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function wordCount(s){s=(s||'').trim();return s?s.split(/\s+/).length:0;}
+let toastT;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3000);}
+
+render();
+</script>
+</body>
+</html>
